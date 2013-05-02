@@ -168,8 +168,8 @@
 					WorkingDirectory="Help"
 					Show="maximized"
 					Advertise="yes"
-					IconIndex="1"
 				>
+					<Icon Id="help.chm" SourceFile=".\Icons\help.ico"/>
 				</Shortcut>
 			</File>
 			<RemoveFolder Id="csmhelp.ProductMenuFolder" Directory="ProductMenuFolder" On="uninstall"/>
