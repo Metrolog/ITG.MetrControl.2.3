@@ -13,6 +13,8 @@
 	<?define ProductId="$(var.Manufacturer).$(var.ProductShortName).$(var.ProductMajorVersion).$(var.ProductMinorVersion)"?>
 	<?define ProductRegKey="SOFTWARE\$(var.Manufacturer)\$(var.ProductShortName)\$(var.ProductMajorVersion).$(var.ProductMinorVersion)\Capabilities"?>
 
+	<?define ReportsChecksum="no"?>
+
 	<?ifdef SingleMSIFile ?>
 	<?define Compressed="yes" ?>
 	<?else?>

@@ -216,7 +216,7 @@
 				Name="$(var.Report)"
 				KeyPath="yes"
 				Vital="no"
-				Checksum="yes"
+				Checksum="$(var.ReportsChecksum)"
 			/>
 		</Component>
 		<?endforeach?>
