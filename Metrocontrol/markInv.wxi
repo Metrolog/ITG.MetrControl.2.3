@@ -29,6 +29,7 @@
 		<ComponentRef	Id="markinv.exe" Primary="yes" />
 		<ComponentRef	Id="MarkInvInterop.dll" />
 		<ComponentRef	Id="markinv.registry" />
+		<ComponentRef	Id="markinv.registry.2" />
 		<ComponentRef	Id="common.registry"/>
 	</ComponentGroup>
 
@@ -176,6 +177,41 @@
 			>
 				<RegistryValue Type="string" Value="installed" KeyPath="yes" />
 			</RegistryKey>
+		</Component>
+
+		<Component
+			Id="markinv.registry.2"
+			Guid="{9CCA0C59-BDB0-4486-8E95-CB8E9C1F4562}"
+			Location="either"
+			Win64="$(var.Win64)"
+		>
+			<!--http://msdn.microsoft.com/ru-RU/library/windows/desktop/ee872121(v=vs.85).aspx-->
+			<RegistryKey
+				Root="HKMU"
+				Key="SOFTWARE\Microsoft\Windows\CurrentVersion\App Paths"
+			>
+				<?foreach AppFileName in markinv.exe;клейма.exe?>
+				<RegistryKey Key="$(var.AppFileName)">
+					<RegistryValue Type="string" Value="[#markinv.exe]" />
+				</RegistryKey>
+				<?endforeach?>
+			</RegistryKey>
+			<RegistryKey
+				Root="HKCR"
+				Key="Applications"
+			>
+				<RegistryKey Key="markinv.exe">
+					<RegistryValue Type="string" Value="[#markinv.exe]" />
+					<RegistryValue Name="FriendlyAppName" Type="string" Value="$(var.markinvToolName)" />
+					<RegistryKey
+						Key="NoOpenWith"
+						ForceCreateOnInstall="yes"
+						ForceDeleteOnUninstall="yes"
+					/>
+				</RegistryKey>
+			</RegistryKey>
+			<!--http://msdn.microsoft.com/ru-RU/library/windows/desktop/ee872121(v=vs.85).aspx#reg_perceived_types-->
+			<!--http://msdn.microsoft.com/ru-RU/library/windows/desktop/cc144154(v=vs.85).aspx-->
 		</Component>
 
 	</DirectoryRef>

@@ -23,6 +23,7 @@
 
 	<ComponentGroup Id="csmadmin" Directory="APPLICATIONFOLDER">
 		<ComponentRef	Id="csmadmin.exe" Primary="yes"/>
+		<ComponentRef	Id="csmadmin.registry"/>
 		<ComponentRef	Id="csmusers.dll"/>
 		<ComponentRef	Id="csmutil.dll"/>
 		<ComponentRef	Id="CurrentCsmSelector.dll"/>
@@ -81,6 +82,41 @@
 			>
 				<RegistryValue Name="CsmAdminInstalled" Type="integer" Value="1" />
 			</RegistryKey>
+		</Component>
+
+		<Component
+			Id="csmadmin.registry"
+			Guid="{061D2DDA-8F3D-49C4-B89E-7137F43F5160}"
+			Location="either"
+			Win64="$(var.Win64)"
+		>
+			<!--http://msdn.microsoft.com/ru-RU/library/windows/desktop/ee872121(v=vs.85).aspx-->
+			<RegistryKey
+				Root="HKMU"
+				Key="SOFTWARE\Microsoft\Windows\CurrentVersion\App Paths"
+			>
+				<?foreach AppFileName in csmadmin.exe?>
+				<RegistryKey Key="$(var.AppFileName)">
+					<RegistryValue Type="string" Value="[#csmadmin.exe]" />
+				</RegistryKey>
+				<?endforeach?>
+			</RegistryKey>
+			<RegistryKey
+				Root="HKCR"
+				Key="Applications"
+			>
+				<RegistryKey Key="csmadmin.exe">
+					<RegistryValue Type="string" Value="[#csmadmin.exe]" />
+					<RegistryValue Name="FriendlyAppName" Type="string" Value="$(var.AdminToolName)" />
+					<RegistryKey
+						Key="NoOpenWith"
+						ForceCreateOnInstall="yes"
+						ForceDeleteOnUninstall="yes"
+					/>
+				</RegistryKey>
+			</RegistryKey>
+			<!--http://msdn.microsoft.com/ru-RU/library/windows/desktop/ee872121(v=vs.85).aspx#reg_perceived_types-->
+			<!--http://msdn.microsoft.com/ru-RU/library/windows/desktop/cc144154(v=vs.85).aspx-->
 		</Component>
 
 	</DirectoryRef>
