@@ -49,6 +49,7 @@
 
 	<ComponentGroup Id="ProductComponents" Directory="APPLICATIONFOLDER">
 		<ComponentRef	Id="csmmain.exe" Primary="yes"/>
+		<ComponentRef	Id="csmmain.registry"/>
 		<?foreach Dll in $(var.MainDllList)?>
 		<ComponentRef	Id="$(var.Dll)"/>
 		<?endforeach?>
@@ -113,6 +114,55 @@
 			/>
 		</Component>
 
+		<Component
+			Id="csmmain.registry"
+			Guid="{4AF01660-10B6-4BFA-A0FC-6BC10286D3F1}"
+			Location="either"
+			Win64="$(var.Win64)"
+		>
+			<!--http://msdn.microsoft.com/ru-RU/library/windows/desktop/ee872121(v=vs.85).aspx-->
+			<RegistryKey
+				Root="HKLM"
+				Key="SOFTWARE\Microsoft\Windows\CurrentVersion\App Paths"
+			>
+				<?foreach AppFileName in csmmain.exe;metrcontrol.exe;metrocontrol.exe;метроконтроль.exe?>
+				<RegistryKey Key="$(var.AppFileName)">
+					<RegistryValue Type="string" Value="[#application]" />
+				</RegistryKey>
+				<?endforeach?>
+			</RegistryKey>
+			<RegistryKey
+				Root="HKCR"
+				Key="Applications"
+			>
+				<RegistryKey Key="csmmain.exe">
+					<RegistryValue Type="string" Value="[#application]" />
+					<RegistryValue Name="FriendlyAppName" Type="string" Value="$(var.ProductShortName)" />
+					<RegistryKey
+						Key="NoOpenWith"
+						ForceCreateOnInstall="yes"
+						ForceDeleteOnUninstall="yes"
+					/>
+				</RegistryKey>
+			</RegistryKey>
+			<!--http://msdn.microsoft.com/ru-RU/library/windows/desktop/ee872121(v=vs.85).aspx#reg_perceived_types-->
+			<!--http://msdn.microsoft.com/ru-RU/library/windows/desktop/cc144154(v=vs.85).aspx-->
+			<RegistryKey
+				Root="HKMU"
+				Key="SOFTWARE\RegisteredApplications"
+			>
+				<RegistryValue Name="$(var.ProductId)" Type="string" Value="$(var.ProductRegKey)" />
+			</RegistryKey>
+			<RegistryKey
+				Root="HKMU"
+				Key="$(var.ProductRegKey)"
+			>
+				<RegistryValue Name="ApplicationName" Type="string" Value="$(var.ProductShortName)" KeyPath="yes" />
+				<RegistryValue Name="ApplicationDescription" Type="string" Value="$(var.ProductDescription)" />
+				<RegistryValue Name="Hidden" Type="integer" Value="1" />
+			</RegistryKey>
+		</Component>
+
 		<?foreach Dll in $(var.MainDllList)?>
 		<Component
 			Id="$(var.Dll)"
@@ -169,7 +219,7 @@
 					Show="maximized"
 					Advertise="yes"
 				>
-					<Icon Id="help.chm" SourceFile=".\Icons\help.ico"/>
+					<Icon Id="help.ico" SourceFile=".\Icons\help.ico"/>
 				</Shortcut>
 			</File>
 			<RemoveFolder Id="csmhelp.ProductMenuFolder" Directory="ProductMenuFolder" On="uninstall"/>

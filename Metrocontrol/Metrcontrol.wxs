@@ -5,10 +5,13 @@
 	<?define ProductMajorVersion="2"?>
 	<?define ProductMinorVersion="3"?>
 	<?define ProductShortName="АИС Метроконтроль"?>
+	<?define ProductDescription="Автоматизиованная информационная система АИС Метроконтроль."?>
 	<?define ProductName="$(var.ProductShortName) v$(var.ProductVersion)"?>
 	<?define ProductCode="89AC374A-B77C-4CD7-BD3E-580D726EFCD5"?>
 	<?define UpgradeCode="19F14309-5782-4010-9770-E63635CC0782"?>
 	<?define Manufacturer="РЦН"?>
+	<?define ProductId="$(var.Manufacturer).$(var.ProductShortName).$(var.ProductMajorVersion).$(var.ProductMinorVersion)"?>
+	<?define ProductRegKey="SOFTWARE\$(var.Manufacturer)\$(var.ProductShortName)\$(var.ProductMajorVersion).$(var.ProductMinorVersion)\Capabilities"?>
 
 	<?ifdef SingleMSIFile ?>
 	<?define Compressed="yes" ?>
@@ -82,7 +85,7 @@
 			<FeatureRef	Id="csmadmin.exe" />
 		</Feature>
 
-		<Property Id="ARPREADME" Value="Автоматизиованная информационная система АИС Метроконтроль."/>
+		<Property Id="ARPREADME" Value="$(var.ProductDescription)"/>
 		<!--<Property Id="ARPCOMMENTS" Value=""/>-->
 		<Property Id="ARPURLINFOABOUT" Value="http://www.metrcontrol.ru/"/>
 		<Property Id="ARPURLUPDATEINFO" Value="http://www.metrcontrol.ru/"/>

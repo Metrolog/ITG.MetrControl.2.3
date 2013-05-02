@@ -79,34 +79,6 @@
 			<RemoveFolder Id="markinv.ProductMenuFolder" Directory="ProductMenuFolder" On="uninstall"/>
 		</Component>
 
-		<!--
-[HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\ifirst\Metrcontrol]
-"InstDir"="C:\\Program Files (x86)\\Metrcontrol"
-"AutoUpdatePath"="\\\\csm.nov.ru\\common$\\AMF\\DSL\\RCN\\Metrcontrol\\02.03.0000.0000\\Prg\\src"
-"CurrentVersion"="2.3.3369.2"
-"CsmAdminInstalled"=dword:00000001
-"MarkInvInstalled"=dword:00000001
-"CsmMainInstalled"=dword:00000001
-"FullVersion"=dword:00000000
-"StartMenu"="Метрконтроль"
-
-[HKEY_CURRENT_USER\Software\IFirst\MarkInventoryClient\Database connection]
-
-[HKEY_CURRENT_USER\Software\IFirst\MarkInventoryClient\Settings]
-"KData"=hex:b9,7e,55,af,af,0c,ba,49,9c,bd,42,db,6c,aa,88,69
-
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\ifirst\Metrcontrol]
-"InstDir"="C:\\Program Files (x86)\\Metrcontrol"
-"AutoUpdatePath"="\\\\csm.nov.ru\\common$\\AMF\\DSL\\RCN\\Metrcontrol\\02.03.0000.0000\\Prg\\src"
-"CurrentVersion"="2.3.3369.2"
-"CsmAdminInstalled"=dword:00000001
-"MarkInvInstalled"=dword:00000001
-"CsmMainInstalled"=dword:00000001
-"FullVersion"=dword:00000000
-"StartMenu"="Метрконтроль"
--->
-
 		<Component
 			Id="MarkInvInterop.dll"
 			Guid="{9717207D-A76E-4638-93A8-DD485DB3A807}"
