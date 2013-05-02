@@ -18,6 +18,10 @@
 		Description="$(var.markinvToolDescription)"
 	>
 		<ComponentGroupRef Id="markinv" />
+		<ComponentRef	Id="csmusers.dll"/>
+		<ComponentRef	Id="csmutil.dll"/>
+		<ComponentRef	Id="CurrentCsmSelector.dll"/>
+		<ComponentRef	Id="sqlc.dll"/>
 		<ComponentGroupRef Id="ProductHelp" />
 	</Feature>
 
