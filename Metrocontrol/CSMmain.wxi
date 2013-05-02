@@ -3,23 +3,23 @@
 	<Fragment>
 
 	<?define MainDllList=Accounts.dll;CommonControls.dll;ConnectedDBComponents.dll;csm.dll;csm4.dll;csmusers.dll;csmutil.dll;CurrentCsmSelector.dll;interop.dll;References.dll;sqlc.dll ?>
-	<?define MainReportsList=ActF.rpt;add_work.rpt;add_work_jur.rpt;analitic_journal.rpt ?>
-	<?define MainReportsList=$(var.MainReportsList);AUTHORIZED.rpt;BadMarksReport.rpt;CentralDevList.rpt;codiff.rpt;contract_bills.rpt ?>
-	<?define MainReportsList=$(var.MainReportsList);contract_list.rpt;contract_orders.rpt;contract_specified_time.rpt;contract_subject.rpt ?>
-	<?define MainReportsList=$(var.MainReportsList);crebit.rpt;csm.rpt;CSM_ACCOMPLISHED_ORDER_POS.RPT;CSM_BILLS_ISSUED.rpt;CSM_Common_Mark_Move.rpt ?>
-	<?define MainReportsList=$(var.MainReportsList);CSM_DEBTS.rpt;CSM_DEPARTMENTS_EMPLOYEES_RESULTS.RPT;CSM_Detail_Mark_Move.rpt;CSM_DEVICE_STATE.rpt ?>
-	<?define MainReportsList=$(var.MainReportsList);CSM_DEVICE_STATE_ISSUE.rpt;CSM_DEV_LIST_AVAIL.rpt;CSM_Dpt_Mark_Move.rpt;CSM_ENTERED_ORDER_HEAD.rpt ?>
-	<?define MainReportsList=$(var.MainReportsList);CSM_INCOMES.rpt;csm_issued_billf.rpt;CSM_Logging.rpt;CSM_Mark_History.rpt;CSM_Mark_Rec_Rep.rpt ?>
-	<?define MainReportsList=$(var.MainReportsList);CSM_PREVIOUS_MARK.rpt;CSM_Ret_Act.rpt;CSM_SALES_BOOK.rpt;CSM_SCHED_AVAIL.rpt;CSM_SCHED_RECEIPT.rpt ?>
-	<?define MainReportsList=$(var.MainReportsList);CSM_Total_Mark_Rep.rpt;CSM_Total_Mark_Usage.rpt;cust.rpt;customer_type.rpt;cust_rep.rpt ?>
-	<?define MainReportsList=$(var.MainReportsList);deliveryschedule.rpt;dep_cust.rpt;device_groups.rpt;device_groups_expanded.rpt;dogovor.rpt ?>
-	<?define MainReportsList=$(var.MainReportsList);emp_plan.rpt;EXP.rpt;Express.rpt;ExpressAdd.rpt;FacturaF.rpt;Izveshenie.rpt;Izveshenie_A5.rpt ?>
-	<?define MainReportsList=$(var.MainReportsList);Izveshenie_A5_form.rpt;Journal.rpt;list.rpt;LocalDevList.rpt;log.rpt;markreq.rpt;markreq_blank.rpt ?>
-	<?define MainReportsList=$(var.MainReportsList);measure_type.rpt;MNG_ACT_FORM.RPT;MNG_ACT_VIEW.RPT;OKATO.rpt;Order.rpt;order_add.rpt ?>
-	<?define MainReportsList=$(var.MainReportsList);payment_type.rpt;plan.rpt;purpose.rpt;ResultReport.rpt;Schedule.rpt;SchetF.rpt;SchetF1.rpt ?>
-	<?define MainReportsList=$(var.MainReportsList);SPHERE.rpt;SP_WT.rpt;Svidetelstvo.rpt;Svidetelstvo_A5.rpt;Svidetelstvo_A5_ETALON.rpt ?>
-	<?define MainReportsList=$(var.MainReportsList);Svidetelstvo_A5_form.rpt;units.rpt;urgency.rpt;usage.rpt;UsageReport_MeasureType.rpt ?>
-	<?define MainReportsList=$(var.MainReportsList);UsageReport_MeasureType_Percent.rpt;view_tariff_change.rpt;Work_Place.rpt;work_type.rpt ?>
+	<?define MainReportsList01=ActF.rpt;add_work.rpt;add_work_jur.rpt;analitic_journal.rpt ?>
+	<?define MainReportsList02=$(var.MainReportsList01);AUTHORIZED.rpt;BadMarksReport.rpt;CentralDevList.rpt;codiff.rpt;contract_bills.rpt ?>
+	<?define MainReportsList03=$(var.MainReportsList02);contract_list.rpt;contract_orders.rpt;contract_specified_time.rpt;contract_subject.rpt ?>
+	<?define MainReportsList04=$(var.MainReportsList03);crebit.rpt;csm.rpt;CSM_ACCOMPLISHED_ORDER_POS.RPT;CSM_BILLS_ISSUED.rpt;CSM_Common_Mark_Move.rpt ?>
+	<?define MainReportsList05=$(var.MainReportsList04);CSM_DEBTS.rpt;CSM_DEPARTMENTS_EMPLOYEES_RESULTS.RPT;CSM_Detail_Mark_Move.rpt;CSM_DEVICE_STATE.rpt ?>
+	<?define MainReportsList06=$(var.MainReportsList05);CSM_DEVICE_STATE_ISSUE.rpt;CSM_DEV_LIST_AVAIL.rpt;CSM_Dpt_Mark_Move.rpt;CSM_ENTERED_ORDER_HEAD.rpt ?>
+	<?define MainReportsList07=$(var.MainReportsList06);CSM_INCOMES.rpt;csm_issued_billf.rpt;CSM_Logging.rpt;CSM_Mark_History.rpt;CSM_Mark_Rec_Rep.rpt ?>
+	<?define MainReportsList08=$(var.MainReportsList07);CSM_PREVIOUS_MARK.rpt;CSM_Ret_Act.rpt;CSM_SALES_BOOK.rpt;CSM_SCHED_AVAIL.rpt;CSM_SCHED_RECEIPT.rpt ?>
+	<?define MainReportsList09=$(var.MainReportsList08);CSM_Total_Mark_Rep.rpt;CSM_Total_Mark_Usage.rpt;cust.rpt;customer_type.rpt;cust_rep.rpt ?>
+	<?define MainReportsList10=$(var.MainReportsList09);deliveryschedule.rpt;dep_cust.rpt;device_groups.rpt;device_groups_expanded.rpt;dogovor.rpt ?>
+	<?define MainReportsList11=$(var.MainReportsList10);emp_plan.rpt;EXP.rpt;Express.rpt;ExpressAdd.rpt;FacturaF.rpt;Izveshenie.rpt;Izveshenie_A5.rpt ?>
+	<?define MainReportsList12=$(var.MainReportsList11);Izveshenie_A5_form.rpt;Journal.rpt;list.rpt;LocalDevList.rpt;log.rpt;markreq.rpt;markreq_blank.rpt ?>
+	<?define MainReportsList13=$(var.MainReportsList12);measure_type.rpt;MNG_ACT_FORM.RPT;MNG_ACT_VIEW.RPT;OKATO.rpt;Order.rpt;order_add.rpt ?>
+	<?define MainReportsList14=$(var.MainReportsList13);payment_type.rpt;plan.rpt;purpose.rpt;ResultReport.rpt;Schedule.rpt;SchetF.rpt;SchetF1.rpt ?>
+	<?define MainReportsList15=$(var.MainReportsList14);SPHERE.rpt;SP_WT.rpt;Svidetelstvo.rpt;Svidetelstvo_A5.rpt;Svidetelstvo_A5_ETALON.rpt ?>
+	<?define MainReportsList16=$(var.MainReportsList15);Svidetelstvo_A5_form.rpt;units.rpt;urgency.rpt;usage.rpt;UsageReport_MeasureType.rpt ?>
+	<?define MainReportsList=$(var.MainReportsList16);UsageReport_MeasureType_Percent.rpt;view_tariff_change.rpt;Work_Place.rpt;work_type.rpt ?>
 
 	<Feature
 		Id="csmmain.exe"
@@ -50,6 +50,7 @@
 	<ComponentGroup Id="ProductComponents" Directory="APPLICATIONFOLDER">
 		<ComponentRef	Id="csmmain.exe" Primary="yes"/>
 		<ComponentRef	Id="csmmain.registry"/>
+		<ComponentRef	Id="common.registry"/>
 		<?foreach Dll in $(var.MainDllList)?>
 		<ComponentRef	Id="$(var.Dll)"/>
 		<?endforeach?>
@@ -112,6 +113,13 @@
 				Vital="no"
 				CompanionFile="application"
 			/>
+			<!--Ключ ниже не требуется для работы. Ввёл, по сути, только для того, чтобы удалять его при деинсталляции-->
+			<RegistryKey
+				Root="HKLM"
+				Key="SOFTWARE\ifirst\Metrcontrol"
+			>
+				<RegistryValue Name="CsmMainInstalled" Type="integer" Value="1" />
+			</RegistryKey>
 		</Component>
 
 		<Component
@@ -122,7 +130,7 @@
 		>
 			<!--http://msdn.microsoft.com/ru-RU/library/windows/desktop/ee872121(v=vs.85).aspx-->
 			<RegistryKey
-				Root="HKLM"
+				Root="HKMU"
 				Key="SOFTWARE\Microsoft\Windows\CurrentVersion\App Paths"
 			>
 				<?foreach AppFileName in csmmain.exe;metrcontrol.exe;metrocontrol.exe;метроконтроль.exe?>
@@ -160,6 +168,25 @@
 				<RegistryValue Name="ApplicationName" Type="string" Value="$(var.ProductShortName)" KeyPath="yes" />
 				<RegistryValue Name="ApplicationDescription" Type="string" Value="$(var.ProductDescription)" />
 				<RegistryValue Name="Hidden" Type="integer" Value="1" />
+			</RegistryKey>
+		</Component>
+
+		<Component
+			Id="common.registry"
+			Guid="{F4B04020-6528-4729-99CC-FAB8F6FBDFF2}"
+			Location="either"
+			Win64="$(var.Win64)"
+		>
+			<!--Ключ ниже не требуется для работы. Ввёл, по сути, только для того, чтобы удалять его при деинсталляции-->
+			<RegistryKey
+				Root="HKLM"
+				Key="SOFTWARE\ifirst\Metrcontrol"
+				ForceCreateOnInstall="yes"
+				ForceDeleteOnUninstall="yes"
+			>
+				<RegistryValue Name="InstDir" Type="string" Value="[APPLICATIONFOLDER]" />
+				<RegistryValue Name="CurrentVersion" Type="string" Value="$(var.ProductVersion)" />
+				<RegistryValue Name="StartMenu" Type="string" Value="[ProductMenuFolder]" />
 			</RegistryKey>
 		</Component>
 

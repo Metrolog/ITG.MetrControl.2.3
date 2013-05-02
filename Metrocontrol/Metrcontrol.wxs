@@ -93,7 +93,7 @@
 		<Property Id="ARPHELPTELEPHONE" Value="+7 (495) 937-42-52"/>
 		<Property Id="ARPCONTACT" Value="ООО «РЦН»"/>
 
-		<Property Id="MSIARPSETTINGSIDENTIFIER" Value="$(var.ProductSettingsKey)"/>
+		<Property Id="MSIARPSETTINGSIDENTIFIER" Value="$(var.ProductSettingsKey);IFirst\MarkInventoryClient;ifirst\Metrcontrol"/>
 
 		<Directory Id="TARGETDIR" Name="SourceDir">
 			<Directory Id="$(var.ProgramFilesFolderId)" Name="Program Files">

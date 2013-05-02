@@ -29,6 +29,7 @@
 		<ComponentRef	Id="CommonControls.dll"/>
 		<ComponentRef	Id="interop.dll"/>
 		<ComponentRef	Id="sqlc.dll"/>
+		<ComponentRef	Id="common.registry"/>
 	</ComponentGroup>
 
 	<DirectoryRef Id="APPLICATIONFOLDER" FileSource=".\SourceDir">
@@ -74,6 +75,12 @@
 				Vital="no"
 				CompanionFile="csmadmin.exe"
 			/>
+			<RegistryKey
+				Root="HKLM"
+				Key="SOFTWARE\ifirst\Metrcontrol"
+			>
+				<RegistryValue Name="CsmAdminInstalled" Type="integer" Value="1" />
+			</RegistryKey>
 		</Component>
 
 	</DirectoryRef>

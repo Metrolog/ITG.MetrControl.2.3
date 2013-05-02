@@ -28,6 +28,8 @@
 	<ComponentGroup Id="markinv" Directory="APPLICATIONFOLDER">
 		<ComponentRef	Id="markinv.exe" Primary="yes" />
 		<ComponentRef	Id="MarkInvInterop.dll" />
+		<ComponentRef	Id="markinv.registry" />
+		<ComponentRef	Id="common.registry"/>
 	</ComponentGroup>
 
 	<DirectoryRef Id="APPLICATIONFOLDER" FileSource=".\SourceDir">
@@ -77,6 +79,12 @@
 				CompanionFile="markinv.exe"
 			/>
 			<RemoveFolder Id="markinv.ProductMenuFolder" Directory="ProductMenuFolder" On="uninstall"/>
+			<RegistryKey
+				Root="HKLM"
+				Key="SOFTWARE\ifirst\Metrcontrol"
+			>
+				<RegistryValue Name="MarkInvInstalled" Type="integer" Value="1" />
+			</RegistryKey>
 		</Component>
 
 		<Component
@@ -152,6 +160,21 @@
 					ForceCreateOnInstall="yes"
 					ForceDeleteOnUninstall="yes"
 				/>
+			</RegistryKey>
+		</Component>
+
+		<Component
+			Id="markinv.registry"
+			Guid="{02E9FE07-30B7-4E56-A99A-444A03204244}"
+			Location="either"
+			Win64="$(var.Win64)"
+		>
+			<RegistryKey
+				Root="HKCU"
+				Key="SOFTWARE\ifirst\MarkInventoryClient"
+				ForceDeleteOnUninstall="yes"
+			>
+				<RegistryValue Type="string" Value="installed" KeyPath="yes" />
 			</RegistryKey>
 		</Component>
 
