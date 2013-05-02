@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Include>
+	<Fragment>
+
+	<?define AdminToolName="$(var.ProductShortName) - администратор"?>
+	<?define AdminToolDescription="Инструменты администратора продукта $(var.ProductName)."?>
+
+	<Feature
+		Id="csmadmin.exe"
+		Level="200"
+		Absent="allow"
+		AllowAdvertise="yes"
+		Display="9"
+		InstallDefault="followParent"
+		TypicalDefault="advertise"
+		ConfigurableDirectory="APPLICATIONFOLDER"
+		Title="$(var.AdminToolName)"
+		Description="$(var.AdminToolDescription)"
+	>
+		<ComponentGroupRef Id="csmadmin" />
+		<ComponentGroupRef Id="ProductHelp" />
+	</Feature>
+
+	<ComponentGroup Id="csmadmin" Directory="APPLICATIONFOLDER">
+		<ComponentRef	Id="csmadmin.exe" Primary="yes"/>
+		<ComponentRef	Id="csmusers.dll"/>
+		<ComponentRef	Id="csmutil.dll"/>
+		<ComponentRef	Id="CurrentCsmSelector.dll"/>
+		<ComponentRef	Id="CommonControls.dll"/>
+		<ComponentRef	Id="interop.dll"/>
+		<ComponentRef	Id="sqlc.dll"/>
+	</ComponentGroup>
+
+	<DirectoryRef Id="APPLICATIONFOLDER" FileSource=".\SourceDir">
+		<Component
+			Id="csmadmin.exe"
+			Guid="{E5957298-538D-44F3-86B5-76D09E721E0E}"
+			Location="either"
+			Win64="$(var.Win64)"
+		>
+			<File
+				Name="csmadmin.exe"
+				KeyPath="yes"
+				Vital="yes"
+				BindPath="[APPLICATIONFOLDER]"
+				Checksum="yes"
+				DefaultLanguage="1049"
+			>
+				<Shortcut
+					Id="csmadmin.Shortcut"
+					Directory="ProductMenuFolder"
+					Name="$(var.AdminToolName)"
+					Description="$(var.AdminToolDescription)"
+					WorkingDirectory="APPLICATIONFOLDER"
+					Show="normal"
+					Advertise="yes"
+				>
+					<Icon Id="csmadmin.exe" SourceFile=".\Icons\csmadmin.ico"/>
+				</Shortcut>
+				<Shortcut
+					Id="csmadmin.AdminToolsShortcut"
+					Directory="AdminToolsFolder"
+					Name="$(var.AdminToolName)"
+					Description="$(var.AdminToolDescription)"
+					WorkingDirectory="APPLICATIONFOLDER"
+					Show="normal"
+					Advertise="yes"
+					Icon="csmadmin.exe"
+				/>
+			</File>
+			<RemoveFolder Id="csmadmin.ProductMenuFolder" Directory="ProductMenuFolder" On="uninstall"/>
+			<File
+				Name="csmadmin.exe.config"
+				Vital="no"
+				CompanionFile="csmadmin.exe"
+			/>
+		</Component>
+
+	</DirectoryRef>
+
+	</Fragment>
+</Include>

@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Include>
+
+	<!--<PackageCertificates>
+			<DigitalCertificate Id="" SourceFile=""/>
+		</PackageCertificates>-->
+
+	<Icon Id="Product" SourceFile=".\Icons\Product.ico"/>
+	<Property Id="ARPPRODUCTICON" Value="Product"/>
+
+	<!--<Property Id="ARPNOMODIFY" Value=""/>-->
+	<!--<Property Id="ARPNOREMOVE" Value=""/>-->
+	<!--<Property Id="ARPNOREPAIR" Value=""/>-->
+	<!--<Property Id="ARPSYSTEMCOMPONENT" Value=""/>-->
+
+	<Property Id="PRIMARYFOLDER" Value="APPLICATIONFOLDER" />
+	<SetProperty Id="ARPINSTALLLOCATION" Value="[APPLICATIONFOLDER]" Sequence="execute" Before="InstallInitialize">
+		Not Installed
+	</SetProperty>
+	<Property Id="ApplicationFolderName" Admin="yes" />
+	<Property Id="APPLICATIONFOLDER" Admin="yes" />
+
+	<!--<Property Id="ARPSIZE" Value=""/>-->
+
+	<?ifdef AdminImage ?>
+	<Property Id="MSIFASTINSTALL" Value="3"/>
+	<?endif?>
+
+	<Property Id="MSIRESTARTMANAGERCONTROL" Value="Disable"/>
+
+	<Property Id="CREATEDESKTOPSHORTCUT" Value="1" Admin="yes" />
+	<Property Id="CREATESTARTUPSHORTCUT" Value="0" Admin="yes" />
+
+	<?ifndef AdminImage ?>
+
+	<UI>
+		<UIRef Id="WixUI_Mondo"/>
+		<?ifdef ShowAppLaunchDialog ?>
+		<Publish Dialog="ExitDialog"
+			Control="Finish"
+			Event="DoAction"
+			Value="LaunchApplication"
+		>
+			WIXUI_EXITDIALOGOPTIONALCHECKBOX = 1 and NOT Installed
+		</Publish>
+		<?endif?>
+	</UI>
+	<Property Id="WixAppFolder" Value="WixPerMachineFolder" />
+	<WixVariable Id="WixUISupportPerUser" Value="0" />
+	<!--<WixVariable Id="WixUILicenseRtf" Value="eula.rtf" />-->
+
+	<?ifdef ShowAppLaunchDialog ?>
+	<Property Id="WIXUI_EXITDIALOGOPTIONALCHECKBOXTEXT" Value="!(loc.LaunchAfterInstall)" />
+	<Property Id="WixShellExecTarget" Value="[#application]" />
+	<CustomAction
+		Id="LaunchApplication"
+		BinaryKey="WixCA"
+		DllEntry="WixShellExec"
+		Impersonate="yes"
+	/>
+	<?endif?>
+
+	<?endif?>
+
+	<MediaTemplate EmbedCab="$(var.Compressed)"/>
+
+	<?include Upgrade.wxi ?>
+
+</Include>
