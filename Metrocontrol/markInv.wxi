@@ -18,11 +18,8 @@
 		Description="$(var.markinvToolDescription)"
 	>
 		<ComponentGroupRef Id="markinv" />
-		<ComponentRef	Id="csmusers.dll"/>
-		<ComponentRef	Id="csmutil.dll"/>
-		<ComponentRef	Id="CurrentCsmSelector.dll"/>
-		<ComponentRef	Id="sqlc.dll"/>
 		<ComponentGroupRef Id="ProductHelp" />
+		<ComponentGroupRef Id="CommonComponents" />
 	</Feature>
 
 	<ComponentGroup Id="markinv" Directory="APPLICATIONFOLDER">
@@ -30,7 +27,10 @@
 		<ComponentRef	Id="MarkInvInterop.dll" />
 		<ComponentRef	Id="markinv.registry" />
 		<ComponentRef	Id="markinv.registry.2" />
-		<ComponentRef	Id="common.registry"/>
+		<ComponentRef	Id="csmusers.dll"/>
+		<ComponentRef	Id="csmutil.dll"/>
+		<ComponentRef	Id="CurrentCsmSelector.dll"/>
+		<ComponentRef	Id="sqlc.dll"/>
 	</ComponentGroup>
 
 	<DirectoryRef Id="APPLICATIONFOLDER" FileSource=".\SourceDir">

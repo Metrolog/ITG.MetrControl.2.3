@@ -11,7 +11,7 @@
 	<?define UpgradeCode="19F14309-5782-4010-9770-E63635CC0782"?>
 	<?define Manufacturer="РЦН"?>
 	<?define ProductId="$(var.Manufacturer).$(var.ProductShortName).$(var.ProductMajorVersion).$(var.ProductMinorVersion)"?>
-	<?define ProductRegKey="SOFTWARE\$(var.Manufacturer)\$(var.ProductShortName)\$(var.ProductMajorVersion).$(var.ProductMinorVersion)\Capabilities"?>
+	<?define ProductRegKey="SOFTWARE\$(var.Manufacturer)\$(var.ProductShortName)\$(var.ProductMajorVersion).$(var.ProductMinorVersion)"?>
 
 	<?define ReportsChecksum="no"?>
 
@@ -132,10 +132,10 @@
 						</Directory>
 					</Directory>
 				</Directory>-->
-				<!--<Directory Id="ManufacturerLocalAppDataFolder" Name="IFirst">
+				<Directory Id="ManufacturerLocalAppDataFolder" Name="IFirst">
 					<Directory Id="ProductLocalAppDataFolder" Name="MetrControl">
 					</Directory>
-				</Directory>-->
+				</Directory>
 			</Directory>
 			<!--<Directory Id="AppDataFolder">
 				<Directory Id="ManufacturerAppDataFolder" Name="$(var.Manufacturer)">

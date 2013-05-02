@@ -33,6 +33,7 @@
 	>
 		<ComponentGroupRef Id="ProductComponents" />
 		<ComponentGroupRef Id="ProductHelp" />
+		<ComponentGroupRef Id="CommonComponents" />
 	</Feature>
 	<Feature
 		Id="csmhelp.chm"
@@ -59,6 +60,11 @@
 		<?endforeach?>
 	</ComponentGroup>
 
+	<ComponentGroup Id="CommonComponents">
+		<ComponentRef	Id="common.registry"/>
+		<ComponentRef	Id="common.settings"/>
+	</ComponentGroup>
+ 
 	<DirectoryRef Id="APPLICATIONFOLDER" FileSource=".\SourceDir">
 		<Component
 			Id="csmmain.exe"
@@ -159,11 +165,11 @@
 				Root="HKMU"
 				Key="SOFTWARE\RegisteredApplications"
 			>
-				<RegistryValue Name="$(var.ProductId)" Type="string" Value="$(var.ProductRegKey)" />
+				<RegistryValue Name="$(var.ProductId)" Type="string" Value="$(var.ProductRegKey)\Capabilities" />
 			</RegistryKey>
 			<RegistryKey
 				Root="HKMU"
-				Key="$(var.ProductRegKey)"
+				Key="$(var.ProductRegKey)\Capabilities"
 			>
 				<RegistryValue Name="ApplicationName" Type="string" Value="$(var.ProductShortName)" KeyPath="yes" />
 				<RegistryValue Name="ApplicationDescription" Type="string" Value="$(var.ProductDescription)" />
@@ -250,6 +256,27 @@
 				</Shortcut>
 			</File>
 			<RemoveFolder Id="csmhelp.ProductMenuFolder" Directory="ProductMenuFolder" On="uninstall"/>
+		</Component>
+	</DirectoryRef>
+
+	<DirectoryRef Id="ProductLocalAppDataFolder" FileSource=".\SourceDir">
+		<Component
+			Id="common.settings"
+			Guid="{1E95A8D4-1C73-47AF-8F74-CED44DB1EFCB}"
+			Location="local"
+		>
+			<!--Компонент ради удаления каталога с файлами конфигурации подключения к БД из профиля пользователя.
+			Однако, при установке на машину это решение не подходит, что и ожидаемо.-->
+			<RegistryKey
+				Root="HKCU"
+				Key="$(var.ProductRegKey)"
+			>
+				<RegistryValue Name="Version" Type="string" Value="$(var.ProductVersion)" KeyPath="yes" />
+			</RegistryKey>
+			<CreateFolder Directory="ManufacturerLocalAppDataFolder" />
+			<RemoveFolder Directory="ManufacturerLocalAppDataFolder" On="uninstall" Id="common.settings.ManufacturerLocalAppDataFolder" />
+			<CreateFolder Directory="ProductLocalAppDataFolder" />
+			<RemoveFolder Directory="ProductLocalAppDataFolder" On="uninstall" Id="common.settings.ProductLocalAppDataFolder" />
 		</Component>
 	</DirectoryRef>
 
