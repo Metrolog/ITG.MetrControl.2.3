@@ -159,6 +159,16 @@
 			</Directory>-->
 		</Directory>
 
+		<!-- возможность отключения создания ярлыков - для варианта публикации баз через ярлыки на .csmdb -->
+		<InstallExecuteSequence>
+			<CreateShortcuts Sequence="4500">
+				Not DISABLESHORTCUTS="No"
+			</CreateShortcuts>
+		</InstallExecuteSequence>
+
+		<Property Id="DISABLESHORTCUTS" Value="Yes" Admin="yes"/>
+		<!-- возможность отключения создания ярлыков - конец -->
+
 		<?include Common.wxi ?>
 
 	</Product>
