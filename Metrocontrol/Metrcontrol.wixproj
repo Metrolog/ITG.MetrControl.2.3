@@ -19,12 +19,12 @@
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Admin image|x86' ">
     <OutputType>Package</OutputType>
     <DefineConstants>AdminImage</DefineConstants>
-    <SuppressIces>ICE39;ICE69</SuppressIces>
+    <SuppressIces>ICE39;ICE69;ICE90</SuppressIces>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Single .msi file|x86' ">
     <OutputType>Package</OutputType>
     <DefineConstants>SingleMSIFile</DefineConstants>
-    <SuppressIces>ICE69</SuppressIces>
+    <SuppressIces>ICE69;ICE90</SuppressIces>
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Metrcontrol.wxs" />

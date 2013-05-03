@@ -83,7 +83,7 @@
 			>
 				<Shortcut
 					Id="csmmain.Shortcut"
-					Directory="ProductMenuFolder"
+					Directory="PRODUCTMENUFOLDER"
 					Name="$(var.ProductShortName)"
 					Description="$(var.ProductName)"
 					WorkingDirectory="APPLICATIONFOLDER"
@@ -94,7 +94,7 @@
 				</Shortcut>
 				<Shortcut
 					Id="csmmain.DesktopShortcut"
-					Directory="DesktopFolder"
+					Directory="PRODUCTDESKTOPFOLDER"
 					Name="$(var.ProductShortName)"
 					Description="$(var.ProductName)"
 					WorkingDirectory="APPLICATIONFOLDER"
@@ -102,18 +102,20 @@
 					Icon="csmmain.exe"
 					Advertise="yes"
 				/>
-				<!--<Shortcut
+				<Shortcut
 					Id="csmmain.StartupShortcut"
-					Directory="StartupFolder"
+					Directory="PRODUCTSTARTUPFOLDER"
 					Name="$(var.ProductShortName)"
 					Description="$(var.ProductName)"
 					WorkingDirectory="APPLICATIONFOLDER"
 					Show="normal"
 					Icon="csmmain.exe"
 					Advertise="yes"
-				/>-->
+				/>
 			</File>
-			<RemoveFolder Id="csmmain.ProductMenuFolder" Directory="ProductMenuFolder" On="uninstall"/>
+			<RemoveFolder Id="csmmain.ProductMenuFolder" Directory="PRODUCTMENUFOLDER" On="uninstall"/>
+			<RemoveFolder Id="csmmain.ProductDesktopFolder" Directory="PRODUCTDESKTOPFOLDER" On="uninstall"/>
+			<RemoveFolder Id="csmmain.ProductStartupFolder" Directory="PRODUCTSTARTUPFOLDER" On="uninstall"/>
 			<File
 				Name="csmmain.exe.config"
 				Vital="no"
@@ -245,7 +247,7 @@
 			>
 				<Shortcut
 					Id="csmhelp_Shortcut"
-					Directory="ProductMenuFolder"
+					Directory="PRODUCTMENUFOLDER"
 					Name="Справка приложения $(var.ProductName)"
 					Description="Файлы справочной системы приложения $(var.ProductName)."
 					WorkingDirectory="Help"
@@ -255,7 +257,7 @@
 					<Icon Id="help.ico" SourceFile=".\Icons\help.ico"/>
 				</Shortcut>
 			</File>
-			<RemoveFolder Id="csmhelp.ProductMenuFolder" Directory="ProductMenuFolder" On="uninstall"/>
+			<RemoveFolder Id="csmhelp.ProductMenuFolder" Directory="PRODUCTMENUFOLDER" On="uninstall"/>
 		</Component>
 	</DirectoryRef>
 

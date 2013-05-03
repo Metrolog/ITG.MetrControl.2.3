@@ -50,7 +50,7 @@
 			>
 				<Shortcut
 					Id="markinv.Shortcut"
-					Directory="ProductMenuFolder"
+					Directory="PRODUCTMENUFOLDER"
 					Name="$(var.markinvToolName)"
 					Description="$(var.markinvToolDescription)"
 					WorkingDirectory="APPLICATIONFOLDER"
@@ -61,7 +61,7 @@
 				</Shortcut>
 				<Shortcut
 					Id="markinv.DesktopShortcut"
-					Directory="DesktopFolder"
+					Directory="PRODUCTDESKTOPFOLDER"
 					Name="$(var.markinvToolName)"
 					Description="$(var.markinvToolDescription)"
 					WorkingDirectory="APPLICATIONFOLDER"
@@ -79,7 +79,8 @@
 				Vital="no"
 				CompanionFile="markinv.exe"
 			/>
-			<RemoveFolder Id="markinv.ProductMenuFolder" Directory="ProductMenuFolder" On="uninstall"/>
+			<RemoveFolder Id="markinv.ProductMenuFolder" Directory="PRODUCTMENUFOLDER" On="uninstall"/>
+			<RemoveFolder Id="markinv.ProductDesktopFolder" Directory="PRODUCTDESKTOPFOLDER" On="uninstall"/>
 			<RegistryKey
 				Root="HKLM"
 				Key="SOFTWARE\ifirst\Metrcontrol"

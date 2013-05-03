@@ -28,9 +28,6 @@
 
 	<Property Id="MSIRESTARTMANAGERCONTROL" Value="Disable"/>
 
-	<Property Id="CREATEDESKTOPSHORTCUT" Value="1" Admin="yes" />
-	<Property Id="CREATESTARTUPSHORTCUT" Value="0" Admin="yes" />
-
 	<?ifndef AdminImage ?>
 
 	<UI>

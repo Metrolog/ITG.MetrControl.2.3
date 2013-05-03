@@ -50,7 +50,7 @@
 			>
 				<Shortcut
 					Id="csmadmin.Shortcut"
-					Directory="ProductMenuFolder"
+					Directory="PRODUCTMENUFOLDER"
 					Name="$(var.AdminToolName)"
 					Description="$(var.AdminToolDescription)"
 					WorkingDirectory="APPLICATIONFOLDER"
@@ -70,7 +70,7 @@
 					Icon="csmadmin.exe"
 				/>
 			</File>
-			<RemoveFolder Id="csmadmin.ProductMenuFolder" Directory="ProductMenuFolder" On="uninstall"/>
+			<RemoveFolder Id="csmadmin.ProductMenuFolder" Directory="PRODUCTMENUFOLDER" On="uninstall"/>
 			<File
 				Name="csmadmin.exe.config"
 				Vital="no"
