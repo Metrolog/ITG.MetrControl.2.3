@@ -2,6 +2,9 @@
 <Include>
 	<Fragment>
 
+	<?define MainProgId="$(var.ProductProgIdPrefix).Main.$(var.ProductProgIdPostfix)"?>
+	<?define MainExt="csmdb-main$(var.ProductMajorVersion)$(var.ProductMinorVersion)"?>
+
 	<?define MainDllList=Accounts.dll;CommonControls.dll;ConnectedDBComponents.dll;csm.dll;csm4.dll;csmusers.dll;csmutil.dll;CurrentCsmSelector.dll;interop.dll;References.dll;sqlc.dll ?>
 	<?define MainReportsList01=ActF.rpt;add_work.rpt;add_work_jur.rpt;analitic_journal.rpt ?>
 	<?define MainReportsList02=$(var.MainReportsList01);AUTHORIZED.rpt;BadMarksReport.rpt;CentralDevList.rpt;codiff.rpt;contract_bills.rpt ?>
@@ -63,6 +66,7 @@
 	<ComponentGroup Id="CommonComponents">
 		<ComponentRef	Id="common.registry"/>
 		<ComponentRef	Id="common.settings"/>
+		<ComponentGroupRef Id="Bootstrapper"/>
 	</ComponentGroup>
  
 	<DirectoryRef Id="APPLICATIONFOLDER" FileSource=".\SourceDir">
@@ -128,13 +132,31 @@
 			>
 				<RegistryValue Name="CsmMainInstalled" Type="integer" Value="1" />
 			</RegistryKey>
+
+			<ProgId
+				Id="$(var.MainProgId)"
+				Description="$(var.ProductDescription)"
+				Icon="Product.ico"
+				Advertise="yes"
+			>
+				<Extension
+					Id="$(var.MainExt)"
+					Advertise="yes"
+				>
+					<Verb
+						Id="open"
+						Sequence="2"
+						Command="$(var.ProductShortName)"
+					/>
+				</Extension>
+			</ProgId>
 		</Component>
 
 		<Component
 			Id="csmmain.registry"
 			Guid="{4AF01660-10B6-4BFA-A0FC-6BC10286D3F1}"
 			Location="either"
-			Win64="$(var.Win64)"
+				Win64="$(var.Win64)"
 		>
 			<!--http://msdn.microsoft.com/ru-RU/library/windows/desktop/ee872121(v=vs.85).aspx-->
 			<RegistryKey
@@ -148,17 +170,17 @@
 				<?endforeach?>
 			</RegistryKey>
 			<RegistryKey
-				Root="HKCR"
-				Key="Applications"
+				Root="HKMU"
+				Key="SOFTWARE\Classes\Applications"
 			>
 				<RegistryKey Key="csmmain.exe">
 					<RegistryValue Type="string" Value="[#application]" />
 					<RegistryValue Name="FriendlyAppName" Type="string" Value="$(var.ProductShortName)" />
-					<RegistryKey
-						Key="NoOpenWith"
-						ForceCreateOnInstall="yes"
-						ForceDeleteOnUninstall="yes"
-					/>
+					<RegistryValue Name="NoOpenWith" Type="integer" Value="0" />
+					<RegistryKey Key="SupportedTypes">
+						<RegistryValue Name=".$(var.ProductExt)" Type="string" Value="" />
+						<RegistryValue Name=".$(var.MainExt)" Type="string" Value="" />
+					</RegistryKey>
 				</RegistryKey>
 			</RegistryKey>
 			<!--http://msdn.microsoft.com/ru-RU/library/windows/desktop/ee872121(v=vs.85).aspx#reg_perceived_types-->
@@ -167,15 +189,60 @@
 				Root="HKMU"
 				Key="SOFTWARE\RegisteredApplications"
 			>
-				<RegistryValue Name="$(var.ProductId)" Type="string" Value="$(var.ProductRegKey)\Capabilities" />
+				<RegistryValue Name="$(var.MainProgId)" Type="string" Value="$(var.ProductRegKey)\Main\Capabilities" />
 			</RegistryKey>
 			<RegistryKey
 				Root="HKMU"
-				Key="$(var.ProductRegKey)\Capabilities"
+				Key="$(var.ProductRegKey)\Main\Capabilities"
 			>
 				<RegistryValue Name="ApplicationName" Type="string" Value="$(var.ProductShortName)" KeyPath="yes" />
 				<RegistryValue Name="ApplicationDescription" Type="string" Value="$(var.ProductDescription)" />
-				<RegistryValue Name="Hidden" Type="integer" Value="1" />
+				<RegistryValue Name="Hidden" Type="integer" Value="0" />
+				<RegistryKey Key="FileAssociations">
+					<RegistryValue Name=".$(var.ProductExt)" Type="string" Value="$(var.MainProgId)" />
+					<RegistryValue Name=".$(var.MainExt)" Type="string" Value="$(var.MainProgId)" />
+				</RegistryKey>
+			</RegistryKey>
+
+			<RegistryKey
+				Root="HKMU"
+				Key="SOFTWARE\Classes"
+			>
+				<RegistryKey Key="$(var.MainProgId)">
+					<!--http://msdn.microsoft.com/en-us/library/windows/desktop/bb762506(v=vs.85).aspx-->
+					<!--FTA_HasExtension(0x4) + FTA_NoEdit(0x8) + FTA_NoRemove(x10) + FTA_NoNewVerb(x20) + FTA_NoEditVerb(x40)
+					+ FTA_NoRemoveVerb(x80) + FTA_NoEditDesc(x100) + FTA_NoEditIcon(x200) + FTA_NoEditDflt(x400)
+					+ FTA_NoEditVerbCmd(x800) + FTA_NoEditVerbExe(x1000) + FTA_NoDDE(x2000) + FTA_NoEditMIME(x4000)
+					+ FTA_NoRecentDocs(0x00100000)-->
+					<RegistryValue Name="EditFlags" Type="integer" Value="1081340" />
+
+					<!-- http://msdn.microsoft.com/en-us/library/windows/desktop/bb986055.aspx#MSDNMag2001Nov -->
+					<!--!!! http://windowssucks.wordpress.com/file-type-registration/ -->
+					<!--<RegistryValue Name="InfoTip" Type="string" Value="" />-->
+					<!--<RegistryValue Name="TileInfo" Type="string" Value="" />-->
+					<!--<RegistryValue Name="NoOpen" Type="string" Value="Сообщение для NoOpen диалога" />-->
+					<RegistryValue Name="NoOpenWith" Type="string" Value="" />
+					<RegistryValue Name="NoPreviousVersions" Type="string" Value="" />
+					<RegistryValue Name="NoJumpListPathTooltip" Type="string" Value="" />
+					<RegistryValue Name="NoRecentDocs" Type="string" Value="" />
+					<RegistryValue Name="NeverShowExt" Type="string" Value="" />
+					<RegistryValue Name="NoSendTo" Type="string" Value="" />
+					<RegistryValue Name="DownloadInvokeDisabled" Type="string" Value="" />
+					<!-- http://msdn.microsoft.com/en-us/library/windows/desktop/cc144152#fa_attributes -->
+					<!--<RegistryValue Name="AllowSilentDefaultTakeOver" Type="string" Value="" />-->
+					<RegistryValue Name="AppUserModelID " Type="string" Value="$(var.ProductProgId)" />
+
+					<!-- http://msdn.microsoft.com/en-us/library/windows/desktop/hh127468 -->
+					<!--<RegistryValue Name="ContentViewModeForBrowse " Type="string" Value="" />-->
+
+					<RegistryKey Key="shell">
+						<RegistryKey Key="open">
+							<!-- http://msdn.microsoft.com/en-us/library/windows/desktop/cc144171#dynamic_behavior -->
+							<RegistryValue Name="MultiSelectModel" Type="string" Value="Single"/>
+							<!--<RegistryValue Name="extended" Type="string" Value=""/>-->
+						</RegistryKey>
+					</RegistryKey>
+				</RegistryKey>
 			</RegistryKey>
 		</Component>
 

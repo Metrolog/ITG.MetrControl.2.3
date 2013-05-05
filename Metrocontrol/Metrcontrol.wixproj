@@ -30,16 +30,25 @@
     <Compile Include="Metrcontrol.wxs" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include=".csmdb examples" />
     <Folder Include="SourceDir" />
     <Folder Include="SourceDir\%24PLUGINSDIR" />
     <Folder Include="SourceDir\%24Temp" />
     <Folder Include="Icons" />
+    <Folder Include="SourceDir\Bootstrapper" />
     <Folder Include="SourceDir\Reports" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include=".csmdb examples\ncsm.csmdb23" />
+    <Content Include=".csmdb examples\testDB.csmdb23" />
+    <Content Include="CSMBootstrapper.wxi" />
     <Content Include="csmadmin.wxi" />
     <Content Include="CSMmain.wxi" />
     <Content Include="Common.wxi" />
+    <Content Include="Icons\csmadmin.ico" />
+    <Content Include="Icons\help.ico" />
+    <Content Include="Icons\MarkInv.ico" />
+    <Content Include="Icons\Product.ico" />
     <Content Include="markInv.wxi" />
     <Content Include="SourceDir\%24PLUGINSDIR\InstallOptions.dll" />
     <Content Include="SourceDir\%24PLUGINSDIR\ioSpecial.ini" />
@@ -48,6 +57,8 @@
     <Content Include="SourceDir\%24PLUGINSDIR\StartMenu.dll" />
     <Content Include="SourceDir\%24Temp\FindProcesses.exe" />
     <Content Include="SourceDir\Accounts.dll" />
+    <Content Include="SourceDir\Bootstrapper\csmBootstrapper.cmd" />
+    <Content Include="SourceDir\Bootstrapper\csmBootstrapper.ps1" />
     <Content Include="SourceDir\CommonControls.dll" />
     <Content Include="SourceDir\ConnectedDBComponents.dll" />
     <Content Include="SourceDir\csm.dll" />

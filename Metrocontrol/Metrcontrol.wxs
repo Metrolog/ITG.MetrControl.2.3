@@ -5,13 +5,21 @@
 	<?define ProductMajorVersion="2"?>
 	<?define ProductMinorVersion="3"?>
 	<?define ProductShortName="АИС Метроконтроль"?>
+	<?define ProductInternalName="CSM"?>
 	<?define ProductDescription="Автоматизиованная информационная система АИС Метроконтроль."?>
 	<?define ProductName="$(var.ProductShortName) v$(var.ProductVersion)"?>
 	<?define ProductCode="89AC374A-B77C-4CD7-BD3E-580D726EFCD5"?>
 	<?define UpgradeCode="19F14309-5782-4010-9770-E63635CC0782"?>
 	<?define Manufacturer="РЦН"?>
-	<?define ProductId="$(var.Manufacturer).$(var.ProductShortName).$(var.ProductMajorVersion).$(var.ProductMinorVersion)"?>
+	<?define ManufacturerId="RCN"?>
+	
+	<?define ProductId="$(var.ManufacturerId).$(var.ProductInternalName).$(var.ProductMajorVersion).$(var.ProductMinorVersion)"?>
 	<?define ProductRegKey="SOFTWARE\$(var.Manufacturer)\$(var.ProductShortName)\$(var.ProductMajorVersion).$(var.ProductMinorVersion)"?>
+	<?define ProductProgIdPrefix="$(var.ManufacturerId).$(var.ProductInternalName)"?>
+	<?define ProductProgIdPostfix="$(var.ProductMajorVersion).$(var.ProductMinorVersion)"?>
+	<?define ProductProgId="$(var.ProductProgIdPrefix).$(var.ProductProgIdPostfix)"?>
+	<?define ProductProgIdDescription="Описатель базы данных АИС Метроконтроль"?>
+	<?define ProductExt="csmdb$(var.ProductMajorVersion)$(var.ProductMinorVersion)"?>
 
 	<?define ReportsChecksum="no"?>
 
@@ -196,5 +204,6 @@
 	<?include CSMmain.wxi ?>
 	<?include MarkInv.wxi ?>
 	<?include CSMadmin.wxi ?>
+	<?include CSMBootstrapper.wxi ?>
 
 </Wix>

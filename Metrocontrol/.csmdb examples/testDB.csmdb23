@@ -1,0 +1,9 @@
+﻿[MetrControl]
+Version=2.3
+
+[MetrControlDB]
+Server=ip or FQDN
+Database=database name
+Description=database description
+Login=login
+PasswordHash=password hash - сохранить из сгенерированного файла

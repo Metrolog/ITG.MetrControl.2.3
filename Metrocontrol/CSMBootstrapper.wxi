@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Include>
+	<Fragment>
+
+	<?define BootstrapperProgId="$(var.ProductProgIdPrefix).Bootstrapper.$(var.ProductProgIdPostfix)"?>
+
+	<ComponentGroup Id="Bootstrapper" Directory="APPLICATIONFOLDER">
+		<ComponentRef	Id="Bootstrapper" />
+		<ComponentRef	Id="Bootstrapper.OpenWithProgids" />
+	</ComponentGroup>
+
+	<DirectoryRef Id="APPLICATIONFOLDER" FileSource=".\SourceDir\Bootstrapper">
+		<Component
+			Id="Bootstrapper"
+			Guid="{66AC448B-4424-4F5C-9082-9F9C97BEB140}"
+			Location="local"
+			Win64="$(var.Win64)"
+		>
+			<File
+				Name="csmBootstrapper.cmd"
+				KeyPath="yes"
+				Vital="yes"
+				Checksum="yes"
+			>
+			</File>
+			<ProgId
+				Id="$(var.BootstrapperProgId)"
+				Description="$(var.ProductProgIdDescription)"
+				Icon="Product.ico"
+				Advertise="yes"
+			>
+				<Extension
+					Id="$(var.ProductExt)"
+					Advertise="yes"
+				>
+					<Verb
+						Id="open"
+						Sequence="1"
+					/>
+				</Extension>
+			</ProgId>
+		</Component>
+
+		<Component
+			Id="Bootstrapper.OpenWithProgids"
+			Guid="{AAE928E2-FC2D-4A58-B046-21715556678C}"
+			Location="local"
+			Win64="$(var.Win64)"
+		>
+			<RegistryKey
+				Root="HKMU"
+				Key="SOFTWARE\Classes"
+			>
+				<RegistryKey Key=".$(var.ProductExt)">
+					<RegistryKey Key="OpenWithProgids">
+						<RegistryValue Name="$(var.MainProgId)" Type="string" Value="" KeyPath="yes"/>
+						<RegistryValue Name="$(var.AdminProgId)" Type="string" Value=""/>
+						<RegistryValue Name="$(var.markinvProgId)" Type="string" Value=""/>
+					</RegistryKey>
+				</RegistryKey>
+				<RegistryKey Key="$(var.BootstrapperProgId)">
+					<!--http://msdn.microsoft.com/en-us/library/windows/desktop/bb762506(v=vs.85).aspx-->
+					<!--FTA_HasExtension(0x4) + FTA_NoEdit(0x8) + FTA_NoRemove(x10) + FTA_NoNewVerb(x20) + FTA_NoEditVerb(x40)
+					+ FTA_NoRemoveVerb(x80) + FTA_NoEditDesc(x100) + FTA_NoEditIcon(x200) + FTA_NoEditDflt(x400)
+					+ FTA_NoEditVerbCmd(x800) + FTA_NoEditVerbExe(x1000) + FTA_NoDDE(x2000) + FTA_NoEditMIME(x4000)
+					+ FTA_NoRecentDocs(0x00100000)-->
+					<RegistryValue Name="EditFlags" Type="integer" Value="1081340" />
+
+					<!-- http://msdn.microsoft.com/en-us/library/windows/desktop/bb986055.aspx#MSDNMag2001Nov -->
+					<!--!!! http://windowssucks.wordpress.com/file-type-registration/ -->
+					<!--<RegistryValue Name="InfoTip" Type="string" Value="" />-->
+					<!--<RegistryValue Name="TileInfo" Type="string" Value="" />-->
+					<!--<RegistryValue Name="NoOpen" Type="string" Value="Сообщение для NoOpen диалога" />-->
+					<RegistryValue Name="NoOpenWith" Type="string" Value="" />
+					<RegistryValue Name="NoPreviousVersions" Type="string" Value="" />
+					<RegistryValue Name="NoJumpListPathTooltip" Type="string" Value="" />
+					<RegistryValue Name="NoRecentDocs" Type="string" Value="" />
+					<RegistryValue Name="NeverShowExt" Type="string" Value="" />
+					<RegistryValue Name="NoSendTo" Type="string" Value="" />
+					<RegistryValue Name="DownloadInvokeDisabled" Type="string" Value="" />
+					<!-- http://msdn.microsoft.com/en-us/library/windows/desktop/cc144152#fa_attributes -->
+					<!--<RegistryValue Name="AllowSilentDefaultTakeOver" Type="string" Value="" />-->
+					<RegistryValue Name="AppUserModelID " Type="string" Value="$(var.ProductProgId)" />
+
+					<!-- http://msdn.microsoft.com/en-us/library/windows/desktop/hh127468 -->
+					<!--<RegistryValue Name="ContentViewModeForBrowse " Type="string" Value="" />-->
+
+					<RegistryKey Key="shell">
+						<RegistryKey Key="open">
+							<!-- http://msdn.microsoft.com/en-us/library/windows/desktop/cc144171#dynamic_behavior -->
+							<RegistryValue Name="MultiSelectModel" Type="string" Value="Single"/>
+							<!--<RegistryValue Name="extended" Type="string" Value=""/>-->
+						</RegistryKey>
+					</RegistryKey>
+				</RegistryKey>
+			</RegistryKey>
+		</Component>
+	</DirectoryRef>
+
+	</Fragment>
+</Include>

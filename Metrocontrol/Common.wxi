@@ -5,8 +5,8 @@
 			<DigitalCertificate Id="" SourceFile=""/>
 		</PackageCertificates>-->
 
-	<Icon Id="Product" SourceFile=".\Icons\Product.ico"/>
-	<Property Id="ARPPRODUCTICON" Value="Product"/>
+	<Icon Id="Product.ico" SourceFile=".\Icons\Product.ico"/>
+	<Property Id="ARPPRODUCTICON" Value="Product.ico"/>
 
 	<!--<Property Id="ARPNOMODIFY" Value=""/>-->
 	<!--<Property Id="ARPNOREMOVE" Value=""/>-->
