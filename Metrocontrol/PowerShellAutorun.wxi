@@ -13,6 +13,8 @@
 			Id="PowerShellAutorun"
 			Guid="{1382D6DE-0C3A-4387-B2F8-87B694124BA5}"
 			Location="either"
+			Shared="yes"
+			Permanent="yes"
 		>
 			<Condition>
 				ENABLERUNASDEFAULTPOWERSHELLVERB="Yes"
