@@ -41,6 +41,7 @@
   <ItemGroup>
     <Content Include=".csmdb examples\ncsm.csmdb23" />
     <Content Include=".csmdb examples\testDB.csmdb23" />
+    <Content Include="PowerShellAutorun.wxi" />
     <Content Include="CSMBootstrapper.wxi" />
     <Content Include="csmadmin.wxi" />
     <Content Include="CSMmain.wxi" />

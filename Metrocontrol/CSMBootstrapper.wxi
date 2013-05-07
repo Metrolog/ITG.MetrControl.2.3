@@ -1,12 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Include>
+
+	<?include PowerShellAutorun.wxi ?>
+
 	<Fragment>
 
 	<?define BootstrapperProgId="$(var.ProductProgIdPrefix).Bootstrapper.$(var.ProductProgIdPostfix)"?>
 
 	<ComponentGroup Id="Bootstrapper" Directory="APPLICATIONFOLDER">
-		<ComponentRef	Id="Bootstrapper" />
-		<ComponentRef	Id="Bootstrapper.OpenWithProgids" />
+		<ComponentRef Id="Bootstrapper" />
+		<ComponentRef Id="Bootstrapper.OpenWithProgids" />
+		<ComponentGroupRef Id="PowerShellAutorun" />
 	</ComponentGroup>
 
 	<DirectoryRef Id="APPLICATIONFOLDER" FileSource=".\SourceDir\Bootstrapper">
