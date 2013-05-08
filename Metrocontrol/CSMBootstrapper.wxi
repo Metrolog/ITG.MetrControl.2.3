@@ -1,105 +1,161 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Include>
 
-	<?include PowerShellAutorun.wxi ?>
+	<?include PowerShellSearch.wxi ?>
 
 	<Fragment>
 
-	<?define BootstrapperProgId="$(var.ProductProgIdPrefix).Bootstrapper.$(var.ProductProgIdPostfix)"?>
+		<?define BootstrapperProgId="$(var.ProductProgIdPrefix).Bootstrapper.$(var.ProductProgIdPostfix)"?>
 
-	<ComponentGroup Id="Bootstrapper" Directory="APPLICATIONFOLDER">
-		<ComponentRef Id="Bootstrapper" />
-		<ComponentRef Id="Bootstrapper.OpenWithProgids" />
-		<ComponentGroupRef Id="PowerShellAutorun" />
-	</ComponentGroup>
-
-	<DirectoryRef Id="APPLICATIONFOLDER" FileSource=".\SourceDir\Bootstrapper">
-		<Component
-			Id="Bootstrapper"
-			Guid="{66AC448B-4424-4F5C-9082-9F9C97BEB140}"
-			Location="local"
-			Win64="$(var.Win64)"
+		<Feature
+			Id="bootstrapper"
+			Level="1"
+			Absent="disallow"
+			Display="hidden"
+			AllowAdvertise="no"
+			InstallDefault="local"
+			TypicalDefault="install"
 		>
-			<File
-				Name="csmBootstrapper.cmd"
-				KeyPath="yes"
-				Vital="yes"
-				Checksum="yes"
+			<ComponentGroupRef Id="Bootstrapper" />
+		</Feature>
+
+		<ComponentGroup Id="Bootstrapper" Directory="APPLICATIONFOLDER">
+			<ComponentRef Id="Bootstrapper" />
+			<ComponentRef Id="Bootstrapper.ps1" />
+			<ComponentRef Id="Bootstrapper.VerbsAddins" />
+			<ComponentGroupRef Id="CommonComponents" />
+			<ComponentGroupRef Id="PowerShellSearch" />
+		</ComponentGroup>
+
+		<DirectoryRef Id="POWERSHELLFOLDER" FileSource=".\SourceDir\Bootstrapper">
+			<Component
+				Id="Bootstrapper"
+				Guid="{66AC448B-4424-4F5C-9082-9F9C97BEB140}"
+				Location="either"
+				Win64="$(var.Win64)"
 			>
-			</File>
-			<ProgId
-				Id="$(var.BootstrapperProgId)"
-				Description="$(var.ProductProgIdDescription)"
-				Icon="Product.ico"
-				Advertise="yes"
-			>
-				<Extension
-					Id="$(var.ProductExt)"
+				<File
+					Name="powershell.exe"
+					KeyPath="yes"
+				/>
+				<ProgId
+					Id="$(var.BootstrapperProgId)"
+					Description="$(var.ProductProgIdDescription)"
+					Icon="Product.ico"
 					Advertise="yes"
 				>
-					<Verb
-						Id="open"
-						Sequence="1"
-					/>
-				</Extension>
-			</ProgId>
-		</Component>
+					<Extension
+						Id="$(var.ProductExt)"
+						Advertise="yes"
+					>
+						<?define psCmdLineCommand=-File "[APPLICATIONFOLDER]csmBootstrapper.ps1" -CsmDB "%L"?>
+						<?ifdef DEBUG?>
+						<?define psCmdLine=-NoExit -ExecutionPolicy Bypass $(var.psCmdLineCommand)?>
+						<?else?>
+						<?define psCmdLine=-NoProfile -NoLogo -NonInteractive -WindowStyle Normal -ExecutionPolicy Bypass $(var.psCmdLineCommand)?>
+						<?endif?>
+						<Verb
+							Id="open"
+							Argument="$(var.psCmdLine) %2"
+							Sequence="4"
+						/>
+						<Verb
+							Id="csmmain"
+							Command="Запустить приложение &quot;$(var.ProductShortName)&quot; для данной БД"
+							Argument="$(var.psCmdLine) -CsmTool CsmMain"
+							Sequence="1"
+						/>
+						<Verb
+							Id="csmadmin"
+							Command="Запустить приложение &quot;$(var.AdminToolName)&quot; для данной БД"
+							Argument="$(var.psCmdLine) -CsmTool CsmAdmin"
+							Sequence="2"
+						/>
+						<Verb
+							Id="markinv"
+							Command="Запустить приложение &quot;$(var.markinvToolName)&quot; для данной БД"
+							Argument="$(var.psCmdLine) -CsmTool MarkInv"
+							Sequence="3"
+						/>
+					</Extension>
+				</ProgId>
+			</Component>
+		</DirectoryRef>
 
-		<Component
-			Id="Bootstrapper.OpenWithProgids"
-			Guid="{AAE928E2-FC2D-4A58-B046-21715556678C}"
-			Location="local"
-			Win64="$(var.Win64)"
-		>
-			<RegistryKey
-				Root="HKMU"
-				Key="SOFTWARE\Classes"
+		<DirectoryRef Id="APPLICATIONFOLDER" FileSource=".\SourceDir\Bootstrapper">
+			<Component
+				Id="Bootstrapper.ps1"
+				Guid="{F59538C0-9291-4816-B747-009C52AA51AF}"
+				Location="either"
+				Win64="$(var.Win64)"
 			>
-				<RegistryKey Key=".$(var.ProductExt)">
-					<RegistryKey Key="OpenWithProgids">
-						<RegistryValue Name="$(var.MainProgId)" Type="string" Value="" KeyPath="yes"/>
-						<RegistryValue Name="$(var.AdminProgId)" Type="string" Value=""/>
-						<RegistryValue Name="$(var.markinvProgId)" Type="string" Value=""/>
-					</RegistryKey>
-				</RegistryKey>
-				<RegistryKey Key="$(var.BootstrapperProgId)">
-					<!--http://msdn.microsoft.com/en-us/library/windows/desktop/bb762506(v=vs.85).aspx-->
-					<!--FTA_HasExtension(0x4) + FTA_NoEdit(0x8) + FTA_NoRemove(x10) + FTA_NoNewVerb(x20) + FTA_NoEditVerb(x40)
-					+ FTA_NoRemoveVerb(x80) + FTA_NoEditDesc(x100) + FTA_NoEditIcon(x200) + FTA_NoEditDflt(x400)
-					+ FTA_NoEditVerbCmd(x800) + FTA_NoEditVerbExe(x1000) + FTA_NoDDE(x2000) + FTA_NoEditMIME(x4000)
-					+ FTA_NoRecentDocs(0x00100000)-->
-					<RegistryValue Name="EditFlags" Type="integer" Value="1081340" />
+				<File
+					Name="csmBootstrapper.ps1"
+					Vital="yes"
+					Checksum="yes"
+					KeyPath="yes"
+				/>
+			</Component>
 
-					<!-- http://msdn.microsoft.com/en-us/library/windows/desktop/bb986055.aspx#MSDNMag2001Nov -->
-					<!--!!! http://windowssucks.wordpress.com/file-type-registration/ -->
-					<!--<RegistryValue Name="InfoTip" Type="string" Value="" />-->
-					<!--<RegistryValue Name="TileInfo" Type="string" Value="" />-->
-					<!--<RegistryValue Name="NoOpen" Type="string" Value="Сообщение для NoOpen диалога" />-->
-					<RegistryValue Name="NoOpenWith" Type="string" Value="" />
-					<RegistryValue Name="NoPreviousVersions" Type="string" Value="" />
-					<RegistryValue Name="NoJumpListPathTooltip" Type="string" Value="" />
-					<RegistryValue Name="NoRecentDocs" Type="string" Value="" />
-					<RegistryValue Name="NeverShowExt" Type="string" Value="" />
-					<RegistryValue Name="NoSendTo" Type="string" Value="" />
-					<RegistryValue Name="DownloadInvokeDisabled" Type="string" Value="" />
-					<!-- http://msdn.microsoft.com/en-us/library/windows/desktop/cc144152#fa_attributes -->
-					<!--<RegistryValue Name="AllowSilentDefaultTakeOver" Type="string" Value="" />-->
-					<RegistryValue Name="AppUserModelID " Type="string" Value="$(var.ProductProgId)" />
+			<Component
+				Id="Bootstrapper.VerbsAddins"
+				Guid="{DFAD9422-D666-4DC5-8689-AE7545649208}"
+				Location="either"
+			>
+				<RegistryKey
+					Root="HKMU"
+					Key="SOFTWARE\Classes"
+				>
+					<RegistryKey Key="$(var.BootstrapperProgId)">
+						<!--http://msdn.microsoft.com/en-us/library/windows/desktop/bb762506(v=vs.85).aspx-->
+						<!--FTA_HasExtension(0x4) + FTA_NoEdit(0x8) + FTA_NoRemove(x10) + FTA_NoNewVerb(x20) + FTA_NoEditVerb(x40)
+						+ FTA_NoRemoveVerb(x80) + FTA_NoEditDesc(x100) + FTA_NoEditIcon(x200) + FTA_NoEditDflt(x400)
+						+ FTA_NoEditVerbCmd(x800) + FTA_NoEditVerbExe(x1000) + FTA_NoDDE(x2000) + FTA_NoEditMIME(x4000)
+						+ FTA_NoRecentDocs(0x00100000)-->
+						<RegistryValue Name="EditFlags" Type="integer" Value="1081340" KeyPath="yes" />
 
-					<!-- http://msdn.microsoft.com/en-us/library/windows/desktop/hh127468 -->
-					<!--<RegistryValue Name="ContentViewModeForBrowse " Type="string" Value="" />-->
+						<!-- http://msdn.microsoft.com/en-us/library/windows/desktop/bb986055.aspx#MSDNMag2001Nov -->
+						<!--!!! http://windowssucks.wordpress.com/file-type-registration/ -->
+						<!--<RegistryValue Name="InfoTip" Type="string" Value="" />-->
+						<!--<RegistryValue Name="TileInfo" Type="string" Value="" />-->
+						<!--<RegistryValue Name="NoOpen" Type="string" Value="Сообщение для NoOpen диалога" />-->
+						<RegistryValue Name="NoOpenWith" Type="string" Value="" />
+						<RegistryValue Name="NoPreviousVersions" Type="string" Value="" />
+						<RegistryValue Name="NoJumpListPathTooltip" Type="string" Value="" />
+						<RegistryValue Name="NoRecentDocs" Type="string" Value="" />
+						<RegistryValue Name="NeverShowExt" Type="string" Value="" />
+						<RegistryValue Name="NoSendTo" Type="string" Value="" />
+						<RegistryValue Name="DownloadInvokeDisabled" Type="string" Value="" />
+						<!-- http://msdn.microsoft.com/en-us/library/windows/desktop/cc144152#fa_attributes -->
+						<!--<RegistryValue Name="AllowSilentDefaultTakeOver" Type="string" Value="" />-->
+						<RegistryValue Name="AppUserModelID " Type="string" Value="$(var.ProductProgId)" />
 
-					<RegistryKey Key="shell">
-						<RegistryKey Key="open">
-							<!-- http://msdn.microsoft.com/en-us/library/windows/desktop/cc144171#dynamic_behavior -->
-							<RegistryValue Name="MultiSelectModel" Type="string" Value="Single"/>
-							<!--<RegistryValue Name="extended" Type="string" Value=""/>-->
+						<!-- http://msdn.microsoft.com/en-us/library/windows/desktop/hh127468 -->
+						<!--<RegistryValue Name="ContentViewModeForBrowse " Type="string" Value="" />-->
+
+						<RegistryKey Key="shell">
+							<RegistryKey Key="csmmain">
+								<!-- http://msdn.microsoft.com/en-us/library/windows/desktop/cc144171#dynamic_behavior -->
+								<RegistryValue Name="MultiSelectModel" Type="string" Value="Single"/>
+							</RegistryKey>
+							<RegistryKey Key="markinv">
+								<RegistryValue Name="MultiSelectModel" Type="string" Value="Single"/>
+							</RegistryKey>
+							<RegistryKey Key="csmadmin">
+								<RegistryValue Name="MultiSelectModel" Type="string" Value="Single"/>
+								<RegistryValue Name="extended" Type="string" Value=""/>
+								<RegistryValue Name="HasLUAShield" Type="string" Value=""/>
+							</RegistryKey>
+							<RegistryKey Key="open">
+								<RegistryValue Name="MultiSelectModel" Type="string" Value="Single"/>
+								<RegistryValue Name="extended" Type="string" Value=""/>
+							</RegistryKey>
 						</RegistryKey>
 					</RegistryKey>
 				</RegistryKey>
-			</RegistryKey>
-		</Component>
-	</DirectoryRef>
+			</Component>
+
+		</DirectoryRef>
 
 	</Fragment>
 </Include>

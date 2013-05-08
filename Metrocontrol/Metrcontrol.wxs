@@ -52,7 +52,9 @@
 	<?endif?>
 
 	<?define ProductSettingsKey="$(var.Manufacturer)\$(var.ProductShortName)\$(var.ProductMajorVersion).$(var.ProductMinorVersion)" ?>
-	
+
+	<?define ProductFeatures="csmmain;csmadmin;markinv" ?>
+
 	<Product
 		Id="$(var.ProductCode)"
 		Name="$(var.ProductName)"
@@ -89,11 +91,12 @@
 			Title="$(var.ProductShortName)"
 			Description="$(var.ProductName)"
 		>
-			<FeatureRef	Id="csmmain.exe" />
-			<FeatureRef	Id="markinv.exe" />
-			<FeatureRef Id="csmhelp.chm" />
-			<FeatureRef	Id="csmadmin.exe" />
+			<FeatureRef	Id="csmmain" />
+			<FeatureRef	Id="markinv" />
+			<FeatureRef Id="csmhelp" />
+			<FeatureRef	Id="csmadmin" />
 		</Feature>
+		<FeatureRef	Id="bootstrapper" />
 
 		<Property Id="ARPREADME" Value="$(var.ProductDescription)"/>
 		<!--<Property Id="ARPCOMMENTS" Value=""/>-->

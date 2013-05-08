@@ -41,7 +41,7 @@
   <ItemGroup>
     <Content Include=".csmdb examples\ncsm.csmdb23" />
     <Content Include=".csmdb examples\testDB.csmdb23" />
-    <Content Include="PowerShellAutorun.wxi" />
+    <Content Include="PowerShellSearch.wxi" />
     <Content Include="CSMBootstrapper.wxi" />
     <Content Include="csmadmin.wxi" />
     <Content Include="CSMmain.wxi" />
@@ -58,8 +58,8 @@
     <Content Include="SourceDir\%24PLUGINSDIR\StartMenu.dll" />
     <Content Include="SourceDir\%24Temp\FindProcesses.exe" />
     <Content Include="SourceDir\Accounts.dll" />
-    <Content Include="SourceDir\Bootstrapper\csmBootstrapper.cmd" />
     <Content Include="SourceDir\Bootstrapper\csmBootstrapper.ps1" />
+    <Content Include="SourceDir\Bootstrapper\PowerShell.exe" />
     <Content Include="SourceDir\CommonControls.dll" />
     <Content Include="SourceDir\ConnectedDBComponents.dll" />
     <Content Include="SourceDir\csm.dll" />

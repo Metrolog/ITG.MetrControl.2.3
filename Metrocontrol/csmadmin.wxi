@@ -8,14 +8,13 @@
 	<?define AdminExt="csmdb-admin$(var.ProductMajorVersion)$(var.ProductMinorVersion)"?>
 
 	<Feature
-		Id="csmadmin.exe"
+		Id="csmadmin"
 		Level="200"
 		Absent="allow"
 		AllowAdvertise="yes"
 		Display="9"
 		InstallDefault="followParent"
 		TypicalDefault="advertise"
-		ConfigurableDirectory="APPLICATIONFOLDER"
 		Title="$(var.AdminToolName)"
 		Description="$(var.AdminToolDescription)"
 	>
@@ -84,24 +83,6 @@
 			>
 				<RegistryValue Name="CsmAdminInstalled" Type="integer" Value="1" />
 			</RegistryKey>
-
-			<ProgId
-				Id="$(var.AdminProgId)"
-				Description="$(var.AdminToolDescription)"
-				Icon="csmadmin.exe"
-				Advertise="yes"
-			>
-				<Extension
-					Id="$(var.AdminExt)"
-					Advertise="yes"
-				>
-					<Verb
-						Id="open"
-						Sequence="3"
-						Command="$(var.AdminToolName)"
-					/>
-				</Extension>
-			</ProgId>
 		</Component>
 
 		<Component
@@ -152,48 +133,6 @@
 				<RegistryKey Key="FileAssociations">
 					<RegistryValue Name=".$(var.ProductExt)" Type="string" Value="$(var.AdminProgId)" />
 					<RegistryValue Name=".$(var.AdminExt)" Type="string" Value="$(var.AdminProgId)" />
-				</RegistryKey>
-			</RegistryKey>
-			<!--http://msdn.microsoft.com/ru-RU/library/windows/desktop/ee872121(v=vs.85).aspx#reg_perceived_types-->
-			<!--http://msdn.microsoft.com/ru-RU/library/windows/desktop/cc144154(v=vs.85).aspx-->
-			<RegistryKey
-				Root="HKMU"
-				Key="SOFTWARE\Classes"
-			>
-				<RegistryKey Key="$(var.AdminProgId)">
-					<!--http://msdn.microsoft.com/en-us/library/windows/desktop/bb762506(v=vs.85).aspx-->
-					<!--FTA_HasExtension(0x4) + FTA_NoEdit(0x8) + FTA_NoRemove(x10) + FTA_NoNewVerb(x20) + FTA_NoEditVerb(x40)
-					+ FTA_NoRemoveVerb(x80) + FTA_NoEditDesc(x100) + FTA_NoEditIcon(x200) + FTA_NoEditDflt(x400)
-					+ FTA_NoEditVerbCmd(x800) + FTA_NoEditVerbExe(x1000) + FTA_NoDDE(x2000) + FTA_NoEditMIME(x4000)
-					+ FTA_NoRecentDocs(0x00100000)-->
-					<RegistryValue Name="EditFlags" Type="integer" Value="1081340" />
-
-					<!-- http://msdn.microsoft.com/en-us/library/windows/desktop/bb986055.aspx#MSDNMag2001Nov -->
-					<!--!!! http://windowssucks.wordpress.com/file-type-registration/ -->
-					<!--<RegistryValue Name="InfoTip" Type="string" Value="" />-->
-					<!--<RegistryValue Name="TileInfo" Type="string" Value="" />-->
-					<!--<RegistryValue Name="NoOpen" Type="string" Value="Сообщение для NoOpen диалога" />-->
-					<RegistryValue Name="NoOpenWith" Type="string" Value="" />
-					<RegistryValue Name="NoPreviousVersions" Type="string" Value="" />
-					<RegistryValue Name="NoJumpListPathTooltip" Type="string" Value="" />
-					<RegistryValue Name="NoRecentDocs" Type="string" Value="" />
-					<RegistryValue Name="NeverShowExt" Type="string" Value="" />
-					<RegistryValue Name="NoSendTo" Type="string" Value="" />
-					<RegistryValue Name="DownloadInvokeDisabled" Type="string" Value="" />
-					<!-- http://msdn.microsoft.com/en-us/library/windows/desktop/cc144152#fa_attributes -->
-					<!--<RegistryValue Name="AllowSilentDefaultTakeOver" Type="string" Value="" />-->
-					<RegistryValue Name="AppUserModelID " Type="string" Value="$(var.ProductProgId)" />
-
-					<!-- http://msdn.microsoft.com/en-us/library/windows/desktop/hh127468 -->
-					<!--<RegistryValue Name="ContentViewModeForBrowse " Type="string" Value="" />-->
-
-					<RegistryKey Key="shell">
-						<RegistryKey Key="open">
-							<!-- http://msdn.microsoft.com/en-us/library/windows/desktop/cc144171#dynamic_behavior -->
-							<RegistryValue Name="MultiSelectModel" Type="string" Value="Single"/>
-							<!--<RegistryValue Name="extended" Type="string" Value=""/>-->
-						</RegistryKey>
-					</RegistryKey>
 				</RegistryKey>
 			</RegistryKey>
 		</Component>
