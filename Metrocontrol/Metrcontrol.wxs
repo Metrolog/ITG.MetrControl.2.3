@@ -202,11 +202,45 @@
 
 		<?include Common.wxi ?>
 
+		<?ifndef AdminImage ?>
+
+		<UI>
+			<!--<UIRef Id="WixUI_Mondo"/>-->
+			<UIRef Id="WixUI_MondoWithoutLicenseDlg"/>
+			<!--<UIRef Id="WixUI_ErrorProgressText" />-->
+			<?ifdef ShowAppLaunchDialog ?>
+			<Publish Dialog="ExitDialog"
+				Control="Finish"
+				Event="DoAction"
+				Value="LaunchApplication"
+		>
+				WIXUI_EXITDIALOGOPTIONALCHECKBOX = 1 and NOT Installed
+			</Publish>
+			<?endif?>
+		</UI>
+		<Property Id="WixAppFolder" Value="WixPerMachineFolder" />
+		<WixVariable Id="WixUISupportPerUser" Value="0" />
+		<!--<WixVariable Id="WixUILicenseRtf" Value="eula.rtf" />-->
+
+		<?ifdef ShowAppLaunchDialog ?>
+		<Property Id="WIXUI_EXITDIALOGOPTIONALCHECKBOXTEXT" Value="!(loc.LaunchAfterInstall)" />
+		<Property Id="WixShellExecTarget" Value="[#application]" />
+		<CustomAction
+			Id="LaunchApplication"
+			BinaryKey="WixCA"
+			DllEntry="WixShellExec"
+			Impersonate="yes"
+		/>
+		<?endif?>
+
+		<?endif?>
+
 	</Product>
 
 	<?include CSMmain.wxi ?>
 	<?include MarkInv.wxi ?>
 	<?include CSMadmin.wxi ?>
 	<?include CSMBootstrapper.wxi ?>
+	<?include WixUI_MondoWithoutLicenseDlg.wxi?>
 
 </Wix>

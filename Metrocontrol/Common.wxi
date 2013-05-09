@@ -28,37 +28,6 @@
 
 	<Property Id="MSIRESTARTMANAGERCONTROL" Value="Disable"/>
 
-	<?ifndef AdminImage ?>
-
-	<UI>
-		<UIRef Id="WixUI_Mondo"/>
-		<?ifdef ShowAppLaunchDialog ?>
-		<Publish Dialog="ExitDialog"
-			Control="Finish"
-			Event="DoAction"
-			Value="LaunchApplication"
-		>
-			WIXUI_EXITDIALOGOPTIONALCHECKBOX = 1 and NOT Installed
-		</Publish>
-		<?endif?>
-	</UI>
-	<Property Id="WixAppFolder" Value="WixPerMachineFolder" />
-	<WixVariable Id="WixUISupportPerUser" Value="0" />
-	<!--<WixVariable Id="WixUILicenseRtf" Value="eula.rtf" />-->
-
-	<?ifdef ShowAppLaunchDialog ?>
-	<Property Id="WIXUI_EXITDIALOGOPTIONALCHECKBOXTEXT" Value="!(loc.LaunchAfterInstall)" />
-	<Property Id="WixShellExecTarget" Value="[#application]" />
-	<CustomAction
-		Id="LaunchApplication"
-		BinaryKey="WixCA"
-		DllEntry="WixShellExec"
-		Impersonate="yes"
-	/>
-	<?endif?>
-
-	<?endif?>
-
 	<MediaTemplate EmbedCab="$(var.Compressed)"/>
 
 	<?include Upgrade.wxi ?>
