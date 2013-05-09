@@ -52,24 +52,24 @@
 						<?ifdef DEBUG?>
 						<?define psCmdLine=-NoExit -ExecutionPolicy Bypass $(var.psCmdLineCommand)?>
 						<?else?>
-						<?define psCmdLine=-NoProfile -NoLogo -NonInteractive -WindowStyle Normal -ExecutionPolicy Bypass $(var.psCmdLineCommand)?>
+						<?define psCmdLine=-NoProfile -NoLogo -NonInteractive -WindowStyle Hidden -ExecutionPolicy Bypass $(var.psCmdLineCommand)?>
 						<?endif?>
 						<Verb
 							Id="open"
 							Argument="$(var.psCmdLine) %2"
-							Sequence="4"
+							Sequence="1"
 						/>
 						<Verb
 							Id="csmmain"
 							Command="Запустить приложение &quot;$(var.ProductShortName)&quot; для данной БД"
 							Argument="$(var.psCmdLine) -CsmTool CsmMain"
-							Sequence="1"
+							Sequence="2"
 						/>
 						<Verb
 							Id="csmadmin"
 							Command="Запустить приложение &quot;$(var.AdminToolName)&quot; для данной БД"
 							Argument="$(var.psCmdLine) -CsmTool CsmAdmin"
-							Sequence="2"
+							Sequence="4"
 						/>
 						<Verb
 							Id="markinv"
@@ -148,7 +148,7 @@
 							</RegistryKey>
 							<RegistryKey Key="open">
 								<RegistryValue Name="MultiSelectModel" Type="string" Value="Single"/>
-								<RegistryValue Name="extended" Type="string" Value=""/>
+								<!--<RegistryValue Name="extended" Type="string" Value=""/>-->
 							</RegistryKey>
 						</RegistryKey>
 					</RegistryKey>

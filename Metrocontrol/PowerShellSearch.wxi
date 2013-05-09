@@ -10,7 +10,7 @@
 		</DirectoryRef>
 
 		<Property Id="POWERSHELLFOLDER">
-			<?foreach PSVersion in 1;3?>
+			<?foreach PSVersion in 3?>
 			<RegistrySearch
 				Id="PowerShell$(var.PSVersion)Search"
 				Root="HKLM"
