@@ -1,0 +1,10 @@
+﻿[MetrControl]
+Version=2.3
+
+[MetrControlDB]
+Server=ip or FQDN
+Database=database name
+Description=database description
+NTLM=yes/no - использовать учётную запись пользователя для подключения к SQL серверу, или явно указанные учётные данные
+Login=login
+PasswordHash=password hash - сохранить из сгенерированного файла

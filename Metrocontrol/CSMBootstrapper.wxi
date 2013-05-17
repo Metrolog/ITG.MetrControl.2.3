@@ -23,6 +23,7 @@
 			<ComponentRef Id="Bootstrapper" />
 			<ComponentRef Id="Bootstrapper.ps1" />
 			<ComponentRef Id="Bootstrapper.VerbsAddins" />
+			<ComponentGroupRef Id="template.csmdb23" />
 			<ComponentGroupRef Id="CommonComponents" />
 			<ComponentGroupRef Id="PowerShellSearch" />
 		</ComponentGroup>
@@ -103,58 +104,95 @@
 				Location="either"
 			>
 				<RegistryKey
-					Root="HKMU"
-					Key="SOFTWARE\Classes"
+					Root="HKCR"
+					Key="$(var.BootstrapperProgId)"
+				>
+					<!--http://msdn.microsoft.com/en-us/library/windows/desktop/bb762506(v=vs.85).aspx-->
+					<!--FTA_HasExtension(0x4) + FTA_NoEdit(0x8) + FTA_NoRemove(x10) + FTA_NoNewVerb(x20) + FTA_NoEditVerb(x40)
+					+ FTA_NoRemoveVerb(x80) + FTA_NoEditDesc(x100) + FTA_NoEditIcon(x200) + FTA_NoEditDflt(x400)
+					+ FTA_NoEditVerbCmd(x800) + FTA_NoEditVerbExe(x1000) + FTA_NoDDE(x2000) + FTA_NoEditMIME(x4000)
+					+ FTA_NoRecentDocs(0x00100000)-->
+					<RegistryValue Name="EditFlags" Type="integer" Value="1081340" KeyPath="yes" />
+
+					<!-- http://msdn.microsoft.com/en-us/library/windows/desktop/bb986055.aspx#MSDNMag2001Nov -->
+					<!--!!! http://windowssucks.wordpress.com/file-type-registration/ -->
+					<!--<RegistryValue Name="InfoTip" Type="string" Value="" />-->
+					<!--<RegistryValue Name="TileInfo" Type="string" Value="" />-->
+					<!--<RegistryValue Name="NoOpen" Type="string" Value="Сообщение для NoOpen диалога" />-->
+					<RegistryValue Name="NoOpenWith" Type="string" Value="" />
+					<RegistryValue Name="NoPreviousVersions" Type="string" Value="" />
+					<RegistryValue Name="NoJumpListPathTooltip" Type="string" Value="" />
+					<RegistryValue Name="NoRecentDocs" Type="string" Value="" />
+					<RegistryValue Name="NeverShowExt" Type="string" Value="" />
+					<RegistryValue Name="NoSendTo" Type="string" Value="" />
+					<RegistryValue Name="DownloadInvokeDisabled" Type="string" Value="" />
+					<!-- http://msdn.microsoft.com/en-us/library/windows/desktop/cc144152#fa_attributes -->
+					<!--<RegistryValue Name="AllowSilentDefaultTakeOver" Type="string" Value="" />-->
+					<RegistryValue Name="AppUserModelID " Type="string" Value="$(var.ProductProgId)" />
+
+					<!-- http://msdn.microsoft.com/en-us/library/windows/desktop/hh127468 -->
+					<!--<RegistryValue Name="ContentViewModeForBrowse " Type="string" Value="" />-->
+
+					<RegistryKey Key="shell">
+						<RegistryKey Key="csmmain">
+							<!-- http://msdn.microsoft.com/en-us/library/windows/desktop/cc144171#dynamic_behavior -->
+							<RegistryValue Name="MultiSelectModel" Type="string" Value="Single"/>
+						</RegistryKey>
+						<RegistryKey Key="markinv">
+							<RegistryValue Name="MultiSelectModel" Type="string" Value="Single"/>
+						</RegistryKey>
+						<RegistryKey Key="csmadmin">
+							<RegistryValue Name="MultiSelectModel" Type="string" Value="Single"/>
+							<RegistryValue Name="extended" Type="string" Value=""/>
+							<RegistryValue Name="HasLUAShield" Type="string" Value=""/>
+						</RegistryKey>
+						<RegistryKey Key="open">
+							<RegistryValue Name="MultiSelectModel" Type="string" Value="Single"/>
+							<!--<RegistryValue Name="extended" Type="string" Value=""/>-->
+						</RegistryKey>
+					</RegistryKey>
+				</RegistryKey>
+			</Component>
+		</DirectoryRef>
+
+		<ComponentGroup	Id="template.csmdb23">
+			<ComponentRef	Id="template.csmdb23"/>
+			<ComponentRef	Id="ShellNew.csmdb23"/>
+		</ComponentGroup>
+
+		<DirectoryRef Id="CsmDbTemplatesFolder" FileSource=".\.csmdb">
+			<Component
+				Id="template.csmdb23"
+				Guid="{D49F119C-8424-42AC-B60F-4D5ED8C7D426}"
+				Location="either"
+				Win64="$(var.Win64)"
+			>
+				<File
+					Name="template.csmdb23"
+					KeyPath="yes"
+					Vital="no"
+				/>
+			</Component>
+			<Component
+				Id="ShellNew.csmdb23"
+				Guid="{E13A1A2E-2875-4661-AE3C-041ACF558162}"
+				Location="either"
+			>
+				<RegistryKey
+					Root="HKCR"
+					Key=".$(var.ProductExt)"
 				>
 					<RegistryKey Key="$(var.BootstrapperProgId)">
-						<!--http://msdn.microsoft.com/en-us/library/windows/desktop/bb762506(v=vs.85).aspx-->
-						<!--FTA_HasExtension(0x4) + FTA_NoEdit(0x8) + FTA_NoRemove(x10) + FTA_NoNewVerb(x20) + FTA_NoEditVerb(x40)
-						+ FTA_NoRemoveVerb(x80) + FTA_NoEditDesc(x100) + FTA_NoEditIcon(x200) + FTA_NoEditDflt(x400)
-						+ FTA_NoEditVerbCmd(x800) + FTA_NoEditVerbExe(x1000) + FTA_NoDDE(x2000) + FTA_NoEditMIME(x4000)
-						+ FTA_NoRecentDocs(0x00100000)-->
-						<RegistryValue Name="EditFlags" Type="integer" Value="1081340" KeyPath="yes" />
-
-						<!-- http://msdn.microsoft.com/en-us/library/windows/desktop/bb986055.aspx#MSDNMag2001Nov -->
-						<!--!!! http://windowssucks.wordpress.com/file-type-registration/ -->
-						<!--<RegistryValue Name="InfoTip" Type="string" Value="" />-->
-						<!--<RegistryValue Name="TileInfo" Type="string" Value="" />-->
-						<!--<RegistryValue Name="NoOpen" Type="string" Value="Сообщение для NoOpen диалога" />-->
-						<RegistryValue Name="NoOpenWith" Type="string" Value="" />
-						<RegistryValue Name="NoPreviousVersions" Type="string" Value="" />
-						<RegistryValue Name="NoJumpListPathTooltip" Type="string" Value="" />
-						<RegistryValue Name="NoRecentDocs" Type="string" Value="" />
-						<RegistryValue Name="NeverShowExt" Type="string" Value="" />
-						<RegistryValue Name="NoSendTo" Type="string" Value="" />
-						<RegistryValue Name="DownloadInvokeDisabled" Type="string" Value="" />
-						<!-- http://msdn.microsoft.com/en-us/library/windows/desktop/cc144152#fa_attributes -->
-						<!--<RegistryValue Name="AllowSilentDefaultTakeOver" Type="string" Value="" />-->
-						<RegistryValue Name="AppUserModelID " Type="string" Value="$(var.ProductProgId)" />
-
-						<!-- http://msdn.microsoft.com/en-us/library/windows/desktop/hh127468 -->
-						<!--<RegistryValue Name="ContentViewModeForBrowse " Type="string" Value="" />-->
-
-						<RegistryKey Key="shell">
-							<RegistryKey Key="csmmain">
-								<!-- http://msdn.microsoft.com/en-us/library/windows/desktop/cc144171#dynamic_behavior -->
-								<RegistryValue Name="MultiSelectModel" Type="string" Value="Single"/>
-							</RegistryKey>
-							<RegistryKey Key="markinv">
-								<RegistryValue Name="MultiSelectModel" Type="string" Value="Single"/>
-							</RegistryKey>
-							<RegistryKey Key="csmadmin">
-								<RegistryValue Name="MultiSelectModel" Type="string" Value="Single"/>
-								<RegistryValue Name="extended" Type="string" Value=""/>
-								<RegistryValue Name="HasLUAShield" Type="string" Value=""/>
-							</RegistryKey>
-							<RegistryKey Key="open">
-								<RegistryValue Name="MultiSelectModel" Type="string" Value="Single"/>
-								<!--<RegistryValue Name="extended" Type="string" Value=""/>-->
+						<RegistryKey Key="ShellNew">
+							<!-- http://msdn.microsoft.com/en-us/library/windows/desktop/cc144101(v=vs.85).aspx -->
+							<RegistryValue Name="FileName" Type="string" Value="[#template.csmdb23]" KeyPath="yes" />
+							<RegistryKey Key="Config">
+								<RegistryValue Name="AllDrives" Type="string" Value="" />
 							</RegistryKey>
 						</RegistryKey>
 					</RegistryKey>
 				</RegistryKey>
 			</Component>
-
 		</DirectoryRef>
 
 	</Fragment>

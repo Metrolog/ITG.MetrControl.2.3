@@ -208,7 +208,6 @@
 					<RegistryValue Name="NoOpenWith" Type="integer" Value="0" />
 					<RegistryKey Key="SupportedTypes">
 						<RegistryValue Name=".$(var.ProductExt)" Type="string" Value="" />
-						<RegistryValue Name=".$(var.markinvExt)" Type="string" Value="" />
 					</RegistryKey>
 				</RegistryKey>
 			</RegistryKey>
@@ -228,7 +227,6 @@
 				<RegistryValue Name="Hidden" Type="integer" Value="0" />
 				<RegistryKey Key="FileAssociations">
 					<RegistryValue Name=".$(var.ProductExt)" Type="string" Value="$(var.markinvProgId)" />
-					<RegistryValue Name=".$(var.markinvExt)" Type="string" Value="$(var.markinvProgId)" />
 				</RegistryKey>
 			</RegistryKey>
 		</Component>

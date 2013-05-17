@@ -112,7 +112,6 @@
 					<RegistryValue Name="NoOpenWith" Type="integer" Value="0" />
 					<RegistryKey Key="SupportedTypes">
 						<RegistryValue Name=".$(var.ProductExt)" Type="string" Value="" />
-						<RegistryValue Name=".$(var.AdminExt)" Type="string" Value="" />
 					</RegistryKey>
 				</RegistryKey>
 			</RegistryKey>
@@ -132,7 +131,6 @@
 				<RegistryValue Name="Hidden" Type="integer" Value="0" />
 				<RegistryKey Key="FileAssociations">
 					<RegistryValue Name=".$(var.ProductExt)" Type="string" Value="$(var.AdminProgId)" />
-					<RegistryValue Name=".$(var.AdminExt)" Type="string" Value="$(var.AdminProgId)" />
 				</RegistryKey>
 			</RegistryKey>
 		</Component>

@@ -30,7 +30,7 @@
     <Compile Include="Metrcontrol.wxs" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include=".csmdb examples" />
+    <Folder Include=".csmdb" />
     <Folder Include="SourceDir" />
     <Folder Include="SourceDir\%24PLUGINSDIR" />
     <Folder Include="SourceDir\%24Temp" />
@@ -39,8 +39,8 @@
     <Folder Include="SourceDir\Reports" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include=".csmdb examples\ncsm.csmdb23" />
-    <Content Include=".csmdb examples\testDB.csmdb23" />
+    <Content Include=".csmdb\ncsm.csmdb23" />
+    <Content Include=".csmdb\template.csmdb23" />
     <Content Include="PowerShellSearch.wxi" />
     <Content Include="CSMBootstrapper.wxi" />
     <Content Include="csmadmin.wxi" />

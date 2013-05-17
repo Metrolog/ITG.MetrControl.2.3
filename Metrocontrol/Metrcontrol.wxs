@@ -116,12 +116,13 @@
 							<Directory Id="APPLICATIONFOLDER"
 								ComponentGuidGenerationSeed="{32EFBA94-C82D-45FB-A721-F6D534B1DE22}"
 							>
-								<Directory Id="Reports"
+								<Directory Id="Reports" SourceName="Reports"
 									ComponentGuidGenerationSeed="{84A9951A-107A-4B13-930A-54DD3198AF45}"
 								/>
-								<Directory Id="Help"
+								<Directory Id="Help" SourceName="Help"
 									ComponentGuidGenerationSeed="{57D5DA46-5C82-4564-9343-6EF19A1F3BC9}"
 								/>
+								<Directory Id="CsmDbTemplatesFolder" SourceName="Templates" />
 							</Directory>
 						</Directory>
 					</Directory>
@@ -171,6 +172,7 @@
 					</Directory>
 				</Directory>
 			</Directory>-->
+			<!--<Directory Id="TemplateFolder"/>-->
 			<Directory Id="TempFolder"/>
 		</Directory>
 
