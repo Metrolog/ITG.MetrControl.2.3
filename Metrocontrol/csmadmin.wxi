@@ -32,6 +32,9 @@
 		<ComponentRef	Id="CommonControls.dll"/>
 		<ComponentRef	Id="interop.dll"/>
 		<ComponentRef	Id="sqlc.dll"/>
+
+		<ComponentRef	Id="Bootstrapper.Edit" />
+		<ComponentGroupRef Id="template.csmdb23" />
 	</ComponentGroup>
 
 	<DirectoryRef Id="APPLICATIONFOLDER" FileSource=".\SourceDir">

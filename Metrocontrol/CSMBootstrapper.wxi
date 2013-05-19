@@ -23,12 +23,12 @@
 			<ComponentRef Id="Bootstrapper" />
 			<ComponentRef Id="Bootstrapper.ps1" />
 			<ComponentRef Id="Bootstrapper.VerbsAddins" />
-			<ComponentGroupRef Id="template.csmdb23" />
 			<ComponentGroupRef Id="CommonComponents" />
 			<ComponentGroupRef Id="PowerShellSearch" />
 		</ComponentGroup>
 
 		<DirectoryRef Id="POWERSHELLFOLDER" FileSource=".\SourceDir\Bootstrapper">
+
 			<Component
 				Id="Bootstrapper"
 				Guid="{66AC448B-4424-4F5C-9082-9F9C97BEB140}"
@@ -153,6 +153,29 @@
 					</RegistryKey>
 				</RegistryKey>
 			</Component>
+
+			<Component
+				Id="Bootstrapper.Edit"
+				Guid="{646E1332-8F9C-4d97-97E8-EE8FDD9B8120}"
+				Location="either"
+			>
+				<RegistryKey
+					Root="HKCR"
+					Key="$(var.BootstrapperProgId)"
+				>
+					<RegistryKey Key="shell">
+						<RegistryKey Key="edit">
+							<RegistryValue Name="MultiSelectModel" Type="string" Value="Document" KeyPath="yes"/>
+							<RegistryValue Name="extended" Type="string" Value=""/>
+							<RegistryValue Name="HasLUAShield" Type="string" Value=""/>
+							<RegistryKey Key="command">
+								<RegistryValue Type="expandable" Value="%SystemRoot%\system32\NOTEPAD.EXE %1"/>
+							</RegistryKey>
+						</RegistryKey>
+					</RegistryKey>
+				</RegistryKey>
+			</Component>
+
 		</DirectoryRef>
 
 		<ComponentGroup	Id="template.csmdb23">
