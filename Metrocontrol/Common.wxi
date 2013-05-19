@@ -17,7 +17,6 @@
 	<SetProperty Id="ARPINSTALLLOCATION" Value="[APPLICATIONFOLDER]" Sequence="execute" Before="InstallInitialize">
 		Not Installed
 	</SetProperty>
-	<Property Id="ApplicationFolderName" Admin="yes" />
 	<Property Id="APPLICATIONFOLDER" Admin="yes" />
 
 	<!--<Property Id="ARPSIZE" Value=""/>-->
