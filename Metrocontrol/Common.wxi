@@ -8,7 +8,9 @@
 	<Icon Id="Product.ico" SourceFile=".\Icons\Product.ico"/>
 	<Property Id="ARPPRODUCTICON" Value="Product.ico"/>
 
-	<!--<Property Id="ARPNOMODIFY" Value=""/>-->
+	<?ifdef AdminImage ?>
+	<Property Id="ARPNOMODIFY" Value="1"/>
+	<?endif?>
 	<!--<Property Id="ARPNOREMOVE" Value=""/>-->
 	<!--<Property Id="ARPNOREPAIR" Value=""/>-->
 	<!--<Property Id="ARPSYSTEMCOMPONENT" Value=""/>-->
