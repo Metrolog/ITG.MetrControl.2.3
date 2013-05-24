@@ -29,11 +29,11 @@
 	<?define Compressed="no" ?>
 	<?endif?>
 
-	<?ifdef AdminImage ?>
+	<!--<?ifdef AdminImage ?>
 	<?define IsAdminImage="yes" ?>
-	<?else?>
+	<?else?>-->
 	<?define IsAdminImage="no" ?>
-	<?endif?>
+	<!--<?endif?>-->
 
 	<?if $(sys.BUILDARCH) = "x86" ?>
 	<?define PlatformPostfix="32" ?>
