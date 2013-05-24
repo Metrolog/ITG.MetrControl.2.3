@@ -51,6 +51,7 @@
     <Content Include="Icons\MarkInv.ico" />
     <Content Include="Icons\Product.ico" />
     <Content Include="markInv.wxi" />
+    <Content Include="Common.RemoveAutoFile.wxi" />
     <Content Include="SourceDir\%24PLUGINSDIR\InstallOptions.dll" />
     <Content Include="SourceDir\%24PLUGINSDIR\ioSpecial.ini" />
     <Content Include="SourceDir\%24PLUGINSDIR\modern-wizard.bmp" />

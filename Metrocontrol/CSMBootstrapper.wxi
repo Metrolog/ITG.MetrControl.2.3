@@ -2,6 +2,7 @@
 <Include>
 
 	<?include PowerShellSearch.wxi ?>
+	<?include Common.RemoveAutoFile.wxi ?>
 
 	<Fragment>
 
@@ -25,6 +26,7 @@
 			<ComponentRef Id="Bootstrapper.VerbsAddins" />
 			<ComponentGroupRef Id="CommonComponents" />
 			<ComponentGroupRef Id="PowerShellSearch" />
+			<ComponentGroupRef Id="common.RemoveAutoFile" />
 		</ComponentGroup>
 
 		<DirectoryRef Id="POWERSHELLFOLDER" FileSource=".\SourceDir\Bootstrapper">
