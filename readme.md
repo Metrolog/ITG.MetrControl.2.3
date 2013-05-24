@@ -74,11 +74,11 @@
 
 Несколько примеров подготовки административной точки установки:
 
-	msiexec -a Metrcontrol.msi DISABLEDESKTOPSHORTCUTS=No ALLUSERS=0 ADDDEFAULT=csmmain
+	msiexec -a Metrcontrol.msi DISABLEDESKTOPSHORTCUTS=Yes ALLUSERS=0 ADDDEFAULT=csmmain
 
 Данная командная строка готовит точку установки с "отключенными" ярлыками рабочего стола, с установкой приложения для пользователя
 (а не для компьютера). Из приложений при этом будет установлена только АИС Метроконтроль.
 
-	msiexec -a Metrcontrol.msi DISABLESHORTCUTS=No ADDDEFAULT=csmmain,makrinv,csmadmin
+	msiexec -a Metrcontrol.msi DISABLESHORTCUTS=Yes ADDDEFAULT=csmmain,makrinv,csmadmin
 
 Данная командная строка готовит точку установки с "отключенными" ярлыками. Приложения будут установлены все.
