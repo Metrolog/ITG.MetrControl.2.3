@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Include>
+	<Fragment>
+
+		<ComponentGroup Id="common.RemoveAutoFile">
+			<Component
+				Id="common.RemoveAutoFile"
+				Directory="TARGETDIR"
+			>
+				<RegistryKey
+					Root="HKCU"
+					Key="$(var.ProductRegKey)"
+				>
+					<RegistryValue Name="AutoFileChecked" Type="integer" Value="1" KeyPath="yes" />
+				</RegistryKey>
+				<RemoveRegistryKey
+					Root="HKCU"
+					Key="SOFTWARE\Classes\.$(var.ProductExt)\OpenWithProgids"
+					Action="removeOnInstall"
+				/>
+				<RemoveRegistryKey
+					Root="HKCU"
+					Key="SOFTWARE\Classes\$(var.ProductExt)_auto_file"
+					Action="removeOnInstall"
+				/>
+				<RemoveRegistryKey
+					Root="HKCU"
+					Key="SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\FileExts\.$(var.ProductExt)"
+					Action="removeOnInstall"
+				/>
+			</Component>
+		</ComponentGroup>
+
+	</Fragment>
+</Include>
