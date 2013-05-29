@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Include>
 
-	<?include PowerShellSearch.wxi ?>
 	<?include Common.RemoveAutoFile.wxi ?>
 
 	<Fragment>
@@ -21,25 +20,29 @@
 		</Feature>
 
 		<ComponentGroup Id="Bootstrapper" Directory="APPLICATIONFOLDER">
-			<ComponentRef Id="Bootstrapper" />
-			<ComponentRef Id="Bootstrapper.ps1" />
+			<ComponentRef Id="Bootstrapper.exe" />
 			<ComponentRef Id="Bootstrapper.VerbsAddins" />
 			<ComponentGroupRef Id="CommonComponents" />
-			<ComponentGroupRef Id="PowerShellSearch" />
 			<ComponentGroupRef Id="common.RemoveAutoFile" />
 		</ComponentGroup>
 
-		<DirectoryRef Id="POWERSHELLFOLDER" FileSource=".\SourceDir\Bootstrapper">
+		<DirectoryRef Id="APPLICATIONFOLDER" FileSource="..\Bootstrapper\bin\Release">
 
 			<Component
-				Id="Bootstrapper"
-				Guid="{66AC448B-4424-4F5C-9082-9F9C97BEB140}"
+				Id="Bootstrapper.exe"
+				Guid="{DA44F624-35C0-455A-8915-C6200379406E}"
 				Location="either"
 				Win64="$(var.Win64)"
 			>
 				<File
-					Name="powershell.exe"
+					Name="Bootstrapper.exe"
+					Vital="yes"
 					KeyPath="yes"
+				/>
+				<File
+					Name="Bootstrapper.exe.config"
+					Vital="no"
+					CompanionFile="Bootstrapper.exe"
 				/>
 				<ProgId
 					Id="$(var.BootstrapperProgId)"
@@ -51,53 +54,31 @@
 						Id="$(var.ProductExt)"
 						Advertise="yes"
 					>
-						<?define psCmdLineCommand=-File "[APPLICATIONFOLDER]csmBootstrapper.ps1" -CsmDB "%L"?>
-						<?ifdef DEBUG?>
-						<?define psCmdLine=-NoExit -ExecutionPolicy Bypass $(var.psCmdLineCommand)?>
-						<?else?>
-						<?define psCmdLine=-NoProfile -NoLogo -NonInteractive -WindowStyle Hidden -ExecutionPolicy Bypass $(var.psCmdLineCommand)?>
-						<?endif?>
 						<Verb
 							Id="open"
-							Argument="$(var.psCmdLine) %2"
+							Argument="%1 %2"
 							Sequence="1"
 						/>
 						<Verb
 							Id="csmmain"
 							Command="Запустить приложение &quot;$(var.ProductShortName)&quot; для данной БД"
-							Argument="$(var.psCmdLine) -CsmTool CsmMain"
+							Argument="%1 csmmain"
 							Sequence="2"
 						/>
 						<Verb
 							Id="csmadmin"
 							Command="Запустить приложение &quot;$(var.AdminToolName)&quot; для данной БД"
-							Argument="$(var.psCmdLine) -CsmTool CsmAdmin"
+							Argument="%1 csmadmin"
 							Sequence="4"
 						/>
 						<Verb
 							Id="markinv"
 							Command="Запустить приложение &quot;$(var.markinvToolName)&quot; для данной БД"
-							Argument="$(var.psCmdLine) -CsmTool MarkInv"
+							Argument="%1 markinv"
 							Sequence="3"
 						/>
 					</Extension>
 				</ProgId>
-			</Component>
-		</DirectoryRef>
-
-		<DirectoryRef Id="APPLICATIONFOLDER" FileSource=".\SourceDir\Bootstrapper">
-			<Component
-				Id="Bootstrapper.ps1"
-				Guid="{F59538C0-9291-4816-B747-009C52AA51AF}"
-				Location="either"
-				Win64="$(var.Win64)"
-			>
-				<File
-					Name="csmBootstrapper.ps1"
-					Vital="yes"
-					Checksum="yes"
-					KeyPath="yes"
-				/>
 			</Component>
 
 			<Component

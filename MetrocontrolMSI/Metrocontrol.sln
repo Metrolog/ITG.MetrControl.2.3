@@ -1,23 +1,72 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2012
+# Visual Studio Express 2012 for Windows Desktop
 Project("{930C7802-8A8C-48F9-8165-68863BCCD9DD}") = "Metrcontrol", "Metrcontrol\Metrcontrol.wixproj", "{00CB7F8E-8726-4E55-91B7-EB05D0A4A5D3}"
+	ProjectSection(ProjectDependencies) = postProject
+		{B65B92A6-FCB0-465E-B7EA-CA77C7C987F0} = {B65B92A6-FCB0-465E-B7EA-CA77C7C987F0}
+	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{49BCD175-34FD-40B6-8597-465D735DFA40}"
 	ProjectSection(SolutionItems) = preProject
 		readme.md = readme.md
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bootstrapper", "Bootstrapper\Bootstrapper.csproj", "{B65B92A6-FCB0-465E-B7EA-CA77C7C987F0}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Admin image|Any CPU = Admin image|Any CPU
+		Admin image|Mixed Platforms = Admin image|Mixed Platforms
 		Admin image|x86 = Admin image|x86
+		Debug|Any CPU = Debug|Any CPU
+		Debug|Mixed Platforms = Debug|Mixed Platforms
+		Debug|x86 = Debug|x86
+		Release|Any CPU = Release|Any CPU
+		Release|Mixed Platforms = Release|Mixed Platforms
+		Release|x86 = Release|x86
+		Single .msi file|Any CPU = Single .msi file|Any CPU
+		Single .msi file|Mixed Platforms = Single .msi file|Mixed Platforms
 		Single .msi file|x86 = Single .msi file|x86
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{00CB7F8E-8726-4E55-91B7-EB05D0A4A5D3}.Admin image|Any CPU.ActiveCfg = Admin image|x86
+		{00CB7F8E-8726-4E55-91B7-EB05D0A4A5D3}.Admin image|Mixed Platforms.ActiveCfg = Admin image|x86
+		{00CB7F8E-8726-4E55-91B7-EB05D0A4A5D3}.Admin image|Mixed Platforms.Build.0 = Admin image|x86
 		{00CB7F8E-8726-4E55-91B7-EB05D0A4A5D3}.Admin image|x86.ActiveCfg = Admin image|x86
 		{00CB7F8E-8726-4E55-91B7-EB05D0A4A5D3}.Admin image|x86.Build.0 = Admin image|x86
+		{00CB7F8E-8726-4E55-91B7-EB05D0A4A5D3}.Debug|Any CPU.ActiveCfg = Single .msi file|x86
+		{00CB7F8E-8726-4E55-91B7-EB05D0A4A5D3}.Debug|Mixed Platforms.ActiveCfg = Single .msi file|x86
+		{00CB7F8E-8726-4E55-91B7-EB05D0A4A5D3}.Debug|Mixed Platforms.Build.0 = Single .msi file|x86
+		{00CB7F8E-8726-4E55-91B7-EB05D0A4A5D3}.Debug|x86.ActiveCfg = Single .msi file|x86
+		{00CB7F8E-8726-4E55-91B7-EB05D0A4A5D3}.Release|Any CPU.ActiveCfg = Single .msi file|x86
+		{00CB7F8E-8726-4E55-91B7-EB05D0A4A5D3}.Release|Mixed Platforms.ActiveCfg = Single .msi file|x86
+		{00CB7F8E-8726-4E55-91B7-EB05D0A4A5D3}.Release|Mixed Platforms.Build.0 = Single .msi file|x86
+		{00CB7F8E-8726-4E55-91B7-EB05D0A4A5D3}.Release|x86.ActiveCfg = Single .msi file|x86
+		{00CB7F8E-8726-4E55-91B7-EB05D0A4A5D3}.Single .msi file|Any CPU.ActiveCfg = Single .msi file|x86
+		{00CB7F8E-8726-4E55-91B7-EB05D0A4A5D3}.Single .msi file|Mixed Platforms.ActiveCfg = Single .msi file|x86
+		{00CB7F8E-8726-4E55-91B7-EB05D0A4A5D3}.Single .msi file|Mixed Platforms.Build.0 = Single .msi file|x86
 		{00CB7F8E-8726-4E55-91B7-EB05D0A4A5D3}.Single .msi file|x86.ActiveCfg = Single .msi file|x86
 		{00CB7F8E-8726-4E55-91B7-EB05D0A4A5D3}.Single .msi file|x86.Build.0 = Single .msi file|x86
+		{B65B92A6-FCB0-465E-B7EA-CA77C7C987F0}.Admin image|Any CPU.ActiveCfg = Release|Any CPU
+		{B65B92A6-FCB0-465E-B7EA-CA77C7C987F0}.Admin image|Any CPU.Build.0 = Release|Any CPU
+		{B65B92A6-FCB0-465E-B7EA-CA77C7C987F0}.Admin image|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{B65B92A6-FCB0-465E-B7EA-CA77C7C987F0}.Admin image|Mixed Platforms.Build.0 = Debug|Any CPU
+		{B65B92A6-FCB0-465E-B7EA-CA77C7C987F0}.Admin image|x86.ActiveCfg = Release|Any CPU
+		{B65B92A6-FCB0-465E-B7EA-CA77C7C987F0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B65B92A6-FCB0-465E-B7EA-CA77C7C987F0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B65B92A6-FCB0-465E-B7EA-CA77C7C987F0}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{B65B92A6-FCB0-465E-B7EA-CA77C7C987F0}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{B65B92A6-FCB0-465E-B7EA-CA77C7C987F0}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{B65B92A6-FCB0-465E-B7EA-CA77C7C987F0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B65B92A6-FCB0-465E-B7EA-CA77C7C987F0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B65B92A6-FCB0-465E-B7EA-CA77C7C987F0}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{B65B92A6-FCB0-465E-B7EA-CA77C7C987F0}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{B65B92A6-FCB0-465E-B7EA-CA77C7C987F0}.Release|x86.ActiveCfg = Release|Any CPU
+		{B65B92A6-FCB0-465E-B7EA-CA77C7C987F0}.Single .msi file|Any CPU.ActiveCfg = Release|Any CPU
+		{B65B92A6-FCB0-465E-B7EA-CA77C7C987F0}.Single .msi file|Any CPU.Build.0 = Release|Any CPU
+		{B65B92A6-FCB0-465E-B7EA-CA77C7C987F0}.Single .msi file|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{B65B92A6-FCB0-465E-B7EA-CA77C7C987F0}.Single .msi file|Mixed Platforms.Build.0 = Debug|Any CPU
+		{B65B92A6-FCB0-465E-B7EA-CA77C7C987F0}.Single .msi file|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
