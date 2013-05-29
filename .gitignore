@@ -1,7 +1,3 @@
-/Metrocontrol/obj
-
+obj
 /Metrocontrol/.csmdb examples/ncsm.csmdb23
-/Metrocontrol/.csmdb examples/ncsm.csmdb-admin23
-/Metrocontrol/.csmdb examples/ncsm.csmdb-main23
-
-/Metrocontrol/.csmdb examples/ncsm.csmdb-markinv23
+/MetrocontrolMSI/Metrocontrol.v11.suo

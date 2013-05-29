@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<WixLocalization Culture="ru-ru" xmlns="http://schemas.microsoft.com/wix/2006/localization">
+	<String Id="PackageDescription">Установочный пакет продукта</String>
+	<String Id="NewProductVersionExists">Более новая версия продукта [ProductName] уже установлена.</String>
+	<String Id="LaunchAfterInstall">Запустить установленный продукт сейчас</String>
+</WixLocalization>

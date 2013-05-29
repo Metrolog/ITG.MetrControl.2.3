@@ -1,9 +1,0 @@
-﻿[MetrControl]
-Version=2.3
-
-[MetrControlDB]
-Server="192.168.0.250"
-Database="csm_novgorod"
-Description="АИС Метроконтроль Новгородского филиала ФБУ Тест-С.-Петербург"
-Login="metr"
-PasswordHash="0022A5380090E27D"
