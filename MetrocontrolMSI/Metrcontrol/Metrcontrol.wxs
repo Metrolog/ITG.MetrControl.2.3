@@ -1,0 +1,244 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+
+	<?define ProductVersion="02.03.3369.0220"?>
+	<?define ProductMajorVersion="2"?>
+	<?define ProductMinorVersion="3"?>
+	<?define ProductShortName="АИС Метроконтроль"?>
+	<?define ProductInternalName="CSM"?>
+	<?define ProductDescription="Автоматизиованная информационная система АИС Метроконтроль."?>
+	<?define ProductName="$(var.ProductShortName) v$(var.ProductVersion)"?>
+	<?define ProductCode="89AC374A-B77C-4CD7-BD3E-580D726EFCD5"?>
+	<?define UpgradeCode="19F14309-5782-4010-9770-E63635CC0782"?>
+	<?define Manufacturer="РЦН"?>
+	<?define ManufacturerId="RCN"?>
+	
+	<?define ProductId="$(var.ManufacturerId).$(var.ProductInternalName).$(var.ProductMajorVersion).$(var.ProductMinorVersion)"?>
+	<?define ProductRegKey="SOFTWARE\$(var.Manufacturer)\$(var.ProductShortName)\$(var.ProductMajorVersion).$(var.ProductMinorVersion)"?>
+	<?define ProductProgIdPrefix="$(var.ManufacturerId).$(var.ProductInternalName)"?>
+	<?define ProductProgIdPostfix="$(var.ProductMajorVersion).$(var.ProductMinorVersion)"?>
+	<?define ProductProgId="$(var.ProductProgIdPrefix).$(var.ProductProgIdPostfix)"?>
+	<?define ProductProgIdDescription="Описатель базы данных АИС Метроконтроль"?>
+	<?define ProductExt="csmdb$(var.ProductMajorVersion)$(var.ProductMinorVersion)"?>
+
+	<?define ReportsChecksum="no"?>
+
+	<?ifdef SingleMSIFile ?>
+	<?define Compressed="yes" ?>
+	<?else?>
+	<?define Compressed="no" ?>
+	<?endif?>
+
+	<?define IsAdminImage="no" ?>
+
+	<?if $(sys.BUILDARCH) = "x86" ?>
+	<?define PlatformPostfix="32" ?>
+	<?define SystemFolderId="SystemFolder" ?>
+	<?define SystemFolder="System32" ?>
+	<?define ProgramFilesFolderId="ProgramFilesFolder" ?>
+	<?define Win64="no" ?>
+	<?else?>
+	<?define PlatformPostfix="64" ?>
+	<?define SystemFolderId="System64Folder" ?>
+	<?define SystemFolder="System64" ?>
+	<?define ProgramFilesFolderId="ProgramFiles64Folder" ?>
+	<?define Win64="yes" ?>
+
+	<?error "Platform must be x86" ?>
+	<?endif?>
+
+	<?define ProductSettingsKey="$(var.Manufacturer)\$(var.ProductShortName)\$(var.ProductMajorVersion).$(var.ProductMinorVersion)" ?>
+
+	<?define ProductFeatures="csmmain;csmadmin;markinv" ?>
+
+	<Product
+		Id="$(var.ProductCode)"
+		Name="$(var.ProductName)"
+		Version="$(var.ProductVersion)"
+		Language="1049"
+		Codepage="1251"
+		Manufacturer="$(var.Manufacturer)"
+		UpgradeCode="$(var.UpgradeCode)"
+	>
+		<Package
+			InstallerVersion="200"
+			InstallScope="perMachine"
+			InstallPrivileges="elevated"
+			AdminImage="$(var.IsAdminImage)"
+			Compressed="$(var.Compressed)"
+			Manufacturer="IT-Service"
+			SummaryCodepage="1251"
+			ShortNames="no"
+			Description="!(loc.PackageDescription) $(var.ProductName)."
+			Languages="1049"
+			Comments="!(loc.PackageDescription) $(var.ProductName)."
+			Keywords="Installer, $(var.ProductShortName)"
+		/>
+
+		<Feature
+			Id="Product"
+			Level="1"
+			Absent="allow"
+			Display="2"
+			AllowAdvertise="yes"
+			InstallDefault="local"
+			TypicalDefault="install"
+			ConfigurableDirectory="APPLICATIONFOLDER"
+			Title="$(var.ProductShortName)"
+			Description="$(var.ProductName)"
+		>
+			<FeatureRef	Id="csmmain" />
+			<FeatureRef	Id="markinv" />
+			<FeatureRef Id="csmhelp" />
+			<FeatureRef	Id="csmadmin" />
+		</Feature>
+		<FeatureRef	Id="bootstrapper" />
+
+		<Property Id="ARPREADME" Value="$(var.ProductDescription)"/>
+		<!--<Property Id="ARPCOMMENTS" Value=""/>-->
+		<Property Id="ARPURLINFOABOUT" Value="http://www.metrcontrol.ru/"/>
+		<Property Id="ARPURLUPDATEINFO" Value="http://www.metrcontrol.ru/"/>
+		<Property Id="ARPHELPLINK" Value="http://helpdesk.metrcontrol.ru"/>
+		<Property Id="ARPHELPTELEPHONE" Value="+7 (495) 937-42-52"/>
+		<Property Id="ARPCONTACT" Value="ООО «РЦН»"/>
+
+		<Property Id="MSIARPSETTINGSIDENTIFIER" Value="$(var.ProductSettingsKey);IFirst\MarkInventoryClient;ifirst\Metrcontrol"/>
+
+		<Directory Id="TARGETDIR" Name="SourceDir">
+			<Directory Id="$(var.ProgramFilesFolderId)" Name="Program Files">
+				<Directory Id="ManufacturerProgramFolder" Name="$(var.Manufacturer)">
+					<Directory Id="ProductProgramFolder" Name="$(var.ProductShortName)">
+						<Directory Id="ProductVersionProgramFolder" Name="$(var.ProductMajorVersion).$(var.ProductMinorVersion)">
+							<Directory Id="APPLICATIONFOLDER"
+								ComponentGuidGenerationSeed="{32EFBA94-C82D-45FB-A721-F6D534B1DE22}"
+							>
+								<Directory Id="Reports" SourceName="Reports"
+									ComponentGuidGenerationSeed="{84A9951A-107A-4B13-930A-54DD3198AF45}"
+								/>
+								<Directory Id="Help" SourceName="Help"
+									ComponentGuidGenerationSeed="{57D5DA46-5C82-4564-9343-6EF19A1F3BC9}"
+								/>
+								<Directory Id="CsmDbTemplatesFolder" SourceName="Templates" />
+							</Directory>
+						</Directory>
+					</Directory>
+				</Directory>
+			</Directory>
+			<Directory Id="DesktopFolder">
+				<Directory Id="PRODUCTDESKTOPFOLDER"/>
+			</Directory>
+			<Directory Id="ProgramMenuFolder">
+				<Directory Id="PRODUCTMENUFOLDER" Name="$(var.ProductShortName) $(var.ProductMajorVersion).$(var.ProductMinorVersion)"/>
+			</Directory>
+			<Directory Id="StartupFolder">
+				<Directory Id="PRODUCTSTARTUPFOLDER"/>
+			</Directory>
+			<Directory Id="AdminToolsFolder" />
+			<Directory Id="LocalAppDataFolder">
+				<!--<Directory Id="ManufacturerLocalAppDataFolder" Name="$(var.Manufacturer)">
+					<Directory Id="ProductLocalAppDataFolder" Name="$(var.ProductShortName)">
+						<Directory Id="ProductVersionLocalAppDataFolder" Name="$(var.ProductMajorVersion).$(var.ProductMinorVersion)">
+							<Directory Id="ApplicationLocalAppDataFolder">
+							</Directory>
+						</Directory>
+					</Directory>
+				</Directory>-->
+				<Directory Id="ManufacturerLocalAppDataFolder" Name="IFirst">
+					<Directory Id="ProductLocalAppDataFolder" Name="MetrControl">
+					</Directory>
+				</Directory>
+			</Directory>
+			<!--<Directory Id="AppDataFolder">
+				<Directory Id="ManufacturerAppDataFolder" Name="$(var.Manufacturer)">
+					<Directory Id="ProductAppDataFolder" Name="$(var.ProductShortName)">
+						<Directory Id="ProductVersionAppDataFolder" Name="$(var.ProductMajorVersion).$(var.ProductMinorVersion)">
+							<Directory Id="ApplicationAppDataFolder">
+							</Directory>
+						</Directory>
+					</Directory>
+				</Directory>
+			</Directory>-->
+			<!--<Directory Id="CommonAppDataFolder">
+				<Directory Id="ManufacturerCommonAppDataFolder" Name="$(var.Manufacturer)">
+					<Directory Id="ProductCommonAppDataFolder" Name="$(var.ProductShortName)">
+						<Directory Id="ProductVersionCommonAppDataFolder" Name="$(var.ProductMajorVersion).$(var.ProductMinorVersion)">
+							<Directory Id="ApplicationCommonAppDataFolder">
+							</Directory>
+						</Directory>
+					</Directory>
+				</Directory>
+			</Directory>-->
+			<!--<Directory Id="TemplateFolder"/>-->
+			<Directory Id="TempFolder"/>
+		</Directory>
+
+		<!-- возможность отключения создания ярлыков - для варианта публикации баз через ярлыки на .csmdb -->
+		<InstallExecuteSequence>
+			<CreateShortcuts Sequence="4500">
+				Not DISABLESHORTCUTS="Yes"
+			</CreateShortcuts>
+		</InstallExecuteSequence>
+
+		<Property Id="DISABLESHORTCUTS" Value="No" Admin="yes"/>
+		<!-- возможность отключения создания ярлыков - конец -->
+
+		<!-- возможность отключения создания ярлыков по одному -->
+		<SetDirectory Id="PRODUCTDESKTOPFOLDER" Value="[TempFolder]">
+			DISABLEDESKTOPSHORTCUTS="Yes"
+		</SetDirectory>
+		<SetDirectory Id="PRODUCTMENUFOLDER" Value="[TempFolder]">
+			DISABLEMENUSHORTCUTS="Yes"
+		</SetDirectory>
+		<SetDirectory Id="PRODUCTSTARTUPFOLDER" Value="[TempFolder]">
+			DISABLESTARTUPSHORTCUTS="Yes"
+		</SetDirectory>
+
+		<Property Id="DISABLEDESKTOPSHORTCUTS" Value="No" Admin="yes"/>
+		<Property Id="DISABLEMENUSHORTCUTS" Value="No" Admin="yes"/>
+		<Property Id="DISABLESTARTUPSHORTCUTS" Value="Yes" Admin="yes"/>
+		<!-- возможность отключения создания ярлыков по одному - конец -->
+
+		<?include Common.wxi ?>
+
+		<?ifndef AdminImage ?>
+
+		<UI>
+			<!--<UIRef Id="WixUI_Mondo"/>-->
+			<UIRef Id="WixUI_MondoWithoutLicenseDlg"/>
+			<!--<UIRef Id="WixUI_ErrorProgressText" />-->
+			<?ifdef ShowAppLaunchDialog ?>
+			<Publish Dialog="ExitDialog"
+				Control="Finish"
+				Event="DoAction"
+				Value="LaunchApplication"
+		>
+				WIXUI_EXITDIALOGOPTIONALCHECKBOX = 1 and NOT Installed
+			</Publish>
+			<?endif?>
+		</UI>
+		<Property Id="WixAppFolder" Value="WixPerMachineFolder" />
+		<WixVariable Id="WixUISupportPerUser" Value="0" />
+		<!--<WixVariable Id="WixUILicenseRtf" Value="eula.rtf" />-->
+
+		<?ifdef ShowAppLaunchDialog ?>
+		<Property Id="WIXUI_EXITDIALOGOPTIONALCHECKBOXTEXT" Value="!(loc.LaunchAfterInstall)" />
+		<Property Id="WixShellExecTarget" Value="[#application]" />
+		<CustomAction
+			Id="LaunchApplication"
+			BinaryKey="WixCA"
+			DllEntry="WixShellExec"
+			Impersonate="yes"
+		/>
+		<?endif?>
+
+		<?endif?>
+
+	</Product>
+
+	<?include CSMmain.wxi ?>
+	<?include MarkInv.wxi ?>
+	<?include CSMadmin.wxi ?>
+	<?include CSMBootstrapper.wxi ?>
+	<?include WixUI_MondoWithoutLicenseDlg.wxi?>
+
+</Wix>
