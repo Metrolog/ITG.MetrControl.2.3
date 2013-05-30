@@ -75,6 +75,13 @@
 			Keywords="Installer, $(var.ProductShortName)"
 		/>
 
+		<MajorUpgrade
+			DowngradeErrorMessage="!(loc.NewProductVersionExists)"
+			AllowSameVersionUpgrades="no"
+			RemoveFeatures=" "
+			Schedule="afterInstallExecute"
+		/>
+
 		<Feature
 			Id="Product"
 			Level="1"
