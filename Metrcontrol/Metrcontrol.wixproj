@@ -167,7 +167,6 @@
     <Content Include="SourceDir\Reports\Work_Place.rpt" />
     <Content Include="SourceDir\Reports\work_type.rpt" />
     <Content Include="SourceDir\sqlc.dll" />
-    <Content Include="Upgrade.wxi" />
     <Content Include="WixUI_MondoWithoutLicenseDlg.wxi" />
   </ItemGroup>
   <ItemGroup>

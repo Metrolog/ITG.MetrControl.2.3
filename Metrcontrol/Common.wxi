@@ -31,6 +31,4 @@
 
 	<MediaTemplate EmbedCab="$(var.Compressed)"/>
 
-	<?include Upgrade.wxi ?>
-
 </Include>
