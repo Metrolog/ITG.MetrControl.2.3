@@ -1,6 +1,6 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Express 2012 for Windows Desktop
+# Visual Studio 2012
 Project("{930C7802-8A8C-48F9-8165-68863BCCD9DD}") = "Metrcontrol", "Metrcontrol\Metrcontrol.wixproj", "{00CB7F8E-8726-4E55-91B7-EB05D0A4A5D3}"
 	ProjectSection(ProjectDependencies) = postProject
 		{B65B92A6-FCB0-465E-B7EA-CA77C7C987F0} = {B65B92A6-FCB0-465E-B7EA-CA77C7C987F0}
@@ -8,6 +8,7 @@ Project("{930C7802-8A8C-48F9-8165-68863BCCD9DD}") = "Metrcontrol", "Metrcontrol\
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{49BCD175-34FD-40B6-8597-465D735DFA40}"
 	ProjectSection(SolutionItems) = preProject
+		Issuer.cer = Issuer.cer
 		readme.md = readme.md
 	EndProjectSection
 EndProject

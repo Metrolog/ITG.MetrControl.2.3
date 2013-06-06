@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
 
-	<?define ProductVersion="02.03.3369.0220"?>
+	<?define ProductVersion="02.03.3369.0230"?>
 	<?define ProductMajorVersion="2"?>
 	<?define ProductMinorVersion="3"?>
 	<?define ProductShortName="АИС Метроконтроль"?>
@@ -53,7 +53,7 @@
 
 	<Product
 		Id="$(var.ProductCode)"
-		Name="$(var.ProductName)"
+		Name="$(var.Manufacturer) $(var.ProductName)"
 		Version="$(var.ProductVersion)"
 		Language="1049"
 		Codepage="1251"
