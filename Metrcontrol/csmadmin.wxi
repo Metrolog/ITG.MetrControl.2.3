@@ -135,6 +135,9 @@
 				<RegistryKey Key="FileAssociations">
 					<RegistryValue Name=".$(var.ProductExt)" Type="string" Value="$(var.AdminProgId)" />
 				</RegistryKey>
+				<RegistryKey Key="MIMEAssociations">
+					<RegistryValue Name="$(var.ProductContentType)" Type="string" Value="$(var.AdminProgId)" />
+				</RegistryKey>
 			</RegistryKey>
 		</Component>
 

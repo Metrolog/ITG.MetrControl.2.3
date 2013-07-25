@@ -117,18 +117,6 @@
 				Vital="yes"
 				KeyPath="yes"
 			/>
-			<!--<Class
-				Id="{0B4C614E-E0EC-4CD8-A570-A31CA7968921}"
-				Description="АИС Метроконтроль - учёт клейм."
-				Context="InprocServer32"
-				Advertise="yes"
-			>
-				<ProgId
-					Id="MarkInvInterop.MarkInvSession"
-					Description="АИС Метроконтроль - учёт клейм."
-					Advertise="yes"
-				/>
-			</Class>-->
 			<Class
 				Id="{0B4C614E-E0EC-4CD8-A570-A31CA7968921}"
 				Description="АИС Метроконтроль - учёт клейм."
@@ -227,6 +215,9 @@
 				<RegistryValue Name="Hidden" Type="integer" Value="0" />
 				<RegistryKey Key="FileAssociations">
 					<RegistryValue Name=".$(var.ProductExt)" Type="string" Value="$(var.markinvProgId)" />
+				</RegistryKey>
+				<RegistryKey Key="MIMEAssociations">
+					<RegistryValue Name="$(var.ProductContentType)" Type="string" Value="$(var.markinvProgId)" />
 				</RegistryKey>
 			</RegistryKey>
 		</Component>

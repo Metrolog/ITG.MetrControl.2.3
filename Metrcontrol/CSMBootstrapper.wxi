@@ -24,7 +24,7 @@
 		<?ifdef AppProgIdDescription?><?undef AppProgIdDescription?><?endif?>
 		<?define AppProgIdDescription="$(var.ProductProgIdDescription)"?>
 		<?ifdef AppContentType?><?undef AppContentType?><?endif?>
-		<?define AppContentType="application/vnd.rcn-metrcontrol.document"?>
+		<?define AppContentType="$(var.ProductContentType)"?>
 
 		<Feature
 			Id="$(var.AppInternalName)"
@@ -40,6 +40,7 @@
 
 		<ComponentGroup Id="$(var.AppInternalName)" Directory="$(var.AppDirectory)">
 			<ComponentRef Id="$(var.AppFileName)" />
+			<ComponentRef Id="$(var.AppInternalName).AppReg" />
 			<ComponentRef Id="$(var.AppInternalName).VerbsAddins" />
 			<ComponentGroupRef Id="CommonComponents" />
 			<ComponentGroupRef Id="common.RemoveAutoFile" />
@@ -96,8 +97,24 @@
 							Argument="%1 markinv"
 							Sequence="3"
 						/>
+						<MIME
+							ContentType="$(var.AppContentType)"
+							Default="yes"
+							Advertise="yes"
+						/>
 					</Extension>
 				</ProgId>
+			</Component>
+
+			<Component
+				Id="$(var.AppInternalName).AppReg"
+			>
+				<RegistryKey
+					Root="HKMU"
+					Key="SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\KindMap"
+				>
+					<RegistryValue Name=".$(var.AppFileExt)" Type="string" Value="Link" KeyPath="yes"/>
+				</RegistryKey>
 			</Component>
 
 			<Component

@@ -20,6 +20,7 @@
 	<?define ProductProgId="$(var.ProductProgIdPrefix).$(var.ProductProgIdPostfix)"?>
 	<?define ProductProgIdDescription="Описатель базы данных АИС Метроконтроль"?>
 	<?define ProductExt="csmdb$(var.ProductMajorVersion)$(var.ProductMinorVersion)"?>
+	<?define ProductContentType="application/vnd.rcn-metrcontrol.db"?>
 
 	<?define ReportsChecksum="no"?>
 
@@ -242,7 +243,7 @@
 				Control="Finish"
 				Event="DoAction"
 				Value="LaunchApplication"
-		>
+			>
 				WIXUI_EXITDIALOGOPTIONALCHECKBOX = 1 and NOT Installed
 			</Publish>
 			<?endif?>
