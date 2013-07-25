@@ -13,8 +13,8 @@
     <Name>Metrcontrol</Name>
     <Cultures>ru-RU</Cultures>
     <SuppressPdbOutput>True</SuppressPdbOutput>
-		<OutputPath>$(SolutionDir)bin\$(Configuration)\$(Platform)\</OutputPath>
-		<IntermediateOutputPath>obj\$(Configuration)\$(Platform)\</IntermediateOutputPath>
+    <OutputPath>$(SolutionDir)bin\$(Configuration)\$(Platform)\</OutputPath>
+    <IntermediateOutputPath>obj\$(Configuration)\$(Platform)\</IntermediateOutputPath>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Admin image|x86' ">
     <DefineConstants>AdminImage</DefineConstants>
@@ -42,7 +42,6 @@
     <Content Include="CSMBootstrapper.wxi" />
     <Content Include="csmadmin.wxi" />
     <Content Include="CSMmain.wxi" />
-    <Content Include="Common.wxi" />
     <Content Include="Icons\csmadmin.ico" />
     <Content Include="Icons\help.ico" />
     <Content Include="Icons\MarkInv.ico" />

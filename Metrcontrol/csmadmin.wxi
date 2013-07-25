@@ -34,7 +34,7 @@
 		<ComponentRef	Id="sqlc.dll"/>
 
 		<ComponentRef	Id="Bootstrapper.Edit" />
-		<ComponentGroupRef Id="template.csmdb23" />
+		<ComponentGroupRef Id="Bootstrapper.template.csmdb23" />
 	</ComponentGroup>
 
 	<DirectoryRef Id="APPLICATIONFOLDER" FileSource=".\SourceDir">
@@ -134,6 +134,9 @@
 				<RegistryValue Name="Hidden" Type="integer" Value="0" />
 				<RegistryKey Key="FileAssociations">
 					<RegistryValue Name=".$(var.ProductExt)" Type="string" Value="$(var.AdminProgId)" />
+				</RegistryKey>
+				<RegistryKey Key="MIMEAssociations">
+					<RegistryValue Name="$(var.ProductContentType)" Type="string" Value="$(var.AdminProgId)" />
 				</RegistryKey>
 			</RegistryKey>
 		</Component>
