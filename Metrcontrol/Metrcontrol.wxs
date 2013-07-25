@@ -6,6 +6,7 @@
 	<?define ProductMinorVersion="3"?>
 	<?define ProductShortName="АИС Метроконтроль"?>
 	<?define ProductInternalName="CSM"?>
+	<?define ProductProjectName="ITG.MetrControl.2.3"?>
 	<?define ProductDescription="Автоматизиованная информационная система АИС Метроконтроль."?>
 	<?define ProductName="$(var.ProductShortName) v$(var.ProductVersion)"?>
 	<?define ProductCode="89AC374A-B77C-4CD7-BD3E-580D726EFCD5"?>
@@ -128,13 +129,12 @@
 
 		<Property Id="MSIRESTARTMANAGERCONTROL" Value="Disable"/>
 
-		<Property Id="ARPREADME" Value="$(var.ProductDescription)"/>
-		<!--<Property Id="ARPCOMMENTS" Value=""/>-->
-		<Property Id="ARPURLINFOABOUT" Value="http://www.metrcontrol.ru/"/>
-		<Property Id="ARPURLUPDATEINFO" Value="http://www.metrcontrol.ru/"/>
-		<Property Id="ARPHELPLINK" Value="http://helpdesk.metrcontrol.ru"/>
-		<Property Id="ARPHELPTELEPHONE" Value="+7 (495) 937-42-52"/>
-		<Property Id="ARPCONTACT" Value="ООО «РЦН»"/>
+		<Property Id="ARPREADME" Value="https://github.com/IT-Service/$(var.ProductProjectName)/blob/master/readme.md"/>
+		<Property Id="ARPCOMMENTS" Value="$(var.ProductDescription)"/>
+		<Property Id="ARPURLINFOABOUT" Value="http://github.com/IT-Service/$(var.ProductProjectName)/blob/master/readme.md"/>
+		<Property Id="ARPURLUPDATEINFO" Value="http://github.com/IT-Service/$(var.ProductProjectName)/tags"/>
+		<Property Id="ARPHELPLINK" Value="http://github.com/IT-Service/$(var.ProductProjectName)/wiki"/>
+		<Property Id="ARPCONTACT" Value="ИТ-Сервис"/>
 
 		<Property Id="MSIARPSETTINGSIDENTIFIER" Value="$(var.ProductSettingsKey);IFirst\MarkInventoryClient;ifirst\Metrcontrol"/>
 
