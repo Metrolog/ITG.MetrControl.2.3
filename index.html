@@ -31,37 +31,185 @@
     <!-- MAIN CONTENT -->
     <div id="main_content_wrap" class="outer">
       <section id="main_content" class="inner">
-        <h3>
-<a name="welcome-to-github-pages" class="anchor" href="#welcome-to-github-pages"><span class="octicon octicon-link"></span></a>Welcome to GitHub Pages.</h3>
+        <h1>
+<a name="%D0%9C%D0%B5%D1%82%D1%80%D0%BE%D0%BA%D0%BE%D0%BD%D1%82%D1%80%D0%BE%D0%BB%D1%8C-23---msi-%D0%BF%D0%B0%D0%BA%D0%B5%D1%82" class="anchor" href="#%D0%9C%D0%B5%D1%82%D1%80%D0%BE%D0%BA%D0%BE%D0%BD%D1%82%D1%80%D0%BE%D0%BB%D1%8C-23---msi-%D0%BF%D0%B0%D0%BA%D0%B5%D1%82"><span class="octicon octicon-link"></span></a>Метроконтроль 2.3 - .msi пакет</h1>
 
-<p>This automatic page generator is the easiest way to create beautiful pages for all of your projects. Author your page content here using GitHub Flavored Markdown, select a template crafted by a designer, and publish. After your page is generated, you can check out the new branch:</p>
+<p>Данный проект - .msi пакет для развёртывания в рамках домена продукта АИС Метроконтроль версии 2.3. </p>
 
-<pre><code>$ cd your_repo_root/repo_name
-$ git fetch origin
-$ git checkout gh-pages
+<h2>
+<a name="%D0%98%D0%BD%D1%81%D1%82%D1%80%D1%83%D0%BC%D0%B5%D0%BD%D1%82%D1%8B-%D0%B4%D0%BB%D1%8F-%D1%81%D0%B1%D0%BE%D1%80%D0%BA%D0%B8-msi-%D0%BF%D0%B0%D0%BA%D0%B5%D1%82%D0%B0" class="anchor" href="#%D0%98%D0%BD%D1%81%D1%82%D1%80%D1%83%D0%BC%D0%B5%D0%BD%D1%82%D1%8B-%D0%B4%D0%BB%D1%8F-%D1%81%D0%B1%D0%BE%D1%80%D0%BA%D0%B8-msi-%D0%BF%D0%B0%D0%BA%D0%B5%D1%82%D0%B0"><span class="octicon octicon-link"></span></a>Инструменты для сборки .msi пакета</h2>
+
+<p>Для внесения изменений в пакет и повторной сборки пакета потребуются следующие продукты:</p>
+
+<ul>
+<li>Microsoft Visual Studio 2012 Shell:
+
+<ul>
+<li><a href="http://www.microsoft.com/ru-ru/download/details.aspx?id=30670">Isolated</a></li>
+<li><a href="http://www.microsoft.com/ru-ru/download/details.aspx?id=30663">Integrated</a></li>
+</ul>
+</li>
+<li><a href="http://wixtoolset.org/">Windows Installer XML Toolset - WIX</a></li>
+</ul><p>Установить необходимо все пакеты в указанном порядке. В результате - получае MS Visual Studio 2012 с подготовленными
+шаблонами проектов WiX. После этого открываем файл решения <code>Metrocontrol\Metrocontrol.sln</code> и собираем решение.</p>
+
+<h2>
+<a name="%D0%92%D0%B0%D1%80%D0%B8%D0%B0%D0%BD%D1%82%D1%8B-%D0%BF%D0%B0%D0%BA%D0%B5%D1%82%D0%BE%D0%B2" class="anchor" href="#%D0%92%D0%B0%D1%80%D0%B8%D0%B0%D0%BD%D1%82%D1%8B-%D0%BF%D0%B0%D0%BA%D0%B5%D1%82%D0%BE%D0%B2"><span class="octicon octicon-link"></span></a>Варианты пакетов</h2>
+
+<h3>
+<a name="%D0%90%D0%B4%D0%BC%D0%B8%D0%BD%D0%B8%D1%81%D1%82%D1%80%D0%B0%D1%82%D0%B8%D0%B2%D0%BD%D0%B0%D1%8F-%D1%82%D0%BE%D1%87%D0%BA%D0%B0-%D1%83%D1%81%D1%82%D0%B0%D0%BD%D0%BE%D0%B2%D0%BA%D0%B8" class="anchor" href="#%D0%90%D0%B4%D0%BC%D0%B8%D0%BD%D0%B8%D1%81%D1%82%D1%80%D0%B0%D1%82%D0%B8%D0%B2%D0%BD%D0%B0%D1%8F-%D1%82%D0%BE%D1%87%D0%BA%D0%B0-%D1%83%D1%81%D1%82%D0%B0%D0%BD%D0%BE%D0%B2%D0%BA%D0%B8"><span class="octicon octicon-link"></span></a>Административная точка установки</h3>
+
+<p>В папке <code>Metrocontrol\bin\Admin image\x86\ru-RU</code> собран проект, подготовленный к роли административной точки установки.
+В нём отсутствует интерфейс пользователя.</p>
+
+<h3>
+<a name="msi-%D0%BF%D0%B0%D0%BA%D0%B5%D1%82-%D0%B2-%D0%B2%D0%B8%D0%B4%D0%B5-%D0%B5%D0%B4%D0%B8%D0%BD%D0%BE%D0%B3%D0%BE-%D1%84%D0%B0%D0%B9%D0%BB%D0%B0" class="anchor" href="#msi-%D0%BF%D0%B0%D0%BA%D0%B5%D1%82-%D0%B2-%D0%B2%D0%B8%D0%B4%D0%B5-%D0%B5%D0%B4%D0%B8%D0%BD%D0%BE%D0%B3%D0%BE-%D1%84%D0%B0%D0%B9%D0%BB%D0%B0"><span class="octicon octicon-link"></span></a>.msi пакет в виде единого файла</h3>
+
+<p>В папке <code>Metrocontrol\bin\Single .msi file\x86\ru-RU</code> собран .msi пакет в виде единого файла.
+В отличии от предыдущего варианта, в данной редакции присутствует интерфейс пользователя,
+позволяющий изменить и состав продукта, и папку его установки.</p>
+
+<h2>
+<a name="%D0%9F%D0%BE%D0%B4%D0%B3%D0%BE%D1%82%D0%BE%D0%B2%D0%BA%D0%B0-%D0%B0%D0%B4%D0%BC%D0%B8%D0%BD%D0%B8%D1%81%D1%82%D1%80%D0%B0%D1%82%D0%B8%D0%B2%D0%BD%D0%BE%D0%B9-%D1%82%D0%BE%D1%87%D0%BA%D0%B8-%D1%83%D1%81%D1%82%D0%B0%D0%BD%D0%BE%D0%B2%D0%BA%D0%B8" class="anchor" href="#%D0%9F%D0%BE%D0%B4%D0%B3%D0%BE%D1%82%D0%BE%D0%B2%D0%BA%D0%B0-%D0%B0%D0%B4%D0%BC%D0%B8%D0%BD%D0%B8%D1%81%D1%82%D1%80%D0%B0%D1%82%D0%B8%D0%B2%D0%BD%D0%BE%D0%B9-%D1%82%D0%BE%D1%87%D0%BA%D0%B8-%D1%83%D1%81%D1%82%D0%B0%D0%BD%D0%BE%D0%B2%D0%BA%D0%B8"><span class="octicon octicon-link"></span></a>Подготовка административной точки установки</h2>
+
+<p>При подготовке административной точки установки доступны к изменении нижеописанные свойства.</p>
+
+<h3>
+<a name="allusers" class="anchor" href="#allusers"><span class="octicon octicon-link"></span></a>ALLUSERS</h3>
+
+<p>По умолчанию - <code>"1"</code>. При установке <code>"0"</code> регистрация будет осуществлена в реестре пользователя, а не в реестре компьютера.</p>
+
+<h3>
+<a name="disableshortcuts" class="anchor" href="#disableshortcuts"><span class="octicon octicon-link"></span></a>DISABLESHORTCUTS</h3>
+
+<p>По умолчанию - <code>"No"</code>. При установке значения <code>"Yes"</code> при установке не будут опубликованы ярлыки.
+Данным свойством следует воспользоваться, если Вы планируете запускать приложения АИС Метроконтроль через ярлыки на
+<code>.csmdb23</code> файлы (о данных дополнительных возможностях пакета читайте далее).</p>
+
+<h3>
+<a name="disabledesktopshortcuts" class="anchor" href="#disabledesktopshortcuts"><span class="octicon octicon-link"></span></a>DISABLEDESKTOPSHORTCUTS</h3>
+
+<p>По умолчанию - <code>"No"</code>. При установке значения <code>"Yes"</code> при установке не будут опубликованы ярлыки на рабочем столе.
+При <code>DISABLESHORTCUTS="Yes"</code> значение данного свойства роли не играет.</p>
+
+<h3>
+<a name="disablemenushortcuts" class="anchor" href="#disablemenushortcuts"><span class="octicon octicon-link"></span></a>DISABLEMENUSHORTCUTS</h3>
+
+<p>По умолчанию - <code>"No"</code>. При установке значения <code>"Yes"</code> при установке не будут опубликованы ярлыки в меню.
+При <code>DISABLESHORTCUTS="Yes"</code> значение данного свойства роли не играет.</p>
+
+<h3>
+<a name="disablestartupshortcuts" class="anchor" href="#disablestartupshortcuts"><span class="octicon octicon-link"></span></a>DISABLESTARTUPSHORTCUTS</h3>
+
+<p>По умолчанию - <code>"Yes"</code>. При установке значения <code>"Yes"</code> при установке не будут опубликованы ярлык на АИС Метроконтроль
+в меню автозагрузки. При <code>DISABLESHORTCUTS="Yes"</code> значение данного свойства роли не играет.</p>
+
+<h3>
+<a name="applicationfolder" class="anchor" href="#applicationfolder"><span class="octicon octicon-link"></span></a>APPLICATIONFOLDER</h3>
+
+<p>Путь к папке, в которую будет установлен программный продукт. По умолчанию - <code>%ProgramFiles(x86)%\РЦН\Метроконтроль\2.3%</code>.
+Устанавливать в качестве значения данного свойства требуется только путь по отношению к <code>%ProgramFiles%</code>.</p>
+
+<h3>
+<a name="installlevel" class="anchor" href="#installlevel"><span class="octicon octicon-link"></span></a>INSTALLLEVEL</h3>
+
+<p>По умолчанию - <code>"100"</code>. По умолчнию будут установлены только приложения "АИС Метроконтроль" и "Учёт клейм".
+При установке <code>INSTALLLEVEL</code> больше 200 будет установлено и приложение "Метроконтроль - администратор".</p>
+
+<h3>
+<a name="%D0%A3%D0%BF%D1%80%D0%B0%D0%B2%D0%BB%D0%B5%D0%BD%D0%B8%D0%B5-%D1%83%D1%81%D1%82%D0%B0%D0%BD%D0%BE%D0%B2%D0%BA%D0%BE%D0%B9-%D0%BF%D1%80%D0%B8%D0%BB%D0%BE%D0%B6%D0%B5%D0%BD%D0%B8%D0%B9" class="anchor" href="#%D0%A3%D0%BF%D1%80%D0%B0%D0%B2%D0%BB%D0%B5%D0%BD%D0%B8%D0%B5-%D1%83%D1%81%D1%82%D0%B0%D0%BD%D0%BE%D0%B2%D0%BA%D0%BE%D0%B9-%D0%BF%D1%80%D0%B8%D0%BB%D0%BE%D0%B6%D0%B5%D0%BD%D0%B8%D0%B9"><span class="octicon octicon-link"></span></a>Управление установкой приложений</h3>
+
+<p>Для управления установкой приложений при подготовке административной точки установки следует воспользоваться
+свойством <code>ADDDEFAULT</code>, перечислив приложения через запятую. Идентификаторы приложений:</p>
+
+<ul>
+<li>
+<code>csmmain</code> - собственно "АИС Метроконтроль";</li>
+<li>
+<code>markinv</code> - приложение "Учёт клейм";</li>
+<li>
+<code>csmadmin</code> - приложение "Метроконтроль - администратор".</li>
+</ul><p>Например, если при подготовке административной точки установки указано <code>ADDDEFAULT=csmadmin</code>,
+то подготовленная точка установки без дополнительных трансформаций подзволит установить только
+приложение "Метроконтроль - администратор".</p>
+
+<h3>
+<a name="%D0%9F%D1%80%D0%B8%D0%BC%D0%B5%D1%80%D1%8B" class="anchor" href="#%D0%9F%D1%80%D0%B8%D0%BC%D0%B5%D1%80%D1%8B"><span class="octicon octicon-link"></span></a>Примеры</h3>
+
+<p>Несколько примеров подготовки административной точки установки:</p>
+
+<pre><code>msiexec -a Metrcontrol.msi DISABLEDESKTOPSHORTCUTS=Yes ALLUSERS=0 ADDDEFAULT=csmmain
 </code></pre>
 
-<p>If you're using the GitHub for Mac, simply sync your repository and you'll see the new branch.</p>
+<p>Данная командная строка готовит точку установки с "отключенными" ярлыками рабочего стола, с установкой приложения для пользователя
+(а не для компьютера). Из приложений при этом будет установлена только АИС Метроконтроль.</p>
+
+<pre><code>msiexec -a Metrcontrol.msi DISABLESHORTCUTS=Yes ADDDEFAULT=csmmain,makrinv,csmadmin
+</code></pre>
+
+<p>Данная командная строка готовит точку установки с "отключенными" ярлыками. Приложения будут установлены все.</p>
+
+<h2>
+<a name="%D0%98%D1%81%D0%BF%D0%BE%D0%BB%D1%8C%D0%B7%D0%BE%D0%B2%D0%B0%D0%BD%D0%B8%D0%B5-%D0%BD%D0%B5%D1%81%D0%BA%D0%BE%D0%BB%D1%8C%D0%BA%D0%B8%D1%85-%D0%91%D0%94" class="anchor" href="#%D0%98%D1%81%D0%BF%D0%BE%D0%BB%D1%8C%D0%B7%D0%BE%D0%B2%D0%B0%D0%BD%D0%B8%D0%B5-%D0%BD%D0%B5%D1%81%D0%BA%D0%BE%D0%BB%D1%8C%D0%BA%D0%B8%D1%85-%D0%91%D0%94"><span class="octicon octicon-link"></span></a>Использование нескольких БД</h2>
+
+<p>В некоторых случаях необходима возможность подключаться к нескольким базам данных. При этом явно не стоит заставлять каждый раз
+вводить параметры подключения к БД. Для решения данной задачи в данном пакете регистрируется новый тип файла <code>.csmdb23</code> и
+ProgId <code>RCN.Bootstrapper.2.3</code>.</p>
 
 <h3>
-<a name="designer-templates" class="anchor" href="#designer-templates"><span class="octicon octicon-link"></span></a>Designer Templates</h3>
+<a name="%D0%A1%D1%82%D1%80%D1%83%D0%BA%D1%82%D1%83%D1%80%D0%B0-%D1%84%D0%B0%D0%B9%D0%BB%D0%B0-csmdb23" class="anchor" href="#%D0%A1%D1%82%D1%80%D1%83%D0%BA%D1%82%D1%83%D1%80%D0%B0-%D1%84%D0%B0%D0%B9%D0%BB%D0%B0-csmdb23"><span class="octicon octicon-link"></span></a>Структура файла .csmdb23</h3>
 
-<p>We've crafted some handsome templates for you to use. Go ahead and continue to layouts to browse through them. You can easily go back to edit your page before publishing. After publishing your page, you can revisit the page generator and switch to another theme. Your Page content will be preserved if it remained markdown format.</p>
+<p>Файлы с расширением <code>.csmdb23</code> далее будем называть описателем базы данных АИС Метроконтроль. Файл, по сути, представляет собой
+ini файл. За основу взят формат ini с одной только целью: предоставить возможность внесения изменений в данный файл посредством
+GPO+GPP.</p>
+
+<p>Пример файла:</p>
+
+<pre><code>[MetrControl]
+Version=2.3
+
+[MetrControlDB]
+Server=&lt;ip-адрес или FQDN SQL сервера&gt;
+Database=&lt;имя базы данных&gt;
+Description=&lt;описание базы данных&gt;
+NTLM=yes/no; использовать учётную запись пользователя для подключения к SQL серверу, или явно указанные учётные данные
+Login=&lt;login&gt;
+PasswordHash=&lt;password hash&gt;
+</code></pre>
+
+<p>Создать файл-описатель Вашей БД можно через контекстное меню проводника "Создать"-"Описатель БД АИС Метроконтроль". Для изменения
+созданного / существующего файла удерживайте Shift при щелчке правой кнопкой мыши на файле / ярлыке на <code>.csmdb23</code> файл, после чего
+воспользуйтесь глаголом "Изменить" (он доступен только при нажатой клавише Shift).</p>
+
+<p>Вместо пароля следует сохранять хеш пароля, который следует получить из файла <code>CnnSettings.xml</code>, создаваемого АИС Метроконтроль
+при подключении к БД в профиле пользователя (<code>%LocalAppData%\IFirst\MetrControl\CnnSettings.xml</code>).</p>
 
 <h3>
-<a name="rather-drive-stick" class="anchor" href="#rather-drive-stick"><span class="octicon octicon-link"></span></a>Rather Drive Stick?</h3>
+<a name="%D0%94%D0%B5%D0%B9%D1%81%D1%82%D0%B2%D0%B8%D1%8F-%D1%81-csmdb23" class="anchor" href="#%D0%94%D0%B5%D0%B9%D1%81%D1%82%D0%B2%D0%B8%D1%8F-%D1%81-csmdb23"><span class="octicon octicon-link"></span></a>Действия с .csmdb23</h3>
 
-<p>If you prefer to not use the automatic generator, push a branch named <code>gh-pages</code> to your repository to create a page manually. In addition to supporting regular HTML content, GitHub Pages support Jekyll, a simple, blog aware static site generator written by our own Tom Preston-Werner. Jekyll makes it easy to create site-wide headers and footers without having to copy them across every page. It also offers intelligent blog support and other advanced templating features.</p>
+<p>При двойном щелчке на файле <code>.csmdb23</code> или на ярлыке на файл данного типа активируется PowerShell сценарий, формирующий на основе
+данных из <code>.csmdb23</code> файл <code>CnnSettings.xml</code>, после чего активирует приложение "АИС Метроконтроль" (на данном этапе поддерживаются
+механизмы ms installer, и перед запуском приложения будут проверены все файлы приложения, записи в реестре и так далее, при
+при необходимости - приложение будет автоматически восстановлено). Аналогичным образом можно запустить приложение и для другой
+базы данных, воспользовавшись ярлыком на другой файл <code>.csmdb23</code>.</p>
+
+<p>Рекомендую файлы <code>.csmdb23</code> размещать на сетевом ресурсе с включенным кешированием, а через GPO+GPP публиковать только ярлыки
+на данные файлы.</p>
+
+<p>В контекстном меню файла <code>.csmdb23</code> присутствуют и другие глаголы: "Учёт клейм", "Метроконтроль - администратор" (доступен только
+в расширенном меню - с Shift). Данные глаголы активируют, как уже понятно, соответствующие приложения.</p>
 
 <h3>
-<a name="authors-and-contributors" class="anchor" href="#authors-and-contributors"><span class="octicon octicon-link"></span></a>Authors and Contributors</h3>
+<a name="%D0%94%D0%BE%D0%BF%D0%BE%D0%BB%D0%BD%D0%B8%D1%82%D0%B5%D0%BB%D1%8C%D0%BD%D1%8B%D0%B5-%D0%B0%D1%80%D0%B3%D1%83%D0%BC%D0%B5%D0%BD%D1%82%D1%8B-%D1%8F%D1%80%D0%BB%D1%8B%D0%BA%D0%BE%D0%B2" class="anchor" href="#%D0%94%D0%BE%D0%BF%D0%BE%D0%BB%D0%BD%D0%B8%D1%82%D0%B5%D0%BB%D1%8C%D0%BD%D1%8B%D0%B5-%D0%B0%D1%80%D0%B3%D1%83%D0%BC%D0%B5%D0%BD%D1%82%D1%8B-%D1%8F%D1%80%D0%BB%D1%8B%D0%BA%D0%BE%D0%B2"><span class="octicon octicon-link"></span></a>Дополнительные аргументы ярлыков</h3>
 
-<p>You can <a href="https://github.com/blog/821" class="user-mention">@mention</a> a GitHub username to generate a link to their profile. The resulting <code>&lt;a&gt;</code> element will link to the contributor's GitHub Profile. For example: In 2007, Chris Wanstrath (<a href="https://github.com/defunkt" class="user-mention">@defunkt</a>), PJ Hyett (<a href="https://github.com/pjhyett" class="user-mention">@pjhyett</a>), and Tom Preston-Werner (<a href="https://github.com/mojombo" class="user-mention">@mojombo</a>) founded GitHub.</p>
+<p>При создании ярлыков на <code>.csmdb23</code> файлы следует также указать и дополнительные аргументы. В частности, если после полного пути к
+файлу Вы укажите <code>csmadmin</code>, то при двойном щелчке на данном ярлыке будет активировано приложение "Метроконтроль - администратор",
+если параметр <code>markinv</code> - приложение "Учёт клейм", ну а <code>csmmain</code> соответствует реакции по умолчанию - запуск приложения "АИС
+Метроконтроль".</p>
 
-<h3>
-<a name="support-or-contact" class="anchor" href="#support-or-contact"><span class="octicon octicon-link"></span></a>Support or Contact</h3>
-
-<p>Having trouble with Pages? Check out the documentation at <a href="http://help.github.com/pages">http://help.github.com/pages</a> or contact <a href="mailto:support@github.com">support@github.com</a> and we’ll help you sort it out.</p>
+<p>Таким образом, создав один файл - описатель базы АИС Метроконтроль, мы имеем возможность через GPO+GPP на весь домен назначить 
+несколько ярлыков на данный файл, при этом мы можем указать, какое приложение будет активировать ярлык по умолчанию (при двойном
+щелчке на ярлыке).</p>
       </section>
     </div>
 
