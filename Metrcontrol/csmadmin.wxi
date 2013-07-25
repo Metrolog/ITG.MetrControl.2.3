@@ -34,7 +34,7 @@
 		<ComponentRef	Id="sqlc.dll"/>
 
 		<ComponentRef	Id="Bootstrapper.Edit" />
-		<ComponentGroupRef Id="template.csmdb23" />
+		<ComponentGroupRef Id="Bootstrapper.template.csmdb23" />
 	</ComponentGroup>
 
 	<DirectoryRef Id="APPLICATIONFOLDER" FileSource=".\SourceDir">

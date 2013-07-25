@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
 
-	<?define ProductVersion="02.03.3369.0230"?>
+	<?define ProductVersion="02.03.3369.0231"?>
 	<?define ProductMajorVersion="2"?>
 	<?define ProductMinorVersion="3"?>
 	<?define ProductShortName="АИС Метроконтроль"?>
@@ -25,11 +25,11 @@
 
 	<?ifdef SingleMSIFile ?>
 	<?define Compressed="yes" ?>
+	<?define IsAdminImage="no" ?>
 	<?else?>
 	<?define Compressed="no" ?>
+	<?define IsAdminImage="yes" ?>
 	<?endif?>
-
-	<?define IsAdminImage="no" ?>
 
 	<?if $(sys.BUILDARCH) = "x86" ?>
 	<?define PlatformPostfix="32" ?>
@@ -77,7 +77,7 @@
 
 		<MajorUpgrade
 			DowngradeErrorMessage="!(loc.NewProductVersionExists)"
-			AllowSameVersionUpgrades="no"
+			AllowSameVersionUpgrades="yes"
 			RemoveFeatures=" "
 			Schedule="afterInstallExecute"
 		/>
@@ -99,7 +99,33 @@
 			<FeatureRef Id="csmhelp" />
 			<FeatureRef	Id="csmadmin" />
 		</Feature>
-		<FeatureRef	Id="bootstrapper" />
+		<FeatureRef	Id="Bootstrapper" />
+
+		<MediaTemplate EmbedCab="$(var.Compressed)"/>
+
+		<Icon Id="Product.ico" SourceFile=".\Icons\Product.ico"/>
+		<Property Id="ARPPRODUCTICON" Value="Product.ico"/>
+
+		<?ifdef AdminImage ?>
+		<Property Id="ARPNOMODIFY" Value="1"/>
+		<?endif?>
+		<!--<Property Id="ARPNOREMOVE" Value=""/>-->
+		<!--<Property Id="ARPNOREPAIR" Value=""/>-->
+		<!--<Property Id="ARPSYSTEMCOMPONENT" Value=""/>-->
+
+		<Property Id="PRIMARYFOLDER" Value="APPLICATIONFOLDER" />
+		<SetProperty Id="ARPINSTALLLOCATION" Value="[APPLICATIONFOLDER]" Sequence="execute" Before="InstallInitialize">
+			<![CDATA[NOT Installed]]>
+		</SetProperty>
+		<Property Id="APPLICATIONFOLDER" Admin="yes" />
+
+		<!--<Property Id="ARPSIZE" Value=""/>-->
+
+		<?ifdef AdminImage ?>
+		<Property Id="MSIFASTINSTALL" Value="3"/>
+		<?endif?>
+
+		<Property Id="MSIRESTARTMANAGERCONTROL" Value="Disable"/>
 
 		<Property Id="ARPREADME" Value="$(var.ProductDescription)"/>
 		<!--<Property Id="ARPCOMMENTS" Value=""/>-->
@@ -204,8 +230,6 @@
 		<Property Id="DISABLEMENUSHORTCUTS" Value="No" Admin="yes"/>
 		<Property Id="DISABLESTARTUPSHORTCUTS" Value="Yes" Admin="yes"/>
 		<!-- возможность отключения создания ярлыков по одному - конец -->
-
-		<?include Common.wxi ?>
 
 		<?ifndef AdminImage ?>
 
