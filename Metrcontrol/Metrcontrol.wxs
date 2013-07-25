@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
 
-	<?define ProductVersion="02.03.3369.0230"?>
+	<?define ProductVersion="02.03.3369.0231"?>
 	<?define ProductMajorVersion="2"?>
 	<?define ProductMinorVersion="3"?>
 	<?define ProductShortName="АИС Метроконтроль"?>
 	<?define ProductInternalName="CSM"?>
+	<?define ProductProjectName="ITG.MetrControl.2.3"?>
 	<?define ProductDescription="Автоматизиованная информационная система АИС Метроконтроль."?>
 	<?define ProductName="$(var.ProductShortName) v$(var.ProductVersion)"?>
 	<?define ProductCode="89AC374A-B77C-4CD7-BD3E-580D726EFCD5"?>
@@ -20,16 +21,17 @@
 	<?define ProductProgId="$(var.ProductProgIdPrefix).$(var.ProductProgIdPostfix)"?>
 	<?define ProductProgIdDescription="Описатель базы данных АИС Метроконтроль"?>
 	<?define ProductExt="csmdb$(var.ProductMajorVersion)$(var.ProductMinorVersion)"?>
+	<?define ProductContentType="application/vnd.rcn-metrcontrol.db"?>
 
 	<?define ReportsChecksum="no"?>
 
 	<?ifdef SingleMSIFile ?>
 	<?define Compressed="yes" ?>
+	<?define IsAdminImage="no" ?>
 	<?else?>
 	<?define Compressed="no" ?>
+	<?define IsAdminImage="yes" ?>
 	<?endif?>
-
-	<?define IsAdminImage="no" ?>
 
 	<?if $(sys.BUILDARCH) = "x86" ?>
 	<?define PlatformPostfix="32" ?>
@@ -77,7 +79,7 @@
 
 		<MajorUpgrade
 			DowngradeErrorMessage="!(loc.NewProductVersionExists)"
-			AllowSameVersionUpgrades="no"
+			AllowSameVersionUpgrades="yes"
 			RemoveFeatures=" "
 			Schedule="afterInstallExecute"
 		/>
@@ -99,15 +101,40 @@
 			<FeatureRef Id="csmhelp" />
 			<FeatureRef	Id="csmadmin" />
 		</Feature>
-		<FeatureRef	Id="bootstrapper" />
+		<FeatureRef	Id="Bootstrapper" />
 
-		<Property Id="ARPREADME" Value="$(var.ProductDescription)"/>
-		<!--<Property Id="ARPCOMMENTS" Value=""/>-->
-		<Property Id="ARPURLINFOABOUT" Value="http://www.metrcontrol.ru/"/>
-		<Property Id="ARPURLUPDATEINFO" Value="http://www.metrcontrol.ru/"/>
-		<Property Id="ARPHELPLINK" Value="http://helpdesk.metrcontrol.ru"/>
-		<Property Id="ARPHELPTELEPHONE" Value="+7 (495) 937-42-52"/>
-		<Property Id="ARPCONTACT" Value="ООО «РЦН»"/>
+		<MediaTemplate EmbedCab="$(var.Compressed)"/>
+
+		<Icon Id="Product.ico" SourceFile=".\Icons\Product.ico"/>
+		<Property Id="ARPPRODUCTICON" Value="Product.ico"/>
+
+		<?ifdef AdminImage ?>
+		<Property Id="ARPNOMODIFY" Value="1"/>
+		<?endif?>
+		<!--<Property Id="ARPNOREMOVE" Value=""/>-->
+		<!--<Property Id="ARPNOREPAIR" Value=""/>-->
+		<!--<Property Id="ARPSYSTEMCOMPONENT" Value=""/>-->
+
+		<Property Id="PRIMARYFOLDER" Value="APPLICATIONFOLDER" />
+		<SetProperty Id="ARPINSTALLLOCATION" Value="[APPLICATIONFOLDER]" Sequence="execute" Before="InstallInitialize">
+			<![CDATA[NOT Installed]]>
+		</SetProperty>
+		<Property Id="APPLICATIONFOLDER" Admin="yes" />
+
+		<!--<Property Id="ARPSIZE" Value=""/>-->
+
+		<?ifdef AdminImage ?>
+		<Property Id="MSIFASTINSTALL" Value="3"/>
+		<?endif?>
+
+		<Property Id="MSIRESTARTMANAGERCONTROL" Value="Disable"/>
+
+		<Property Id="ARPREADME" Value="https://github.com/IT-Service/$(var.ProductProjectName)/blob/master/readme.md"/>
+		<Property Id="ARPCOMMENTS" Value="$(var.ProductDescription)"/>
+		<Property Id="ARPURLINFOABOUT" Value="http://github.com/IT-Service/$(var.ProductProjectName)/blob/master/readme.md"/>
+		<Property Id="ARPURLUPDATEINFO" Value="http://github.com/IT-Service/$(var.ProductProjectName)/tags"/>
+		<Property Id="ARPHELPLINK" Value="http://github.com/IT-Service/$(var.ProductProjectName)/wiki"/>
+		<Property Id="ARPCONTACT" Value="ИТ-Сервис"/>
 
 		<Property Id="MSIARPSETTINGSIDENTIFIER" Value="$(var.ProductSettingsKey);IFirst\MarkInventoryClient;ifirst\Metrcontrol"/>
 
@@ -179,10 +206,12 @@
 			<Directory Id="TempFolder"/>
 		</Directory>
 
-		<!-- возможность отключения создания ярлыков - для варианта публикации баз через ярлыки на .csmdb -->
+		<?define ShFolders=PRODUCTMENUFOLDER;PRODUCTDESKTOPFOLDER?>
+
+		<!-- возможность отключения создания ярлыков -->
 		<InstallExecuteSequence>
 			<CreateShortcuts Sequence="4500">
-				Not DISABLESHORTCUTS="Yes"
+				<![CDATA[NOT DISABLESHORTCUTS="Yes"]]>
 			</CreateShortcuts>
 		</InstallExecuteSequence>
 
@@ -190,22 +219,16 @@
 		<!-- возможность отключения создания ярлыков - конец -->
 
 		<!-- возможность отключения создания ярлыков по одному -->
-		<SetDirectory Id="PRODUCTDESKTOPFOLDER" Value="[TempFolder]">
-			DISABLEDESKTOPSHORTCUTS="Yes"
-		</SetDirectory>
-		<SetDirectory Id="PRODUCTMENUFOLDER" Value="[TempFolder]">
-			DISABLEMENUSHORTCUTS="Yes"
-		</SetDirectory>
-		<SetDirectory Id="PRODUCTSTARTUPFOLDER" Value="[TempFolder]">
-			DISABLESTARTUPSHORTCUTS="Yes"
+		<?foreach ShFolder in $(var.ShFolders)?>
+
+		<SetDirectory Id="$(var.ShFolder)" Value="[TempFolder]">
+			<![CDATA[DISABLE$(var.ShFolder)SHORTCUTS="Yes"]]>
 		</SetDirectory>
 
-		<Property Id="DISABLEDESKTOPSHORTCUTS" Value="No" Admin="yes"/>
-		<Property Id="DISABLEMENUSHORTCUTS" Value="No" Admin="yes"/>
-		<Property Id="DISABLESTARTUPSHORTCUTS" Value="Yes" Admin="yes"/>
+		<Property Id="DISABLE$(var.ShFolder)SHORTCUTS" Value="No" Admin="yes"/>
+
+		<?endforeach?>
 		<!-- возможность отключения создания ярлыков по одному - конец -->
-
-		<?include Common.wxi ?>
 
 		<?ifndef AdminImage ?>
 
@@ -218,8 +241,8 @@
 				Control="Finish"
 				Event="DoAction"
 				Value="LaunchApplication"
-		>
-				WIXUI_EXITDIALOGOPTIONALCHECKBOX = 1 and NOT Installed
+			>
+				<![CDATA[(WIXUI_EXITDIALOGOPTIONALCHECKBOX = 1) AND NOT Installed]]>
 			</Publish>
 			<?endif?>
 		</UI>

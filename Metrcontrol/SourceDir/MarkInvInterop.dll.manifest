@@ -1,11 +1,11 @@
 ﻿<assembly xmlns="urn:schemas-microsoft-com:asm.v1" manifestVersion="1.0">
-	<!--http://msdn.microsoft.com/en-us/library/windows/desktop/aa374191(v=vs.85).aspx-->
+	<!-- http://msdn.microsoft.com/en-us/library/windows/desktop/aa374191(v=vs.85).aspx -->
 	<assemblyIdentity
 		name="MarkInvInterop"
 		type="win32"
 		version="2.3.3369.2"
 		processorArchitecture="X86"
-		culture="neutral"
+		language="*"
 	/>
 	<description>АИС Метроконтроль - учёт клейм, библиотека взаимодействия с АИС Метроконтроль.</description>
 
