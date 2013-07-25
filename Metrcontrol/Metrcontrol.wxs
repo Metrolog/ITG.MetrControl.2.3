@@ -206,10 +206,12 @@
 			<Directory Id="TempFolder"/>
 		</Directory>
 
-		<!-- возможность отключения создания ярлыков - для варианта публикации баз через ярлыки на .csmdb -->
+		<?define ShFolders=PRODUCTMENUFOLDER;PRODUCTDESKTOPFOLDER?>
+
+		<!-- возможность отключения создания ярлыков -->
 		<InstallExecuteSequence>
 			<CreateShortcuts Sequence="4500">
-				Not DISABLESHORTCUTS="Yes"
+				<![CDATA[NOT DISABLESHORTCUTS="Yes"]]>
 			</CreateShortcuts>
 		</InstallExecuteSequence>
 
@@ -217,19 +219,15 @@
 		<!-- возможность отключения создания ярлыков - конец -->
 
 		<!-- возможность отключения создания ярлыков по одному -->
-		<SetDirectory Id="PRODUCTDESKTOPFOLDER" Value="[TempFolder]">
-			DISABLEDESKTOPSHORTCUTS="Yes"
-		</SetDirectory>
-		<SetDirectory Id="PRODUCTMENUFOLDER" Value="[TempFolder]">
-			DISABLEMENUSHORTCUTS="Yes"
-		</SetDirectory>
-		<SetDirectory Id="PRODUCTSTARTUPFOLDER" Value="[TempFolder]">
-			DISABLESTARTUPSHORTCUTS="Yes"
+		<?foreach ShFolder in $(var.ShFolders)?>
+
+		<SetDirectory Id="$(var.ShFolder)" Value="[TempFolder]">
+			<![CDATA[DISABLE$(var.ShFolder)SHORTCUTS="Yes"]]>
 		</SetDirectory>
 
-		<Property Id="DISABLEDESKTOPSHORTCUTS" Value="No" Admin="yes"/>
-		<Property Id="DISABLEMENUSHORTCUTS" Value="No" Admin="yes"/>
-		<Property Id="DISABLESTARTUPSHORTCUTS" Value="Yes" Admin="yes"/>
+		<Property Id="DISABLE$(var.ShFolder)SHORTCUTS" Value="No" Admin="yes"/>
+
+		<?endforeach?>
 		<!-- возможность отключения создания ярлыков по одному - конец -->
 
 		<?ifndef AdminImage ?>
@@ -244,7 +242,7 @@
 				Event="DoAction"
 				Value="LaunchApplication"
 			>
-				WIXUI_EXITDIALOGOPTIONALCHECKBOX = 1 and NOT Installed
+				<![CDATA[(WIXUI_EXITDIALOGOPTIONALCHECKBOX = 1) AND NOT Installed]]>
 			</Publish>
 			<?endif?>
 		</UI>
