@@ -120,6 +120,9 @@
 				/>
 			</File>
 			<RemoveFolder Id="csmmain.ProductMenuFolder" Directory="PRODUCTMENUFOLDER" On="uninstall"/>
+			<RemoveFolder Id="csmmain.ProductVersionProgramMenuFolder" Directory="ProductVersionProgramMenuFolder" On="uninstall"/>
+			<RemoveFolder Id="csmmain.ProductProgramMenuFolder" Directory="ProductProgramMenuFolder" On="uninstall"/>
+			<RemoveFolder Id="csmmain.ManufacturerProgramMenuFolder" Directory="ManufacturerProgramMenuFolder" On="uninstall"/>
 			<RemoveFolder Id="csmmain.ProductDesktopFolder" Directory="PRODUCTDESKTOPFOLDER" On="uninstall"/>
 			<RemoveFolder Id="csmmain.ProductStartupFolder" Directory="PRODUCTSTARTUPFOLDER" On="uninstall"/>
 			<File
@@ -130,7 +133,7 @@
 			<!--Ключ ниже не требуется для работы. Ввёл, по сути, только для того, чтобы удалять его при деинсталляции-->
 			<RegistryKey
 				Root="HKLM"
-				Key="SOFTWARE\ifirst\Metrcontrol"
+				Key="$(var.ProductRegKey)"
 			>
 				<RegistryValue Name="CsmMainInstalled" Type="integer" Value="1" />
 			</RegistryKey>
@@ -198,13 +201,13 @@
 			<!--Ключ ниже не требуется для работы. Ввёл, по сути, только для того, чтобы удалять его при деинсталляции-->
 			<RegistryKey
 				Root="HKLM"
-				Key="SOFTWARE\ifirst\Metrcontrol"
+				Key="$(var.ProductRegKey)"
 				ForceCreateOnInstall="yes"
 				ForceDeleteOnUninstall="yes"
 			>
 				<RegistryValue Name="InstDir" Type="string" Value="[APPLICATIONFOLDER]" />
 				<RegistryValue Name="CurrentVersion" Type="string" Value="$(var.ProductVersion)" />
-				<RegistryValue Name="StartMenu" Type="string" Value="[ProductMenuFolder]" />
+				<RegistryValue Name="StartMenu" Type="string" Value="[PRODUCTMENUFOLDER]" />
 			</RegistryKey>
 		</Component>
 
@@ -268,6 +271,9 @@
 				</Shortcut>
 			</File>
 			<RemoveFolder Id="csmhelp.ProductMenuFolder" Directory="PRODUCTMENUFOLDER" On="uninstall"/>
+			<RemoveFolder Id="csmhelp.ProductVersionProgramMenuFolder" Directory="ProductVersionProgramMenuFolder" On="uninstall"/>
+			<RemoveFolder Id="csmhelp.ProductProgramMenuFolder" Directory="ProductProgramMenuFolder" On="uninstall"/>
+			<RemoveFolder Id="csmhelp.ManufacturerProgramMenuFolder" Directory="ManufacturerProgramMenuFolder" On="uninstall"/>
 		</Component>
 	</DirectoryRef>
 
@@ -285,10 +291,11 @@
 			>
 				<RegistryValue Name="Version" Type="string" Value="$(var.ProductVersion)" KeyPath="yes" />
 			</RegistryKey>
-			<CreateFolder Directory="ManufacturerLocalAppDataFolder" />
-			<RemoveFolder Directory="ManufacturerLocalAppDataFolder" On="uninstall" Id="common.settings.ManufacturerLocalAppDataFolder" />
-			<CreateFolder Directory="ProductLocalAppDataFolder" />
-			<RemoveFolder Directory="ProductLocalAppDataFolder" On="uninstall" Id="common.settings.ProductLocalAppDataFolder" />
+			<CreateFolder Directory="PRODUCTLOCALAPPDATAFOLDER"/>
+			<RemoveFolder Id="common.settings.PRODUCTLOCALAPPDATAFOLDER" Directory="PRODUCTLOCALAPPDATAFOLDER" On="uninstall"/>
+			<RemoveFolder Id="common.settings.ProductVersionLocalAppDataFolder" Directory="ProductVersionLocalAppDataFolder" On="uninstall"/>
+			<RemoveFolder Id="common.settings.ProductLocalAppDataFolder" Directory="ProductLocalAppDataFolder" On="uninstall"/>
+			<RemoveFolder Id="common.settings.ManufacturerLocalAppDataFolder" Directory="ManufacturerLocalAppDataFolder" On="uninstall"/>
 		</Component>
 	</DirectoryRef>
 
