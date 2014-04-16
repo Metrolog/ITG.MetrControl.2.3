@@ -8,8 +8,8 @@
     <SchemaVersion>2.0</SchemaVersion>
     <OutputName>Metrcontrol</OutputName>
     <OutputType>Package</OutputType>
-    <WixTargetsPath Condition=" '$(WixTargetsPath)' == '' AND '$(MSBuildExtensionsPath32)' != '' ">$(MSBuildExtensionsPath32)\Microsoft\WiX\v3.x\Wix.targets</WixTargetsPath>
-    <WixTargetsPath Condition=" '$(WixTargetsPath)' == '' ">$(MSBuildExtensionsPath)\Microsoft\WiX\v3.x\Wix.targets</WixTargetsPath>
+    <WixTargetsPath Condition=" '$(WixTargetsPath)' == '' AND '$(MSBuildExtensionsPath32)' != '' ">$(MSBuildExtensionsPath32)\WiX Toolset\v4\Wix.targets</WixTargetsPath>
+    <WixTargetsPath Condition=" '$(WixTargetsPath)' == '' ">$(MSBuildExtensionsPath)\WiX Toolset\v4\Wix.targets</WixTargetsPath>
     <Name>Metrcontrol</Name>
     <Cultures>ru-RU</Cultures>
     <SuppressPdbOutput>True</SuppressPdbOutput>
@@ -166,7 +166,7 @@
     <Content Include="WixUI_MondoWithoutLicenseDlg.wxi" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Common.1049.wxl" />
+    <EmbeddedResource Include="Common.ru-ru.wxl" />
   </ItemGroup>
   <ItemGroup>
     <WixExtension Include="WixUtilExtension">
