@@ -26,6 +26,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="csmadmin.wxs" />
+    <Compile Include="CSMmain.wxs" />
     <Compile Include="Metrcontrol.wxs" />
   </ItemGroup>
   <ItemGroup>
@@ -42,7 +43,6 @@
     <Content Include=".csmdb\ncsm.csmdb23" />
     <Content Include=".csmdb\template.csmdb23" />
     <Content Include="CSMBootstrapper.wxi" />
-    <Content Include="CSMmain.wxi" />
     <Content Include="Icons\csmadmin.ico" />
     <Content Include="Icons\help.ico" />
     <Content Include="Icons\MarkInv.ico" />

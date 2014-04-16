@@ -144,7 +144,6 @@
 
 	</Product>
 
-	<?include CSMmain.wxi ?>
 	<?include MarkInv.wxi ?>
 	<?include CSMBootstrapper.wxi ?>
 

@@ -56,6 +56,9 @@
 
 	<?define ShFolders=PRODUCTMENUFOLDER;PRODUCTDESKTOPFOLDER?>
 
+	<?define MainProgId="$(var.ProductProgIdPrefix).Main.$(var.ProductProgIdPostfix)"?>
+	<?define MainExt="csmdb-main$(var.ProductMajorVersion)$(var.ProductMinorVersion)"?>
+
 	<?define AdminProgId="$(var.ProductProgIdPrefix).Admin.$(var.ProductProgIdPostfix)"?>
 	<?define AdminToolName="$(var.ProductShortName) - администратор"?>
 	<?define AdminToolDescription="Инструменты администратора продукта $(var.ProductName)."?>
