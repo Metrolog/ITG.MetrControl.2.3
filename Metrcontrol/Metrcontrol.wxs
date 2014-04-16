@@ -115,7 +115,8 @@
 		<?foreach ShFolder in $(var.ShFolders)?>
 		<PropertyRef Id="DISABLE$(var.ShFolder)SHORTCUTS"/>
 		<?endforeach?>
-		<Property Id="DISABLEPRODUCTSTARTUPSHORTCUTS" Value="Yes" Admin="yes"/>
+		<WixVariable Id="DISABLEPRODUCTSTARTUPFOLDERSHORTCUTS" Value="Yes"/>
+		<WixVariable Id="DISABLEPRODUCTDESKTOPFOLDERSHORTCUTS" Value="Yes"/>
 
 		<?ifndef AdminImage ?>
 
