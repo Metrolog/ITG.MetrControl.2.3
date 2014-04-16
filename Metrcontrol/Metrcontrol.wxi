@@ -64,4 +64,9 @@
 	<?define AdminToolDescription="Инструменты администратора продукта $(var.ProductName)."?>
 	<?define AdminExt="csmdb-admin$(var.ProductMajorVersion)$(var.ProductMinorVersion)"?>
 
+	<?define markinvProgId="$(var.ProductProgIdPrefix).MarkInv.$(var.ProductProgIdPostfix)"?>
+	<?define markinvToolName="Учёт клейм"?>
+	<?define markinvToolDescription="Система учёта клейм поверителей."?>
+	<?define markinvExt="csmdb-markinv$(var.ProductMajorVersion)$(var.ProductMinorVersion)"?>
+
 </Include>

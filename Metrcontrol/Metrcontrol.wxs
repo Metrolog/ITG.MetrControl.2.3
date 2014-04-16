@@ -144,7 +144,4 @@
 
 	</Product>
 
-	<?include MarkInv.wxi ?>
-	<?include CSMBootstrapper.wxi ?>
-
 </Wix>

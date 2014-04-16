@@ -1,13 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<Include
+<Wix
 	xmlns="http://wixtoolset.org/schemas/v4/wxs"
 >
-	<Fragment>
+	<?include Metrcontrol.wxi ?>
 
-	<?define markinvProgId="$(var.ProductProgIdPrefix).MarkInv.$(var.ProductProgIdPostfix)"?>
-	<?define markinvToolName="Учёт клейм"?>
-	<?define markinvToolDescription="Система учёта клейм поверителей."?>
-	<?define markinvExt="csmdb-markinv$(var.ProductMajorVersion)$(var.ProductMinorVersion)"?>
+	<Fragment>
 
 	<Feature
 		Id="markinv"
@@ -227,4 +224,4 @@
 	</DirectoryRef>
 
 	</Fragment>
-</Include>
+</Wix>

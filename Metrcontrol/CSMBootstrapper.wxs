@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<Include
+<Wix
 	xmlns="http://wixtoolset.org/schemas/v4/wxs"
 >
+
+	<?include Metrcontrol.wxi ?>
 
 	<?include Common.RemoveAutoFile.wxi ?>
 
@@ -240,4 +242,4 @@
 		</DirectoryRef>
 
 	</Fragment>
-</Include>
+</Wix>
