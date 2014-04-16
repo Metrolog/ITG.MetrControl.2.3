@@ -115,6 +115,7 @@
 		<?foreach ShFolder in $(var.ShFolders)?>
 		<PropertyRef Id="DISABLE$(var.ShFolder)SHORTCUTS"/>
 		<?endforeach?>
+		<Property Id="DISABLEPRODUCTSTARTUPSHORTCUTS" Value="Yes" Admin="yes"/>
 
 		<?ifndef AdminImage ?>
 
