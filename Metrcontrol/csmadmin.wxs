@@ -24,6 +24,7 @@
 
 	<ComponentGroup Id="csmadmin" Directory="APPLICATIONFOLDER">
 		<ComponentRef	Id="csmadmin.exe" Primary="yes"/>
+		<ComponentRef	Id="csmadmin.exe_x64"/>
 		<ComponentRef	Id="csmadmin.registry"/>
 		<ComponentRef	Id="csmusers.dll"/>
 		<ComponentRef	Id="csmutil.dll"/>
@@ -85,6 +86,26 @@
 			>
 				<RegistryValue Name="CsmAdminInstalled" Type="integer" Value="1" />
 			</RegistryKey>
+			<RegistryKey
+				Root="HKLM"
+				Key="SOFTWARE\Microsoft\Windows NT\CurrentVersion\AppCompatFlags\Layers"
+			>
+				<RegistryValue Name="[#csmadmin.exe]" Type="string" Value="RUNASADMIN" />
+			</RegistryKey>
+		</Component>
+
+		<Component
+			Id="csmadmin.exe_x64"
+			Guid="{0284D1EC-0FBD-4032-96BF-C44D12CC0278}"
+			Win64="yes"
+		>
+			<Condition><![CDATA[VersionNT64]]></Condition>
+			<RegistryKey
+				Root="HKLM"
+				Key="SOFTWARE\Microsoft\Windows NT\CurrentVersion\AppCompatFlags\Layers"
+			>
+				<RegistryValue Name="[#csmadmin.exe]" Type="string" Value="RUNASADMIN" KeyPath="yes"/>
+			</RegistryKey>
 		</Component>
 
 		<Component
@@ -112,9 +133,6 @@
 					<RegistryValue Type="string" Value="[#csmadmin.exe]" KeyPath="yes" />
 					<RegistryValue Name="FriendlyAppName" Type="string" Value="$(var.AdminToolName)" />
 					<RegistryValue Name="NoOpenWith" Type="integer" Value="0" />
-					<RegistryKey Key="SupportedTypes">
-						<RegistryValue Name=".$(var.ProductExt)" Type="string" Value="" />
-					</RegistryKey>
 				</RegistryKey>
 			</RegistryKey>
 			<!--http://msdn.microsoft.com/ru-RU/library/windows/desktop/cc144154(v=vs.85).aspx-->
