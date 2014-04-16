@@ -3,59 +3,7 @@
 	xmlns="http://wixtoolset.org/schemas/v4/wxs"
 >
 
-	<?define ProductVersion="02.03.3369.0231"?>
-	<?define ProductMajorVersion="2"?>
-	<?define ProductMinorVersion="3"?>
-	<?define ProductShortName="АИС Метроконтроль"?>
-	<?define ProductInternalName="MetrControl"?>
-	<?define ProductProjectName="ITG.MetrControl.2.3"?>
-	<?define ProductDescription="Автоматизиованная информационная система АИС Метроконтроль."?>
-	<?define ProductName="$(var.ProductShortName) v$(var.ProductVersion)"?>
-	<?define ProductCode="89AC374A-B77C-4CD7-BD3E-580D726EFCD5"?>
-	<?define UpgradeCode="19F14309-5782-4010-9770-E63635CC0782"?>
-	<?define Manufacturer="РЦН"?>
-	<?define ManufacturerId="iFirst"?>
-	
-	<?define ProductId="$(var.ManufacturerId).$(var.ProductInternalName).$(var.ProductMajorVersion).$(var.ProductMinorVersion)"?>
-	<?define ProductRegKey="SOFTWARE\$(var.ManufacturerId)\$(var.ProductInternalName)"?>
-	<?define ProductProgIdPrefix="$(var.ManufacturerId).$(var.ProductInternalName)"?>
-	<?define ProductProgIdPostfix="$(var.ProductMajorVersion).$(var.ProductMinorVersion)"?>
-	<?define ProductProgId="$(var.ProductProgIdPrefix).$(var.ProductProgIdPostfix)"?>
-	<?define ProductProgIdDescription="Описатель базы данных АИС Метроконтроль"?>
-	<?define ProductExt="csmdb$(var.ProductMajorVersion)$(var.ProductMinorVersion)"?>
-	<?define ProductContentType="application/vnd.rcn-metrcontrol.db"?>
-
-	<?define ReportsChecksum="no"?>
-
-	<?ifdef SingleMSIFile ?>
-	<?define Compressed="yes" ?>
-	<?define IsAdminImage="no" ?>
-	<?else?>
-	<?define Compressed="no" ?>
-	<?define IsAdminImage="yes" ?>
-	<?endif?>
-
-	<?if $(sys.BUILDARCH) = "x86" ?>
-	<?define PlatformPostfix="32" ?>
-	<?define SystemFolderId="SystemFolder" ?>
-	<?define SystemFolder="System32" ?>
-	<?define ProgramFilesFolderId="ProgramFilesFolder" ?>
-	<?define Win64="no" ?>
-	<?else?>
-	<?define PlatformPostfix="64" ?>
-	<?define SystemFolderId="System64Folder" ?>
-	<?define SystemFolder="System64" ?>
-	<?define ProgramFilesFolderId="ProgramFiles64Folder" ?>
-	<?define Win64="yes" ?>
-
-	<?error "Platform must be x86" ?>
-	<?endif?>
-
-	<?define ProductSettingsKey="$(var.Manufacturer)\$(var.ProductShortName)\$(var.ProductMajorVersion).$(var.ProductMinorVersion)" ?>
-
-	<?define ProductFeatures="csmmain;csmadmin;markinv" ?>
-
-	<?define ShFolders=PRODUCTMENUFOLDER;PRODUCTDESKTOPFOLDER?>
+	<?include Metrcontrol.wxi ?>
 
 	<Product
 		Id="$(var.ProductCode)"
@@ -198,7 +146,6 @@
 
 	<?include CSMmain.wxi ?>
 	<?include MarkInv.wxi ?>
-	<?include CSMadmin.wxi ?>
 	<?include CSMBootstrapper.wxi ?>
 
 </Wix>

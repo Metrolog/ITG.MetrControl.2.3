@@ -25,6 +25,7 @@
     <SuppressIces>ICE69;ICE90</SuppressIces>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="csmadmin.wxs" />
     <Compile Include="Metrcontrol.wxs" />
   </ItemGroup>
   <ItemGroup>
@@ -41,7 +42,6 @@
     <Content Include=".csmdb\ncsm.csmdb23" />
     <Content Include=".csmdb\template.csmdb23" />
     <Content Include="CSMBootstrapper.wxi" />
-    <Content Include="csmadmin.wxi" />
     <Content Include="CSMmain.wxi" />
     <Content Include="Icons\csmadmin.ico" />
     <Content Include="Icons\help.ico" />
@@ -49,6 +49,7 @@
     <Content Include="Icons\Product.ico" />
     <Content Include="markInv.wxi" />
     <Content Include="Common.RemoveAutoFile.wxi" />
+    <Content Include="Metrcontrol.wxi" />
     <Content Include="sign.bat" />
     <Content Include="SourceDir\%24PLUGINSDIR\InstallOptions.dll" />
     <Content Include="SourceDir\%24PLUGINSDIR\ioSpecial.ini" />
