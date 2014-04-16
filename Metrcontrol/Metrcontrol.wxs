@@ -82,6 +82,11 @@
 			<RemoveExistingProducts After="InstallExecute"/>
 		</InstallExecuteSequence>
 
+		<WixVariable Id="OriginalPackageKey" Value="$(var.ProductInternalName)"/>
+		<WixVariable Id="OriginalPackageUninstallerFileName" Value="uninstall.exe"/>
+		<WixVariable Id="OriginalPackageUninstallerArgs" Value="/S"/>
+		<CustomActionRef Id="UninstallOriginalPackage"/>
+
 		<PropertyRef Id="ITGPACKAGE"/>
 		<Property Id="ARPCOMMENTS" Value="$(var.ProductDescription)"/>
 		<Property Id="ARPCONTACT" Value="IT-Service"/>
