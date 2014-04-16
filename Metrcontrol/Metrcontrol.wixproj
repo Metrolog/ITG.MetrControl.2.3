@@ -180,6 +180,14 @@
     </WixExtension>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Bootstrapper\Bootstrapper.csproj">
+      <Name>Bootstrapper</Name>
+      <Project>{b65b92a6-fcb0-465e-b7ea-ca77c7c987f0}</Project>
+      <Private>True</Private>
+      <DoNotHarvest>True</DoNotHarvest>
+      <RefProjectOutputGroups>Binaries;Content;Satellites</RefProjectOutputGroups>
+      <RefTargetDir>INSTALLFOLDER</RefTargetDir>
+    </ProjectReference>
     <ProjectReference Include="..\ITG.WixUtils\ITGWixUtils.wixproj">
       <Name>ITGWixUtils</Name>
       <Project>{a6247d3f-c713-46f7-876f-fabf05437b65}</Project>

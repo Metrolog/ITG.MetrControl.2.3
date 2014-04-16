@@ -14,7 +14,7 @@
 		<?ifdef AppDirectory?><?undef AppDirectory?><?endif?>
 		<?define AppDirectory="APPLICATIONFOLDER"?>
 		<?ifdef AppFileName?><?undef AppFileName?><?endif?>
-		<?define AppFileName="$(var.AppInternalName).exe"?>
+		<?define AppFileName="$(var.Bootstrapper.TargetFileName)"?>
 		<?ifdef AppIcon?><?undef AppIcon?><?endif?>
 		<?define AppIcon="Product.ico"?>
 
@@ -50,7 +50,7 @@
 			<ComponentGroupRef Id="common.RemoveAutoFile" />
 		</ComponentGroup>
 
-		<DirectoryRef Id="$(var.AppDirectory)" FileSource="..\Bootstrapper\bin\Release">
+		<DirectoryRef Id="$(var.AppDirectory)" FileSource="$(var.Bootstrapper.TargetDir)">
 
 			<Component
 				Id="$(var.AppFileName)"
