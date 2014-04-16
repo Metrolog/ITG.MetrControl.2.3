@@ -65,12 +65,12 @@
 				Property="WIX_DOWNGRADE_DETECTED"
 			/>
 			<UpgradeVersion
-				Minimum="1.0.0"
+				Minimum="01.00.0000"
 				IncludeMinimum="yes"
 				Maximum="$(var.ProductVersion)"
 				IncludeMaximum="no"
-				RemoveFeatures=" "
-				Property="WIX_MINOR_UPGRADE_DETECTED"
+				RemoveFeatures="ALL"
+				Property="WIX_MAJOR_UPGRADE_DETECTED"
 				MigrateFeatures="yes"
 				IgnoreRemoveFailure="no"
 			/>
@@ -93,7 +93,7 @@
 		<!--<Property Id="ARPNOREPAIR" Value=""/>-->
 		<!--<Property Id="ARPSYSTEMCOMPONENT" Value=""/>-->
 
-		<Property Id="MSIARPSETTINGSIDENTIFIER" Value="$(var.ProductSettingsKey);IFirst\MarkInventoryClient;ifirst\Metrcontrol"/>
+		<Property Id="MSIARPSETTINGSIDENTIFIER" Value="IFirst\MarkInventoryClient;ifirst\Metrcontrol"/>
 		<PropertyRef Id="MSIDEPLOYMENTCOMPLIANT"/>
 
 		<Icon Id="Product.ico" SourceFile=".\Icons\Product.ico"/>
