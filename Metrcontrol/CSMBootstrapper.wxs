@@ -119,6 +119,19 @@
 				>
 					<RegistryValue Name=".$(var.AppFileExt)" Type="string" Value="Link" KeyPath="yes"/>
 				</RegistryKey>
+				<RegistryKey
+					Root="HKMU"
+					Key="SOFTWARE\Classes\Applications"
+				>
+					<RegistryKey Key="$(var.AppFileName)">
+						<RegistryValue Name="FriendlyAppName" Type="string" Value="$(var.ProductShortName)" />
+						<RegistryValue Name="IsHostApp" Type="integer" Value="1"/>
+						<RegistryValue Name="NoOpenWith" Type="integer" Value="1"/>
+						<RegistryKey Key="SupportedTypes">
+							<RegistryValue Name=".$(var.AppFileExt)" Type="string" Value="" />
+						</RegistryKey>
+					</RegistryKey>
+				</RegistryKey>
 			</Component>
 
 			<Component

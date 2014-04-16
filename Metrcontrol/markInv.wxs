@@ -193,9 +193,6 @@
 					<RegistryValue Type="string" Value="[#markinv.exe]" />
 					<RegistryValue Name="FriendlyAppName" Type="string" Value="$(var.markinvToolName)" />
 					<RegistryValue Name="NoOpenWith" Type="integer" Value="0" />
-					<RegistryKey Key="SupportedTypes">
-						<RegistryValue Name=".$(var.ProductExt)" Type="string" Value="" />
-					</RegistryKey>
 				</RegistryKey>
 			</RegistryKey>
 			<!--http://msdn.microsoft.com/ru-RU/library/windows/desktop/cc144154(v=vs.85).aspx-->

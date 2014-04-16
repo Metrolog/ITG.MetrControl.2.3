@@ -163,9 +163,6 @@
 					<RegistryValue Type="string" Value="[#application]" />
 					<RegistryValue Name="FriendlyAppName" Type="string" Value="$(var.ProductShortName)" />
 					<RegistryValue Name="NoOpenWith" Type="integer" Value="0" />
-					<RegistryKey Key="SupportedTypes">
-						<RegistryValue Name=".$(var.ProductExt)" Type="string" Value="" />
-					</RegistryKey>
 				</RegistryKey>
 			</RegistryKey>
 
