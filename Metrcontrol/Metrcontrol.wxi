@@ -2,7 +2,7 @@
 <Include
 	xmlns="http://wixtoolset.org/schemas/v4/wxs"
 >
-	<?define ProductVersion="02.03.3369.0232"?>
+	<?define ProductVersion="02.03.5234.0234"?>
 	<?define ProductMajorVersion="2"?>
 	<?define ProductMinorVersion="3"?>
 	<?define ProductShortName="АИС Метроконтроль"?>

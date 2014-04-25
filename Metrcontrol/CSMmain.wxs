@@ -119,9 +119,6 @@
 				/>
 			</File>
 			<RemoveFolder Id="csmmain.ProductMenuFolder" Directory="PRODUCTMENUFOLDER" On="uninstall"/>
-			<RemoveFolder Id="csmmain.ProductVersionProgramMenuFolder" Directory="ProductVersionProgramMenuFolder" On="uninstall"/>
-			<RemoveFolder Id="csmmain.ProductProgramMenuFolder" Directory="ProductProgramMenuFolder" On="uninstall"/>
-			<RemoveFolder Id="csmmain.ManufacturerProgramMenuFolder" Directory="ManufacturerProgramMenuFolder" On="uninstall"/>
 			<RemoveFolder Id="csmmain.ProductDesktopFolder" Directory="PRODUCTDESKTOPFOLDER" On="uninstall"/>
 			<RemoveFolder Id="csmmain.ProductStartupFolder" Directory="PRODUCTSTARTUPFOLDER" On="uninstall"/>
 			<File
@@ -267,9 +264,6 @@
 				</Shortcut>
 			</File>
 			<RemoveFolder Id="csmhelp.ProductMenuFolder" Directory="PRODUCTMENUFOLDER" On="uninstall"/>
-			<RemoveFolder Id="csmhelp.ProductVersionProgramMenuFolder" Directory="ProductVersionProgramMenuFolder" On="uninstall"/>
-			<RemoveFolder Id="csmhelp.ProductProgramMenuFolder" Directory="ProductProgramMenuFolder" On="uninstall"/>
-			<RemoveFolder Id="csmhelp.ManufacturerProgramMenuFolder" Directory="ManufacturerProgramMenuFolder" On="uninstall"/>
 		</Component>
 	</DirectoryRef>
 

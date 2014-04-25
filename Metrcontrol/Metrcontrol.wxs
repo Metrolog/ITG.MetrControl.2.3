@@ -117,9 +117,7 @@
 		<MediaTemplate EmbedCab="$(var.Compressed)"/>
 
 		<PropertyRef Id="DISABLESHORTCUTS"/>
-		<?foreach ShFolder in $(var.ShFolders)?>
-		<PropertyRef Id="DISABLE$(var.ShFolder)SHORTCUTS"/>
-		<?endforeach?>
+
 		<WixVariable Id="DISABLEPRODUCTSTARTUPFOLDERSHORTCUTS" Value="Yes"/>
 		<WixVariable Id="DISABLEPRODUCTDESKTOPFOLDERSHORTCUTS" Value="Yes"/>
 
